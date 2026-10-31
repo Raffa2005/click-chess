@@ -1,0 +1,11 @@
+{
+  "validation_with_history": {
+    "accuracy": 0.8089884521430157,
+    "nll": 0.42037469148635864
+  },
+  "validation_missing_history": {
+    "accuracy": 0.7621863202309571,
+    "nll": 0.5077968835830688
+  },
+  "note": "Only validation data used; empty history is valid for a starting position, otherwise supply the prior two plies."
+}

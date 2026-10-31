@@ -1,0 +1,20 @@
+{
+  "source_urls": {
+    "lichess_elite_2023-02.zip": "https://database.nikonoel.fr/lichess_elite_2023-02.zip",
+    "lichess_elite_2023-03.zip": "https://database.nikonoel.fr/lichess_elite_2023-03.zip",
+    "broadcast-2024-01.pgn.zst": "https://database.lichess.org/broadcast/lichess_db_broadcast_2024-01.pgn.zst",
+    "broadcast-2024-04.pgn.zst": "https://database.lichess.org/broadcast/lichess_db_broadcast_2024-04.pgn.zst"
+  },
+  "classical_events": {
+    "Tata Steel Masters 2024": 91,
+    "Tata Steel Challengers": 91,
+    "Tata Steel Toptienkamp 2024": 45,
+    "FIDE Candidates 2024": 48,
+    "FIDE Women's Candidates 2024": 48
+  },
+  "tiebreaks_excluded": 7,
+  "licenses": {
+    "elite_online": "CC0 (Lichess original games)",
+    "broadcasts": "CC BY-SA 4.0; Lichess broadcasts, https://database.lichess.org/#broadcasts"
+  }
+}

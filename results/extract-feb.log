@@ -1,0 +1,81 @@
+{"games": 500, "examples": 18444, "seconds": 10.5}
+{"games": 1000, "examples": 37234, "seconds": 21.5}
+{"games": 1500, "examples": 55255, "seconds": 32.6}
+{"games": 2000, "examples": 73620, "seconds": 43.1}
+{"games": 2500, "examples": 91899, "seconds": 53.9}
+{"games": 3000, "examples": 110664, "seconds": 64.7}
+{"games": 3500, "examples": 129960, "seconds": 75.8}
+{"games": 4000, "examples": 149668, "seconds": 87.0}
+{"games": 4500, "examples": 168662, "seconds": 96.3}
+{"games": 5000, "examples": 188304, "seconds": 106.0}
+{"games": 5500, "examples": 207427, "seconds": 117.8}
+{"games": 6000, "examples": 226414, "seconds": 127.4}
+{"games": 6500, "examples": 245650, "seconds": 137.8}
+{"games": 7000, "examples": 264231, "seconds": 147.3}
+{"games": 7500, "examples": 282997, "seconds": 157.2}
+{"games": 8000, "examples": 302489, "seconds": 167.0}
+{"games": 8500, "examples": 321432, "seconds": 179.2}
+{"games": 9000, "examples": 340681, "seconds": 190.5}
+{"games": 9500, "examples": 359596, "seconds": 201.6}
+{"games": 10000, "examples": 378600, "seconds": 212.2}
+{"games": 10500, "examples": 397612, "seconds": 222.7}
+{"games": 11000, "examples": 417460, "seconds": 233.9}
+{
+  "paths": [
+    "data/raw/lichess_elite_2023-02.zip"
+  ],
+  "source_sha256": {
+    "data/raw/lichess_elite_2023-02.zip": "7930206efa17b98472187475fcc6e39f14fdab66c520106b3295f4dd1966f38b"
+  },
+  "sampling_modulus": 24,
+  "min_both_elo": 2100,
+  "corpus": "lichess",
+  "counts": {
+    "archive_games": 267507,
+    "selected_games": 11034,
+    "plies": 934714,
+    "ambiguous_moves_including_promotions": 420203,
+    "origin_ambiguities": 418765,
+    "different_piece_ambiguities": 403275,
+    "promotion_only_ambiguities": 1438,
+    "same_piece_ambiguities": 15490,
+    "duplicate_games": 23
+  },
+  "game_time_controls": {
+    "1": 10362,
+    "2": 651,
+    "3": 21
+  },
+  "dates": {
+    "2023.02.01": 426,
+    "2023.02.02": 400,
+    "2023.02.03": 410,
+    "2023.02.04": 389,
+    "2023.02.05": 374,
+    "2023.02.06": 401,
+    "2023.02.07": 407,
+    "2023.02.08": 372,
+    "2023.02.09": 429,
+    "2023.02.10": 391,
+    "2023.02.11": 373,
+    "2023.02.12": 464,
+    "2023.02.13": 381,
+    "2023.02.14": 388,
+    "2023.02.15": 388,
+    "2023.02.16": 382,
+    "2023.02.17": 421,
+    "2023.02.18": 379,
+    "2023.02.19": 419,
+    "2023.02.20": 350,
+    "2023.02.21": 396,
+    "2023.02.22": 410,
+    "2023.02.23": 433,
+    "2023.02.24": 391,
+    "2023.02.25": 337,
+    "2023.02.26": 391,
+    "2023.02.27": 336,
+    "2023.02.28": 396
+  },
+  "seconds": 268.1859483718872,
+  "feature_dim": 107
+}

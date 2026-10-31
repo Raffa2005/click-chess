@@ -1,0 +1,8 @@
+{
+  "name": "tiny-chess-input",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {"test": "node js/test.mjs", "benchmark": "node js/benchmark.mjs"},
+  "devDependencies": {"chess.js": "1.4.0"}
+}

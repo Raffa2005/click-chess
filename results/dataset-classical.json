@@ -1,0 +1,54 @@
+{
+  "paths": [
+    "data/raw/classical-2024.pgn"
+  ],
+  "source_sha256": {
+    "data/raw/classical-2024.pgn": "512c8d8de1e7c0a5f16d3488c083c26845396ebfc6051700e3264ac11112ac8c"
+  },
+  "sampling_modulus": 1,
+  "min_both_elo": 2100,
+  "corpus": "classical",
+  "counts": {
+    "archive_games": 323,
+    "selected_games": 323,
+    "plies": 29324,
+    "ambiguous_moves_including_promotions": 14085,
+    "origin_ambiguities": 14066,
+    "different_piece_ambiguities": 13635,
+    "same_piece_ambiguities": 431,
+    "promotion_only_ambiguities": 19
+  },
+  "game_time_controls": {
+    "3": 323
+  },
+  "dates": {
+    "2024.01.13": 14,
+    "2024.01.14": 14,
+    "2024.01.15": 14,
+    "2024.01.16": 14,
+    "2024.01.18": 14,
+    "2024.01.19": 19,
+    "2024.01.20": 19,
+    "2024.01.21": 19,
+    "2024.01.22": 5,
+    "2024.01.23": 19,
+    "2024.01.24": 19,
+    "2024.01.26": 19,
+    "2024.01.27": 19,
+    "2024.01.28": 19,
+    "2024.04.04": 12,
+    "2024.04.05": 8,
+    "2024.04.06": 4,
+    "2024.04.07": 8,
+    "2024.04.09": 8,
+    "2024.04.10": 8,
+    "2024.04.11": 8,
+    "2024.04.13": 8,
+    "2024.04.14": 8,
+    "2024.04.15": 8,
+    "2024.04.17": 8,
+    "2024.04.18": 8
+  },
+  "seconds": 9.658559799194336,
+  "feature_dim": 107
+}

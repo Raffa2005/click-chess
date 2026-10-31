@@ -1,0 +1,189 @@
+{
+  "selected_representation": "history",
+  "parameters": 6977,
+  "float32_weight_bytes": 27908,
+  "int8_weight_and_float32_bias_bytes": 7172,
+  "int8_json_bytes": 20162,
+  "int8_json_gzip_bytes": 7212,
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.39"
+  },
+  "sets": {
+    "temporal_lichess": {
+      "float32": {
+        "examples": 123378,
+        "games": 3216,
+        "accuracy": 0.8219941966963316,
+        "nll": 0.395578533411026,
+        "accuracy_95pct_game_bootstrap": [
+          0.8194724095478961,
+          0.8243418909080249
+        ],
+        "top2": 0.9835302890304592,
+        "mean_reciprocal_rank": 0.9081509669471056,
+        "mean_clicks_if_cycling": 1.1957156056995575,
+        "uniform_legal_origin_accuracy": 0.44490657437576664
+      },
+      "int8": {
+        "examples": 123378,
+        "games": 3216,
+        "accuracy": 0.8206244225064436,
+        "nll": 0.3977968394756317,
+        "accuracy_95pct_game_bootstrap": [
+          0.8180900334737448,
+          0.8230800931816671
+        ],
+        "top2": 0.9835059735122955,
+        "mean_reciprocal_rank": 0.907460946576105,
+        "mean_clicks_if_cycling": 1.1971259057530517,
+        "uniform_legal_origin_accuracy": 0.44490657437576664
+      },
+      "duplicate_development_examples_removed": 0,
+      "novel_position_destination": {
+        "examples": 105505,
+        "games": 3210,
+        "accuracy": 0.8035732903653855,
+        "nll": 0.4301745891571045,
+        "accuracy_95pct_game_bootstrap": [
+          0.800853134951396,
+          0.8062661528257408
+        ],
+        "top2": 0.9814226813895076,
+        "mean_reciprocal_rank": 0.8985744751433582,
+        "mean_clicks_if_cycling": 1.2164257618122365,
+        "uniform_legal_origin_accuracy": 0.44583984961218265
+      },
+      "baselines": {
+        "first_origin": 0.4567183776686281,
+        "least_valuable_piece": 0.5151647781614226
+      },
+      "slices": {
+        "same_piece_type": {
+          "examples": 4604,
+          "accuracy": 0.7404430929626412,
+          "nll": 0.5196568965911865
+        },
+        "different_piece_types": {
+          "examples": 118774,
+          "accuracy": 0.825155337026622,
+          "nll": 0.3907689154148102
+        },
+        "2_candidates": {
+          "examples": 86217,
+          "accuracy": 0.8335015136226034,
+          "nll": 0.3550795018672943
+        },
+        "3plus_candidates": {
+          "examples": 37161,
+          "accuracy": 0.795296143806679,
+          "nll": 0.4895400106906891
+        },
+        "opening_ply_lt20": {
+          "examples": 35917,
+          "accuracy": 0.9073697691900772,
+          "nll": 0.23919154703617096
+        },
+        "middlegame_ply20_79": {
+          "examples": 75946,
+          "accuracy": 0.7927343112211308,
+          "nll": 0.45266786217689514
+        },
+        "late_ply_ge80": {
+          "examples": 11515,
+          "accuracy": 0.7486756404689535,
+          "nll": 0.5068460702896118
+        }
+      },
+      "quantization_argmax_disagreement": 0.024890985426899447
+    },
+    "classical_otb": {
+      "float32": {
+        "examples": 14066,
+        "games": 323,
+        "accuracy": 0.8017204606853405,
+        "nll": 0.42891809344291687,
+        "accuracy_95pct_game_bootstrap": [
+          0.7942430903469025,
+          0.809461802901384
+        ],
+        "top2": 0.9796672828096118,
+        "mean_reciprocal_rank": 0.8973766529219395,
+        "mean_clicks_if_cycling": 1.2197497511730413,
+        "uniform_legal_origin_accuracy": 0.44262405801222804
+      },
+      "int8": {
+        "examples": 14066,
+        "games": 323,
+        "accuracy": 0.800725152850846,
+        "nll": 0.4317408800125122,
+        "accuracy_95pct_game_bootstrap": [
+          0.7929230254728622,
+          0.8084404955941819
+        ],
+        "top2": 0.9786719749751173,
+        "mean_reciprocal_rank": 0.896677567657235,
+        "mean_clicks_if_cycling": 1.2221669273425282,
+        "uniform_legal_origin_accuracy": 0.44262405801222804
+      },
+      "duplicate_development_examples_removed": 0,
+      "novel_position_destination": {
+        "examples": 11738,
+        "games": 322,
+        "accuracy": 0.7734707786675754,
+        "nll": 0.48088186979293823,
+        "accuracy_95pct_game_bootstrap": [
+          0.764959060449256,
+          0.7823827021064264
+        ],
+        "top2": 0.976060657692963,
+        "mean_reciprocal_rank": 0.8826319077639574,
+        "mean_clicks_if_cycling": 1.2518316578633497,
+        "uniform_legal_origin_accuracy": 0.44413443516783097
+      },
+      "baselines": {
+        "first_origin": 0.4572017631167354,
+        "least_valuable_piece": 0.5002132802502488
+      },
+      "slices": {
+        "same_piece_type": {
+          "examples": 431,
+          "accuracy": 0.6867749419953596,
+          "nll": 0.5503464341163635
+        },
+        "different_piece_types": {
+          "examples": 13635,
+          "accuracy": 0.8053538687202053,
+          "nll": 0.4250798225402832
+        },
+        "2_candidates": {
+          "examples": 9654,
+          "accuracy": 0.81562046819971,
+          "nll": 0.3766418993473053
+        },
+        "3plus_candidates": {
+          "examples": 4412,
+          "accuracy": 0.7713055303717135,
+          "nll": 0.543304979801178
+        },
+        "opening_ply_lt20": {
+          "examples": 3767,
+          "accuracy": 0.9094770374303159,
+          "nll": 0.23378795385360718
+        },
+        "middlegame_ply20_79": {
+          "examples": 8966,
+          "accuracy": 0.7672317644434531,
+          "nll": 0.49758103489875793
+        },
+        "late_ply_ge80": {
+          "examples": 1333,
+          "accuracy": 0.7291822955738935,
+          "nll": 0.5185083746910095
+        }
+      },
+      "quantization_argmax_disagreement": 0.02666003128110337
+    }
+  }
+}

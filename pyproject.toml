@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tiny-chess-input"
+version = "0.1.0"
+description = "Tiny CPU-trained neural ranking for destination-only chess input"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.26,<3", "chess==1.11.2", "zstandard>=0.22"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
