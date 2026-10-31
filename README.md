@@ -16,13 +16,19 @@ are counted separately.
 
 ## Model and results
 
-The improved network has **17,345 parameters**, a **23.7 KB gzipped model**, and
-**0.40 ms p95** feature extraction + ranking in the warm Node benchmark with legal
-moves supplied. On fresh tests it selects the played origin **85.11%** of the time
-online and **82.98%** in classical games. Second-choice coverage is 98.77% and
-98.53%, respectively. Repeated clicks cycle a cached ranking.
+The deployed network has **17,345 parameters**, a **16.8 KB gzipped binary**
+(**18.6 KB uncompressed**), and **0.31 ms p95** feature extraction + ranking in the
+warm Node benchmark with legal moves supplied. Its round-one test accuracy was
+**85.11%** on April 2023 online games and **82.98%** on Tata Steel 2025 classical
+games. Second-choice coverage was 98.77% and 98.53%.
 
-The improved model and fresh held-out comparisons are in [RESULTS.md](RESULTS.md).
+[Round two](research/round2/RESULTS.md) tested eight additional training runs and
+six weight averages. Its candidate improved fresh online accuracy but missed the
+classical adoption requirement, so the existing weights remain the default.
+The new binary export preserves predictions exactly; repeat clicks remain cached.
+
+The latest candidate comparison is in [RESULTS.md](RESULTS.md); the previous
+model study is preserved in [research/round2/baseline/RESULTS.md](research/round2/baseline/RESULTS.md).
 The bounded [research protocol](program.md), [trial log](research/results.tsv), and
 [reproduction guide](research/README.md) preserve successful and unsuccessful experiments.
 Original baseline reports remain in [results/](results/) and [research/baseline/](research/baseline/). The model is a shared candidate scorer: the same tiny MLP
@@ -53,7 +59,7 @@ pip install -e .
 import chess
 from tinychess.model import Ranker, ClickSession
 
-model = Ranker('models/origin-ranker.int8.json')  # load once
+model = Ranker('models/origin-ranker.bin')  # load once
 board = chess.Board()
 ranking = model.rank(board, 'f3')  # f2 or g1 can move to f3
 print(ranking)
@@ -79,8 +85,8 @@ from your existing chess library. This example uses chess.js:
 import { Chess } from 'chess.js';
 import { OriginRanker } from './js/ranker.mjs';
 
-const artifact = await (await fetch('./models/origin-ranker.int8.json')).json();
-const model = new OriginRanker(artifact); // load once, outside click handler
+const bytes = await (await fetch('./models/origin-ranker.bin')).arrayBuffer();
+const model = OriginRanker.fromBinary(bytes); // load once, outside click handler
 const chess = new Chess();
 const legal = chess.moves({ verbose: true });
 const session = model.clickSession(chess.fen(), legal, 'f3');
@@ -112,7 +118,8 @@ npm test
 npm run benchmark
 ```
 
-See [research/README.md](research/README.md) for downloading sources, preparing
+See [research/round2/README.md](research/round2/README.md) and
+[research/README.md](research/README.md) for downloading sources, preparing
 features, reproducing the study, and adding bounded experiments. Training uses
 NumPy on CPU; no GPU or PyTorch is needed. Data preparation uses substantially
 more memory than inference. Archives and caches are not committed.

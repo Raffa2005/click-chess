@@ -1,0 +1,12 @@
+{
+  "events": {
+    "PICF 2025 - Masters": 45,
+    "PICF 2025 - Challengers": 45,
+    "2025 Cyprus FIDE Women's Grand Prix": 45
+  },
+  "excluded": {
+    "PICF 2025 - Challengers - Tiebreak": 2
+  },
+  "selection": "Exact event allowlist chosen from headers before model evaluation.",
+  "license": "Lichess broadcasts, CC BY-SA 4.0"
+}

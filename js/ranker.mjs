@@ -4,6 +4,24 @@
 const values=[0,1,3,3.25,5,9,12], letters=' pnbrqk';
 export const square=s=>typeof s==='number'?s:(s.charCodeAt(0)-97)+8*(Number(s[1])-1);
 export const squareName=s=>String.fromCharCode(97+s%8)+(1+Math.floor(s/8));
+export function decodeBinary(buffer){
+  const bytes=buffer instanceof Uint8Array?buffer:new Uint8Array(buffer);
+  const view=new DataView(bytes.buffer,bytes.byteOffset,bytes.byteLength);
+  if(bytes.length<8||String.fromCharCode(...bytes.subarray(0,4))!=='CCQ1')throw new Error('Unsupported binary model');
+  const length=view.getUint32(4,true);if(length>bytes.length-8)throw new Error('Truncated binary header');
+  const header=JSON.parse(new TextDecoder().decode(bytes.subarray(8,8+length)));
+  const artifact={...header.artifact,weights_int8:[],biases:[],weight_scales:[]};let offset=8+length;
+  for(const layer of header.layers){
+    const {inputs:a,outputs:b,scales:n}=layer;
+    if(!Number.isInteger(a)||!Number.isInteger(b)||a<=0||b<=0||![1,b].includes(n)||offset+a*b+4*(b+n)>bytes.length)throw new Error('Invalid or truncated binary layer');
+    const w=Array.from({length:a},()=>Array.from({length:b},()=>view.getInt8(offset++)));
+    const bias=Array.from({length:b},()=>{const v=view.getFloat32(offset,true);offset+=4;return v;});
+    const scales=Array.from({length:n},()=>{const v=view.getFloat32(offset,true);offset+=4;return v;});
+    artifact.weights_int8.push(w);artifact.biases.push(bias);artifact.weight_scales.push(n===1?scales[0]:scales);
+  }
+  if(offset!==bytes.length)throw new Error('Unexpected trailing binary data');
+  return artifact;
+}
 const dist=(a,b)=>Math.max(Math.abs(a%8-b%8),Math.abs((a>>3)-(b>>3)));
 
 function parse(fen){
@@ -67,7 +85,7 @@ export function features(fen,moves,history=[],representation='history',featureVe
     return moves.map(m=>{const x=base.slice();x[775+(square(m.from)^flip)]=1;x[839+(square(m.to)^flip)]=1;return x;});
   }
   const globals=[Math.min(pos.ply,200)/200,Math.min(pos.half,100)/100,Number(attackers(b,-c,ownking).length>0),...castling];
-  const beforeMaps=featureVersion===2?attackMaps(b):null;
+  const beforeMaps=featureVersion>=2?attackMaps(b):null;
   const beforeRisk=beforeMaps?[...riskSummary(b,c,beforeMaps),...riskSummary(b,-c,beforeMaps)]:null;
   const risks=[];
   const rows=moves.map(m=>{
@@ -81,7 +99,7 @@ export function features(fen,moves,history=[],representation='history',featureVe
     let same=0,adjacent=0;for(let s=0;s<64;s++)if(b[s]===c){if(s%8===tf)same++;if(Math.abs(s%8-tf)===1)adjacent++;}
     const after=b.slice();after[f]=0;after[t]=(promotion||type)*c;if(ep)after[t-8*c]=0;
     if(castle){const rookFrom=t>f?f+3:f-4,rookTo=t>f?f+1:f-1;after[rookFrom]=0;after[rookTo]=4*c;}
-    const afterMaps=featureVersion===2?attackMaps(after):null;
+    const afterMaps=featureVersion>=2?attackMaps(after):null;
     if(afterMaps)risks.push([...riskSummary(after,c,afterMaps),...riskSummary(after,-c,afterMaps)]);
     row.push(...(afterMaps?mappedAttackInfo(afterMaps,-c,t):attackInfo(after,-c,t)),...(afterMaps?mappedAttackInfo(afterMaps,c,t):attackInfo(after,c,t)),...before,...activity(after,t,c),Number(afterMaps?afterMaps[c].count[enemyking]>0:attackers(after,c,enemyking).length>0),dist(f,ownking)/7,dist(t,ownking)/7,dist(f,enemyking)/7,dist(t,enemyking)/7,pin,same/8,adjacent/16);
     if(representation==='history')for(let i=1;i<=2;i++){
@@ -91,38 +109,57 @@ export function features(fen,moves,history=[],representation='history',featureVe
     }
     return row;
   });
-  if(featureVersion===2&&rows.length){
+  if(featureVersion>=2&&rows.length){
     const ctx=Array(6).fill(0);for(const x of rows)for(let j=0;j<6;j++)ctx[j]+=x[j]/rows.length;
     // v1 feature indices: value=68, from_enemy_count=69.
     ctx.push(rows.length/8,Math.min(...rows.map(x=>x[68])),Math.max(...rows.map(x=>x[69])),Math.max(...rows.map(x=>x[69]>0?x[68]:0)));
-    return rows.map((x,i)=>[...x,...ctx,...beforeRisk,...risks[i],...risks[i].map((v,j)=>v-beforeRisk[j])]);
+    const rich=rows.map((x,i)=>[...x,...ctx,...beforeRisk,...risks[i],...risks[i].map((v,j)=>v-beforeRisk[j])]);
+    if(featureVersion===3){
+      const indices=[...Array.from({length:22},(_,i)=>i),...Array.from({length:6},(_,i)=>i+38),...Array.from({length:44},(_,i)=>i+63),...Array.from({length:20},(_,i)=>i+127)];
+      const mean=indices.map(j=>rich.reduce((sum,row)=>sum+row[j],0)/rich.length);
+      return rich.map(row=>[...row,...mean]);
+    }
+    return rich;
   }
   return rows;
 }
 
 export class OriginRanker {
+  static fromBinary(buffer){return new OriginRanker(decodeBinary(buffer));}
   constructor(artifact){
-    if(![1,2].includes(artifact.feature_version))throw new Error('Unsupported feature version');
+    if(![1,2,3].includes(artifact.feature_version))throw new Error('Unsupported feature version');
     this.featureVersion=artifact.feature_version;
+    this.architecture=artifact.architecture||'mlp';
+    this.pooling=artifact.pooling||'mean';
     this.representation=artifact.representation;
     const source=artifact.weights||artifact.weights_int8.map((w,i)=>w.map(row=>row.map((v,j)=>v*(Array.isArray(artifact.weight_scales[i])?artifact.weight_scales[i][j]:artifact.weight_scales[i]))));
     this.layers=source.map((w,i)=>({input:w.length,output:w[0].length,w:Float32Array.from(w.flat()),b:Float32Array.from(artifact.biases[i])}));
   }
-  score(row){
+  layer(x,li){
+    const l=this.layers[li];if(x.length!==l.input)throw new Error('Feature dimensions differ');
+    const y=Float32Array.from(l.b);
+    for(let i=0;i<l.input;i++)for(let j=0;j<l.output;j++)y[j]+=x[i]*l.w[i*l.output+j];
+    if(li<this.layers.length-1)for(let j=0;j<l.output;j++)y[j]=Math.max(0,y[j]);
+    return y;
+  }
+  score(row,start=0){
     let x=row;
-    for(let li=0;li<this.layers.length;li++){
-      const l=this.layers[li];if(x.length!==l.input)throw new Error('Feature dimensions differ');
-      const y=Float32Array.from(l.b);
-      for(let i=0;i<l.input;i++)for(let j=0;j<l.output;j++)y[j]+=x[i]*l.w[i*l.output+j];
-      if(li<this.layers.length-1)for(let j=0;j<l.output;j++)y[j]=Math.max(0,y[j]);x=y;
-    }return x[0];
+    for(let li=start;li<this.layers.length;li++)x=this.layer(x,li);
+    return x[0];
+  }
+  scores(rows){
+    if(this.architecture!=='set-context')return rows.map(row=>this.score(row));
+    const hidden=rows.map(row=>this.layer(row,0));
+    const mean=Array(hidden[0].length).fill(0),maximum=Array(hidden[0].length).fill(0);
+    for(const row of hidden)for(let j=0;j<row.length;j++){mean[j]+=row[j]/hidden.length;maximum[j]=Math.max(maximum[j],row[j]);}
+    return hidden.map(row=>this.score([...row,...mean,...(this.pooling==='mean_max'?maximum:[])],1));
   }
   rank(fen,legalMoves,destination,history=[]){
     const target=square(destination),legal=legalMoves.filter(m=>square(m.to)===target),unique=new Map();
     for(const m of legal)if(!unique.has(square(m.from))||m.promotion==='q')unique.set(square(m.from),m);
     const moves=[...unique.entries()].sort((a,b)=>a[0]-b[0]).map(e=>e[1]);if(!moves.length)return [];
     let probs=[1];
-    if(moves.length>1){const s=features(fen,moves,history,this.representation,this.featureVersion).map(x=>this.score(x)),max=Math.max(...s);probs=s.map(v=>Math.exp(v-max));const total=probs.reduce((a,b)=>a+b,0);probs=probs.map(v=>v/total);}
+    if(moves.length>1){const s=this.scores(features(fen,moves,history,this.representation,this.featureVersion)),max=Math.max(...s);probs=s.map(v=>Math.exp(v-max));const total=probs.reduce((a,b)=>a+b,0);probs=probs.map(v=>v/total);}
     return moves.map((m,i)=>({from:squareName(square(m.from)),probability:probs[i],moves:legal.filter(v=>square(v.from)===square(m.from)).map(v=>squareName(square(v.from))+squareName(square(v.to))+(v.promotion||''))})).sort((a,b)=>b.probability-a.probability);
   }
   probabilities64(fen,legalMoves,destination,history=[]){const p=new Float32Array(64);for(const r of this.rank(fen,legalMoves,destination,history))p[square(r.from)]=r.probability;return p;}

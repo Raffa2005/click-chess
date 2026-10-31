@@ -1,0 +1,27 @@
+{
+  "model": "models/origin-ranker.int8.json",
+  "runtime": "v24.22.1",
+  "platform": "linux",
+  "architecture": "x64",
+  "cpu": "unavailable",
+  "fixture_count": 305,
+  "rank_with_features_legal_moves_supplied": {
+    "iterations": 3000,
+    "median_us": 172.12900000004083,
+    "p95_us": 401.3440000001083,
+    "p99_us": 762.0340000000851
+  },
+  "full_chessjs_legal_generation_and_ranking": {
+    "iterations": 3000,
+    "median_us": 3826.5400000000227,
+    "p95_us": 7233.658000001014,
+    "p99_us": 11222.060000000056
+  },
+  "cached_second_click": {
+    "iterations": 10000,
+    "median_us": 0.08399999933317304,
+    "p95_us": 0.1359999987471383,
+    "p99_us": 0.24200000007112976
+  },
+  "note": "Warm Node.js CPU benchmark; excludes UI rendering, cold model load, network, and history reconstruction. No claim about mobile/browser latency."
+}

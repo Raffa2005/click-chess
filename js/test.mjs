@@ -44,3 +44,30 @@ if(fs.existsSync(modelPath)){
 }
 }
 console.log(JSON.stringify({fixtures:fixtures.length,maxFeatureError:maxError,status:'passed'}));
+if(fs.existsSync('tests/round2-fixtures.json')){
+  const experiments=JSON.parse(fs.readFileSync('tests/round2-fixtures.json','utf8'));
+  for(const experiment of experiments){
+    const ranker=OriginRanker.fromBinary(Buffer.from(experiment.binary_base64,'base64'));
+    for(const sample of experiment.cases){
+      const f=fixtures[sample.index],engine=new Chess(f.fen),unique=new Map();
+      for(const m of engine.moves({verbose:true}).filter(m=>m.to===f.destination))if(!unique.has(m.from)||m.promotion==='q')unique.set(m.from,m);
+      const moves=[...unique.values()].sort((a,b)=>square(a.from)-square(b.from));
+      const history=f.history.map(m=>({from:m.slice(0,2),to:m.slice(2,4)}));
+      const x=features(f.fen,moves,history,'history',ranker.featureVersion),scores=ranker.scores(x);
+      for(let i=0;i<scores.length;i++)assert.ok(Math.abs(scores[i]-sample.scores[i])<1e-5,'Experimental score mismatch');
+      if(sample.features)for(let i=0;i<x.length;i++)for(let j=0;j<x[i].length;j++)assert.ok(Math.abs(x[i][j]-sample.features[i][j])<1e-6,'Pooled feature mismatch');
+      const reversed=ranker.scores(x.slice().reverse()).reverse();
+      for(let i=0;i<scores.length;i++)assert.ok(Math.abs(scores[i]-reversed[i])<1e-6,'Candidate order changed prediction');
+    }
+  }
+  console.log(JSON.stringify({experimental_architectures:experiments.length,binary_parity:'passed'}));
+}
+if(fs.existsSync('models/origin-ranker.bin')){
+  const binary=OriginRanker.fromBinary(fs.readFileSync('models/origin-ranker.bin'));
+  const reference=new OriginRanker(JSON.parse(fs.readFileSync('models/origin-ranker.int8.json','utf8')));
+  for(const f of fixtures){
+    const engine=new Chess(f.fen),legal=engine.moves({verbose:true}),history=f.history.map(m=>({from:m.slice(0,2),to:m.slice(2,4)}));
+    assert.deepEqual(binary.rank(f.fen,legal,f.destination,history),reference.rank(f.fen,legal,f.destination,history));
+  }
+  console.log(JSON.stringify({binary_fixtures:fixtures.length,status:'passed'}));
+}

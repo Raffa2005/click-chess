@@ -14,7 +14,7 @@ def main():
     plan = read('research/experiments.json')
     winner = runs[frozen['selected_experiment']]
     artifact = read('models/origin-ranker.json')
-    latency = read('results/latency-node.json')
+    latency = read('research/round2/baseline/latency-node.json' if (ROOT/'research/round2/baseline/latency-node.json').exists() else 'results/latency-node.json')
     export = frozen['selected_quantization']
     text = f'''# Measured results: click-chess
 
@@ -152,7 +152,10 @@ See [research/README.md](research/README.md) for reproduction and [program.md](p
 for the experiment contract. The fresh tests are now public and should serve as
 regression sets in subsequent research, with another unseen final test reserved.
 '''
-    (ROOT / 'RESULTS.md').write_text(text)
+    output = ROOT / ('research/round2/baseline/RESULTS.md' if (ROOT/'research/round2/frozen.json').exists() else 'RESULTS.md')
+    if output != ROOT/'RESULTS.md':
+        text = text.replace('(research/learning-curves.png)', '(../../learning-curves.png)').replace('(research/README.md)', '(../../README.md)').replace('(program.md)', '(../../../program.md)')
+    output.write_text(text)
     plot(runs, frozen['selected_experiment'])
 
 

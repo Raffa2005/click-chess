@@ -1,0 +1,43 @@
+{
+  "selected_experiment": "extra-scratch-seed2",
+  "float32_validation": {
+    "accuracy": 0.8371641128136798,
+    "nll": 0.3600579500198364
+  },
+  "quantization_options": [
+    {
+      "quantization": "symmetric-int8-per-tensor",
+      "gzip_bytes": 19488,
+      "json_bytes": 54025,
+      "validation": {
+        "accuracy": 0.8377470575172108,
+        "nll": 0.36050131916999817
+      },
+      "eligible": true
+    },
+    {
+      "quantization": "symmetric-int8-per-output",
+      "gzip_bytes": 23696,
+      "json_bytes": 61125,
+      "validation": {
+        "accuracy": 0.8374417055296469,
+        "nll": 0.3603564202785492
+      },
+      "eligible": true
+    }
+  ],
+  "selected_quantization": {
+    "quantization": "symmetric-int8-per-output",
+    "gzip_bytes": 23696,
+    "json_bytes": 61125,
+    "validation": {
+      "accuracy": 0.8374417055296469,
+      "nll": 0.3603564202785492
+    },
+    "eligible": true
+  },
+  "float32_sha256": "a4b2febd269d72e2c8e61e11091acb67967f6f638ac3d8fc227e36cea722be10",
+  "int8_sha256": "86f61d98aae13567c612828b0ce8efe788f151991cf8d2492c394576ca9ba629",
+  "checkpoint_sha256": "a4b2febd269d72e2c8e61e11091acb67967f6f638ac3d8fc227e36cea722be10",
+  "note": "Selected and frozen using validation only, before fresh test evaluation."
+}

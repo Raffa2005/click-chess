@@ -1,0 +1,54 @@
+{
+  "selected_experiment": "december-incumbent",
+  "parameter_count": 17345,
+  "float32_validation": {
+    "accuracy": 0.8419109482567178,
+    "nll": 0.35413625836372375
+  },
+  "quantization_options": [
+    {
+      "quantization": "symmetric-int8-per-tensor",
+      "validation": {
+        "accuracy": 0.8416055962691539,
+        "nll": 0.35503700375556946
+      },
+      "binary_bytes": 18112,
+      "binary_gzip_bytes": 14485,
+      "json_bytes": 53892,
+      "json_gzip_bytes": 19501,
+      "eligible": true
+    },
+    {
+      "quantization": "symmetric-int8-per-output",
+      "validation": {
+        "accuracy": 0.841022651565623,
+        "nll": 0.35438045859336853
+      },
+      "binary_bytes": 18618,
+      "binary_gzip_bytes": 16677,
+      "json_bytes": 60893,
+      "json_gzip_bytes": 23569,
+      "eligible": true
+    }
+  ],
+  "selected_quantization": {
+    "quantization": "symmetric-int8-per-output",
+    "validation": {
+      "accuracy": 0.841022651565623,
+      "nll": 0.35438045859336853
+    },
+    "binary_bytes": 18618,
+    "binary_gzip_bytes": 16677,
+    "json_bytes": 60893,
+    "json_gzip_bytes": 23569,
+    "eligible": true
+  },
+  "hashes": {
+    "origin-ranker.bin.gz": "07f5988f1751073fa4781bf03d377ae170d7ef53de6b3ef32178af987c5fd705",
+    "origin-ranker.int8.json": "0f93f2be2a434e12d956748dc311eca59439697d5b7a2dd7140d3fb3d4550d89",
+    "origin-ranker.int8.json.gz": "8d4262c1ef64b32980fd9b442811808b33d664f0f44959da8325efe9c5d4fd88",
+    "origin-ranker.json": "b76d247f00b49a1b27164d979ff597342b9fb8c9e1d0f1fce5ba3b00c6748203",
+    "origin-ranker.bin": "384d0ff3587a72d79ead64856cdd4b83b8f055f29b994e882b4e05e0c0f93b0d"
+  },
+  "note": "Checkpoint and export frozen using the original validation split before any round-two test scoring."
+}

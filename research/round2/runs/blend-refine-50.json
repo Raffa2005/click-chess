@@ -1,0 +1,36 @@
+{
+  "config": {
+    "name": "blend-refine-50",
+    "kind": "weight_blend",
+    "parents": [
+      "december-incumbent",
+      "incumbent-refine"
+    ],
+    "second_fraction": 0.5,
+    "hidden": [
+      96,
+      32
+    ],
+    "feature_version": 2,
+    "hypothesis": "Average aligned weights in nearby fine-tuning solutions without adding deployed parameters."
+  },
+  "validation": {
+    "accuracy": 0.8404397068620919,
+    "nll": 0.3561308979988098,
+    "top2": 0.9869809016211415
+  },
+  "parameter_count": 17345,
+  "best_epoch": 0,
+  "curve": [],
+  "seconds": 0.40373930699934135,
+  "validation_examples": 36024,
+  "train_examples": 1227149,
+  "status": "discard",
+  "source_hashes": {
+    "/workspace/scratch/20c31a15abeb/tiny-chess-input/src/tinychess/round2_blend.py": "7eca530a55a5a21efc94e8dfb120cf8ab42e1c00381cb07f20279d3938894dc1"
+  },
+  "parent_sha256": {
+    "research/round2/checkpoints/december-incumbent.json": "b76d247f00b49a1b27164d979ff597342b9fb8c9e1d0f1fce5ba3b00c6748203",
+    "research/round2/checkpoints/incumbent-refine.json": "bc5173d6990fe4155b57ee4c8dceef1cfd4948e60ef14a20c0af862bb341ef5b"
+  }
+}

@@ -8,3 +8,6 @@ models/checkpoints/
 node_modules/
 research/checkpoints/
 research/cache/
+
+research/round2/checkpoints/
+research/round2/cache/

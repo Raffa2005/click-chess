@@ -5,6 +5,10 @@ destination while preserving instantaneous local inference. This adapts the
 measure/keep/discard approach of https://github.com/karpathy/autoresearch to CPU
 chess move input. It is not a fork of its GPU language-model training code.
 
+The completed second study, fresh tests, and adoption rule are documented in
+[research/round2/protocol.md](research/round2/protocol.md). Earlier test sets below
+are now regression sets for subsequent work.
+
 ## Immutable evaluation contract
 
 - Freeze the original February 2023 game split and the 36,024 novel validation

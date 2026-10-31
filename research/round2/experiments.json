@@ -1,0 +1,236 @@
+[
+  {
+    "epochs": 70,
+    "patience": 20,
+    "lr": 0.0005,
+    "schedule": "cosine",
+    "normalize": false,
+    "seed": 20261031,
+    "seconds": 240,
+    "feature_version": 2,
+    "hidden": [
+      96,
+      32
+    ],
+    "init": "research/round2/baseline/origin-ranker.json",
+    "name": "incumbent-refine",
+    "hypothesis": "Continue training the incumbent at a lower learning rate."
+  },
+  {
+    "epochs": 70,
+    "patience": 20,
+    "lr": 0.0015,
+    "schedule": "cosine",
+    "normalize": false,
+    "seed": 20261031,
+    "seconds": 240,
+    "feature_version": 3,
+    "hidden": [
+      64,
+      32
+    ],
+    "name": "pooled-64-32",
+    "hypothesis": "Expose competing-origin feature means to the tiny scorer."
+  },
+  {
+    "epochs": 70,
+    "patience": 20,
+    "lr": 0.0015,
+    "schedule": "cosine",
+    "normalize": false,
+    "seed": 20261031,
+    "seconds": 240,
+    "feature_version": 3,
+    "hidden": [
+      72,
+      32
+    ],
+    "name": "pooled-72-32",
+    "hypothesis": "Increase pooled-context capacity within the unchanged parameter cap."
+  },
+  {
+    "epochs": 65,
+    "patience": 20,
+    "lr": 0.001,
+    "schedule": "cosine",
+    "normalize": false,
+    "seed": 20261031,
+    "seconds": 300,
+    "feature_version": 2,
+    "architecture": "set-context",
+    "hidden": [
+      64,
+      32
+    ],
+    "pooling": "mean",
+    "init": "research/round2/baseline/compact.json",
+    "name": "set-mean-warm",
+    "hypothesis": "Learn candidate comparisons by pooling hidden features; warm-start a compact scorer."
+  },
+  {
+    "epochs": 65,
+    "patience": 20,
+    "lr": 0.0015,
+    "schedule": "cosine",
+    "normalize": false,
+    "seed": 20261031,
+    "seconds": 300,
+    "feature_version": 2,
+    "architecture": "set-context",
+    "hidden": [
+      64,
+      48
+    ],
+    "pooling": "mean_max",
+    "name": "set-mean-max",
+    "hypothesis": "Mean and maximum pooled learned features capture competing-origin priorities."
+  },
+  {
+    "epochs": 16,
+    "patience": 16,
+    "lr": 0.0008,
+    "schedule": "cosine",
+    "normalize": false,
+    "seed": 20261031,
+    "seconds": 420,
+    "feature_version": 2,
+    "december": true,
+    "name": "december-incumbent",
+    "hidden": [
+      96,
+      32
+    ],
+    "init": "research/round2/baseline/origin-ranker.json",
+    "hypothesis": "Additional disjoint December games improve the incumbent."
+  },
+  {
+    "epochs": 16,
+    "patience": 16,
+    "lr": 0.0008,
+    "schedule": "cosine",
+    "normalize": false,
+    "seed": 20261031,
+    "seconds": 420,
+    "feature_version": 2,
+    "december": true,
+    "name": "december-wider-head",
+    "hidden": [
+      96,
+      48
+    ],
+    "init": "research/round2/baseline/widened-96-48.json",
+    "hypothesis": "Widen the bottleneck with a nearly function-preserving initialization."
+  },
+  {
+    "epochs": 16,
+    "patience": 16,
+    "lr": 0.0008,
+    "schedule": "cosine",
+    "normalize": false,
+    "seed": 20261031,
+    "seconds": 420,
+    "feature_version": 2,
+    "december": true,
+    "name": "december-deeper-head",
+    "hidden": [
+      96,
+      32,
+      32
+    ],
+    "init": "research/round2/baseline/deepened-96-32-32.json",
+    "hypothesis": "Add a nonlinear layer initialized to identity, at the same 16-epoch budget."
+  },
+  {
+    "name": "blend-refine-25",
+    "kind": "weight_blend",
+    "parents": [
+      "december-incumbent",
+      "incumbent-refine"
+    ],
+    "second_fraction": 0.25,
+    "hidden": [
+      96,
+      32
+    ],
+    "feature_version": 2,
+    "hypothesis": "Average aligned weights in nearby fine-tuning solutions without adding deployed parameters."
+  },
+  {
+    "name": "blend-refine-50",
+    "kind": "weight_blend",
+    "parents": [
+      "december-incumbent",
+      "incumbent-refine"
+    ],
+    "second_fraction": 0.5,
+    "hidden": [
+      96,
+      32
+    ],
+    "feature_version": 2,
+    "hypothesis": "Average aligned weights in nearby fine-tuning solutions without adding deployed parameters."
+  },
+  {
+    "name": "blend-refine-75",
+    "kind": "weight_blend",
+    "parents": [
+      "december-incumbent",
+      "incumbent-refine"
+    ],
+    "second_fraction": 0.75,
+    "hidden": [
+      96,
+      32
+    ],
+    "feature_version": 2,
+    "hypothesis": "Average aligned weights in nearby fine-tuning solutions without adding deployed parameters."
+  },
+  {
+    "name": "blend-deep-25",
+    "kind": "weight_blend",
+    "parents": [
+      "december-incumbent",
+      "december-deeper-head"
+    ],
+    "second_fraction": 0.25,
+    "hidden": [
+      96,
+      32,
+      32
+    ],
+    "feature_version": 2,
+    "hypothesis": "Average aligned weights in nearby fine-tuning solutions without adding deployed parameters."
+  },
+  {
+    "name": "blend-deep-50",
+    "kind": "weight_blend",
+    "parents": [
+      "december-incumbent",
+      "december-deeper-head"
+    ],
+    "second_fraction": 0.5,
+    "hidden": [
+      96,
+      32,
+      32
+    ],
+    "feature_version": 2,
+    "hypothesis": "Average aligned weights in nearby fine-tuning solutions without adding deployed parameters."
+  },
+  {
+    "name": "blend-deep-75",
+    "kind": "weight_blend",
+    "parents": [
+      "december-incumbent",
+      "december-deeper-head"
+    ],
+    "second_fraction": 0.75,
+    "hidden": [
+      96,
+      32,
+      32
+    ],
+    "feature_version": 2,
+    "hypothesis": "Average aligned weights in nearby fine-tuning solutions without adding deployed parameters."
+  }
+]

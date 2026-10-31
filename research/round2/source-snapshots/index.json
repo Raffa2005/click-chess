@@ -1,0 +1,15 @@
+{
+  "46ae0a7b91af82f22429ae9276f0c4facd15e2106a0841577d08cb5da75254af": "research/round2/source-snapshots/46ae0a7b91af-research.py",
+  "320f3c73524b72cf73f2e6fed7c533127d42510f6266cc5579e83f2afabe8048": "research/round2/source-snapshots/320f3c73524b-round2.py",
+  "7fd3860b850907536991bdee43d8afa761d26095325f2373a108fe4738b02c84": "research/round2/source-snapshots/7fd3860b8509-round2_sets.py",
+  "ef2c3d93a3d353faf99de75963179c4c3e30f4d945250c22ae965ab87b32966e": "research/round2/source-snapshots/ef2c3d93a3d3-setnet.py",
+  "ee6ad8041fb56ed47ca0bffaad3282bb8deeff6cc67c12d4c1468fa10f918a92": "research/round2/source-snapshots/ee6ad8041fb5-comparative.py",
+  "617b3bc937135f7d1efe786ebf6f3e4dd3e8795e8d73c53bd97dd7f250349897": "research/round2/source-snapshots/617b3bc93713-train.py",
+  "7eca530a55a5a21efc94e8dfb120cf8ab42e1c00381cb07f20279d3938894dc1": "research/round2/source-snapshots/7eca530a55a5-round2_blend.py",
+  "b4c29d5a0b96a2efaa4719a6baed36c315d42a750534a5a8090438e2a64e9d12": "research/round2/source-snapshots/b4c29d5a0b96-round2_bigdata.py",
+  "5d05bfc15ecede131934cd31ef8fd43dcffbd1ab12fb26b717609c1f2f3c64c3": "research/round2/source-snapshots/5d05bfc15ece-round2_prepare.py",
+  "57e8d3e3388d83116a9ad0ef024fd156705f949b81326fc5622c62deb5a119a3": "research/round2/source-snapshots/57e8d3e3388d-round2_fixtures.py",
+  "cc45b459f8a99eda1acdc3db9a1d5b012bdbbcabf4c3274d77551929f5b82074": "research/round2/source-snapshots/cc45b459f8a9-round2_evaluate.py",
+  "4784dd8623150b9566c4852bfe5c9ba493f830630e45930b3701f4bbca0a1318": "research/round2/source-snapshots/4784dd862315-round2_loop.py",
+  "7f0797872057bbd9df8b78e938987624cf8be21a5efdbbba181a367784bd8a20": "research/round2/source-snapshots/7f0797872057-binary.py"
+}

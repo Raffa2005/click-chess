@@ -1,136 +1,135 @@
-# Measured results: click-chess
+# Round 2 results: a modest online gain, mixed classical results
 
-Run: 2026-10-31. All accuracies concern destinations with **multiple legal origins**.
-Promotion-piece selection remains a separate UI choice.
+The existing **17,345-parameter model remains the default**. Eight new CPU training
+runs and six weight averages produced a candidate with better online accuracy,
+but it missed the predeclared requirement to improve on both fresh test sets.
+The classical point estimate fell slightly; its confidence interval includes zero.
+No model was retrained or reselected after these test results.
 
-## Deployment model
+The useful deployment improvement ships independently: a lossless binary export
+of the existing quantized model. Predictions are identical to its JSON export.
 
-147 candidate features → 96 → 32 ReLU units → 1 shared score.
-**17,345 parameters**, including biases. The previous two plies are included.
-The selected experiment is `extra-scratch-seed2`; selection used the fixed
-36,024-example novel-position February validation set, not either fresh test set.
+## Fresh tests and regression checks
 
-The deployment model is **23,696 bytes gzipped** (61,125 bytes
-as JSON), using symmetric-int8-per-output. Weights are dequantized once at load;
-inference uses floating-point arithmetic. No engine search or inference server.
-Float32 and INT8 exports are both supplied. Validation accuracy is
-83.72% for float32 and 83.74% for INT8.
+Both columns use identical examples and INT8 deployment models. Fresh tests were
+scored only after checkpoint and quantization freeze. Regression sets were
+previously visible and were not selection targets.
 
-## Fresh held-out comparison
-
-Both versions are measured on identical examples. Baseline means the original
-6,977-parameter INT8 model, preserved in `research/baseline/`. Models and export
-choices were frozen before either fresh test was scored.
-
-| Test | Games | Ambiguous examples | Baseline top-1 | Improved top-1 | Improved top-2 | Error reduction |
-|---|---:|---:|---:|---:|---:|---:|
-| Lichess Elite, April 2023 | 2,981 | 113,767 | 81.97% | **85.11%** | 98.77% | 17.43% |
-| Tata Steel classical, 2025 | 168 | 7,597 | 80.56% | **82.98%** | 98.53% | 12.46% |
-
-Paired accuracy gains, with 95% intervals from bootstrapping whole games:
-
-- Lichess Elite, April 2023: +3.14 percentage points (95% CI 2.95–3.33).
-- Tata Steel classical, 2025: +2.42 percentage points (95% CI 1.63–3.21).
-
-Top-2 means the played origin appears among the first two choices. It does not
-mean the first click was correct. Repeated clicks cycle the cached ranking.
-
-| Test | Novel examples | Baseline novel top-1 | Improved novel top-1 | Float32 full top-1 | Mean choices, INT8 |
+| Test | Games | Decisions | Current default | Candidate | Gain (percentage points), 95% game-bootstrap CI |
 |---|---:|---:|---:|---:|---:|
-| Lichess Elite, April 2023 | 94,626 | 79.94% | 83.37% | 85.13% | 1.162 |
-| Tata Steel classical, 2025 | 6,263 | 77.79% | 80.54% | 83.02% | 1.186 |
+| May 2023 online (fresh) | 3,264 | 125,578 | 85.13% | 85.39% | +0.25 [+0.15, +0.36] |
+| Prague/Cyprus 2025 classical (fresh) | 134 | 5,888 | 82.39% | 82.17% | -0.22 [-0.71, +0.25] |
+| April 2023 online (regression) | 2,981 | 113,767 | 85.11% | 85.46% | +0.35 [+0.24, +0.45] |
+| Tata Steel 2025 classical (regression) | 168 | 7,597 | 82.98% | 83.95% | +0.97 [+0.53, +1.44] |
 
-Novel means position+destination absent from **both** February development data
-and January extra training. Identical full move-sequence games are excluded
-across development and tests. Players and opening families can still overlap.
+Intervals resample whole games (2,000 paired bootstrap replicates). The online
+gain is supported by the fresh-test interval; the classical difference is
+uncertain. Regression improvements do not override the fresh-test adoption rule.
 
-The classical sample contains the 84 Masters and 84 Challengers records available
-in the January/February 2025 broadcast archives. Three tiebreak games were
-excluded. It is not a claim to contain every game of the tournaments. Both-player
-rating floor 2100 applies; Lichess and FIDE ratings are not interchangeable.
-
-## Research trials
-
-The original baseline was reproduced exactly. The immutable novel validation set
-contains 36,024 examples from 1,132 games. February training has 376,508 examples;
-combined January/February training has 826,387. January excludes all February
-validation games and position+destination keys before training. No classical
-games enter training.
-
-| Trial | Parameters | Validation top-1 | Validation NLL | Best / total epochs | Seconds |
+| Fresh test | Novel decisions | Default novel top-1 | Candidate novel top-1 | Candidate top-2 | Candidate float32 top-1 |
 |---|---:|---:|---:|---:|---:|
-| baseline-recheck | 6,977 | 80.90% | 0.42037 | 28 / 32 | 70.8 |
-| cosine-64 | 6,977 | 81.23% | 0.41477 | 49 / 51 | 120.1 |
-| normalized-64 | 6,977 | 81.11% | 0.41889 | 46 / 54 | 120.2 |
-| normalized-128 | 13,953 | 81.27% | 0.41756 | 17 / 36 | 120.2 |
-| deep-64-32 | 9,025 | 81.69% | 0.40855 | 28 / 48 | 120.2 |
-| deep-96-32 | 13,505 | 81.80% | 0.40915 | 16 / 36 | 117.3 |
-| rich-64 | 9,537 | 83.05% | 0.37862 | 22 / 24 | 120.7 |
-| rich-deep-64-32 | 11,585 | 83.19% | 0.37268 | 20 / 20 | 120.9 |
-| rich-deep-96-32 | 17,345 | 83.36% | 0.37163 | 22 / 22 | 120.8 |
-| rich-normalized-96-32 | 17,345 | 83.24% | 0.37321 | 10 / 30 | 110.3 |
-| controlled-rich | 17,345 | 83.44% | 0.37172 | 22 / 24 | 111.1 |
-| controlled-no-context | 17,345 | 83.29% | 0.37219 | 24 / 24 | 133.9 |
-| controlled-no-risk | 17,345 | 81.49% | 0.40589 | 24 / 24 | 129.1 |
-| extra-warm | 17,345 | 83.83% | 0.36279 | 13 / 13 | 240.9 |
-| extra-scratch-seed2 | 17,345 | 83.72% | 0.36006 | 14 / 15 | 240.9 |
-| extra-warm-refine | 17,345 | 83.74% | 0.36258 | 6 / 8 | 180.9 |
+| May 2023 online (fresh) | 103,819 | 83.29% | 83.53% | 98.89% | 85.41% |
+| Prague/Cyprus 2025 classical (fresh) | 4,767 | 79.57% | 79.13% | 98.22% | 82.37% |
 
-16 trials consumed 36.3 summed training minutes on CPU, excluding
-data preparation/startup. Some ran concurrently, so this is not elapsed wall time.
-The ordinary 120-second runs are not equal-update comparisons. Feature ablations
-use the same seed, optimizer, architecture, data and 24 epochs. Their parameter
-counts include zeroed input rows. The second combined-data run uses a different
-seed from scratch; the other combined-data runs use warm starts. This is limited
-seed evidence, not a multi-seed significance study.
+Novel means position+destination absent from all December/January training and
+February development records. Complete game-sequence duplicates are excluded
+across development and evaluation. Players/opening families may overlap.
+Top-2 is coverage within the first two choices, not first-click accuracy.
 
-The controlled comparisons show that board-wide material-risk features provide
-most of the gain. Competing-origin context gives a smaller contribution. Width
-alone was less useful. The trial log retains unsuccessful alternatives.
+The new classical sample comprises 45 Prague Masters, 45 Prague Challengers and
+45 Cyprus Women's Grand Prix games; two Prague tiebreaks were excluded. Both-player
+rating floor 2100 applies. Online Lichess ratings and over-the-board FIDE ratings
+are not interchangeable. Promotion-piece selection and variants remain separate.
 
-![Validation learning curves](research/learning-curves.png)
+## Validation-guided search
 
-The best checkpoint is restored by validation NLL. Training loss can continue to
-fall after validation stops improving; the plot is evidence about this bounded
-search, not proof of a global optimum. Further progress may require better
-features, more varied games or distillation rather than simply training longer.
+Training grew from 826,387 to **1,227,149 ambiguous decisions**. All 400,762 added
+December examples exclude every February validation game and position+destination.
+The original 36,024-example novel validation contract stayed fixed.
 
-## Latency
+| Trial | Parameters | Validation top-1 | Validation NLL | Best / completed epochs | Seconds |
+|---|---:|---:|---:|---:|---:|
+| incumbent-refine | 17,345 | 83.93% | 0.359017 | 13 / 14 | 240.9 |
+| pooled-64-32 | 17,473 | 83.69% | 0.363300 | 12 / 12 | 242.1 |
+| pooled-72-32 | 19,649 | 83.65% | 0.363396 | 13 / 13 | 240.6 |
+| set-mean-warm | 13,633 | 83.74% | 0.363665 | 12 / 12 | 302.1 |
+| set-mean-max | 18,785 | 83.24% | 0.369525 | 7 / 7 | 305.9 |
+| december-incumbent | 17,345 | 84.19% | 0.354136 | 16 / 16 | 407.3 |
+| december-wider-head | 18,913 | 84.05% | 0.354253 | 13 / 13 | 421.1 |
+| december-deeper-head | 18,401 | 84.10% | 0.353864 | 13 / 14 | 421.0 |
+| blend-refine-25 | 17,345 | 84.09% | 0.354969 | weight average | 0.6 |
+| blend-refine-50 | 17,345 | 84.04% | 0.356131 | weight average | 0.4 |
+| blend-refine-75 | 17,345 | 83.92% | 0.357475 | weight average | 0.4 |
+| blend-deep-25 | 18,401 | 84.16% | 0.354498 | weight average | 0.4 |
+| blend-deep-50 | 18,401 | 84.16% | 0.354692 | weight average | 0.5 |
+| blend-deep-75 | 18,401 | 84.11% | 0.354394 | weight average | 0.6 |
 
-Warm v24.22.1, linux x64,
-305 real/edge-case fixtures. CPU: unavailable.
+These runs used 43.1 summed optimization/scoring minutes, excluding
+preparation/startup; some ran concurrently. The December runs allowed 16 epochs
+and 420 seconds, and some hit the time cap first. Architectural comparisons are
+therefore exploratory, not strict equal-update causal studies. Input pooling,
+learned mean/max pooling and weight averages did not win at these budgets.
 
-| Operation | Median | p95 | p99 |
-|---|---:|---:|---:|
-| rank_with_features_legal_moves_supplied | 0.172129 ms | 0.401344 ms | 0.762034 ms |
-| full_chessjs_legal_generation_and_ranking | 3.826540 ms | 7.233658 ms | 11.222060 ms |
-| cached_second_click | 0.000084 ms | 0.000136 ms | 0.000242 ms |
+The deepest candidate achieved the lowest validation NLL (0.353864), versus
+0.354136 for the unchanged architecture. Their paired validation loss difference
+was 0.000272, with a game-bootstrap
+interval [-0.000365, 0.000908]. Applying the existing preference for a cheaper
+model when results are effectively tied selected **december-incumbent**, preserving
+17,345 parameters. This interval is descriptive after adaptive selection, not a
+multiplicity-adjusted hypothesis test. The judgment preceded all fresh tests.
 
-Feature extraction is included in ranking. Legal-move enumeration is measured
-separately; reuse the UI's legal list when possible. Cached repeat clicks do not
-run the network. Excludes UI rendering, cold model load and history reconstruction.
-These are Node measurements, not browser/mobile latency guarantees.
+The chosen INT8 candidate had 84.10%
+validation accuracy, versus 83.74% for the previous deployed model. Both per-tensor
+and per-output quantization were compared on validation alone. Lowest NLL selected
+per-output scaling; test feedback did not change that decision.
 
-## Verification and limits
+![Validation and paired test gains](research/round2/research-figure.png)
 
-- 14 Python tests cover legality, castling, en passant, promotions, history,
-  canonical reconstruction, loss gradient, normalization folding and quantization.
-- 305 Python/JavaScript fixtures check both feature versions and float32/INT8
-  ranking/probability parity, including 200 additional real-game positions. Probability
-  tolerance is 1e-4; feature tolerance is 1e-6.
-- Quantization is selected using validation alone, allowing at most 0.2 percentage
-  points of validation accuracy loss. Frozen hashes are checked before testing.
-- Source hashes, trial settings, curves and data manifests are published. The
-  source-commit fields identify local experiment commits; exact runner snapshots
-  are also retained under `research/source-snapshots/` for hash verification.
-- This predicts choices in strong-player games, not an individual's guaranteed
-  intent. No measured novice, Chess960, other-variant or promotion-piece accuracy.
-- Softmax probabilities are not separately calibrated. Keep corrections easy.
-- The old no-history model remains an optional fallback; these new results concern
-  the history-enabled model. The original results are archived under
-  `research/baseline/RESULTS.md`; they use different tests and must not be compared
-  directly with the new test columns.
+## Deployment size and latency
 
-See [research/README.md](research/README.md) for reproduction and [program.md](program.md)
-for the experiment contract. The fresh tests are now public and should serve as
-regression sets in subsequent research, with another unseen final test reserved.
+The default weights remain byte-for-byte unchanged. The new CCQ1 binary format
+stores the same INT8 weights, float32 biases and scales as JSON.
+
+| Current default artifact | Bytes |
+|---|---:|
+| Binary | 18,619 |
+| Binary, gzipped | **16,755** |
+| Previous JSON, gzipped | 23,696 |
+
+Binary packing reduces the compressed download by
+29.3%
+without changing predictions. The candidate is optional under `candidate/`; it is
+not installed as the default. Its binary is 18,618
+bytes, or 16,677 gzipped.
+
+Warm Node v24.22.1, Linux x64, 305 real/edge-case fixtures:
+
+| Operation, current default | Median | p95 |
+|---|---:|---:|
+| rank_with_features_legal_moves_supplied | 0.151643 ms | 0.306497 ms |
+| full_chessjs_legal_generation_and_ranking | 3.456028 ms | 6.261224 ms |
+| cached_second_click | 0.000085 ms | 0.000113 ms |
+
+Candidate feature-plus-ranking p95 was 0.354 ms.
+Feature extraction is included; legal-move enumeration is measured separately.
+Cached repeat clicks do not rerun inference. Excludes rendering, cold load, network
+and history reconstruction. These are Node results, not mobile/browser guarantees.
+
+## Verification and reproducibility
+
+- 18 Python tests, including masked pooled-network gradients, candidate-order
+  invariance, quantization and exact binary round trips.
+- 305 Python/JavaScript feature and probability fixtures; exact binary/JSON
+  prediction parity on all 305. Additional fixtures cover all three experimental
+  architectures and both scalar/per-output quantization.
+- Frozen hashes and data manifests retained; current default model hash matches
+  the archived incumbent. No test-set retuning.
+- Two concurrent preparation attempts exited 137 under heavy memory use, and
+  another was interrupted before producing epoch results. The completed cache
+  hashes were verified, construction was made exclusive/atomic, and configurations
+  were restarted. See `infrastructure-attempts.json`.
+
+See [README.md](research/round2/README.md), [protocol.md](research/round2/protocol.md), [selection.json](research/round2/selection.json),
+[final-evaluation.json](research/round2/final-evaluation.json), and [adoption.json](research/round2/adoption.json).
+The prior study is preserved in [baseline/RESULTS.md](research/round2/baseline/RESULTS.md).
+Fresh tests are now public and must become regression sets for later research.

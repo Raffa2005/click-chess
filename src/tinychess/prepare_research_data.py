@@ -1,5 +1,5 @@
 """Memory-conscious feature-only extraction for extra training and sealed tests."""
-import argparse,collections,hashlib,io,json,pathlib,re,time
+import argparse,atexit,collections,hashlib,io,json,os,pathlib,re,time
 import chess,chess.pgn
 import numpy as np
 from .data import open_pgn,pgn_records,digest
@@ -8,6 +8,12 @@ from .tactical import augment
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('paths',nargs='+');ap.add_argument('--output',required=True);ap.add_argument('--modulus',type=int,default=1);ap.add_argument('--min-elo',type=int,default=2100);ap.add_argument('--corpus',default='lichess');ap.add_argument('--extra-training',action='store_true');a=ap.parse_args()
+    out=pathlib.Path(a.output);out.parent.mkdir(parents=True,exist_ok=True)
+    busy=out.with_suffix(out.suffix+'.busy')
+    try:fd=os.open(busy,os.O_CREAT|os.O_EXCL|os.O_WRONLY)
+    except FileExistsError:
+        raise RuntimeError(f'Another extraction owns {busy}; wait for it to finish before resuming preparation')
+    os.close(fd);atexit.register(lambda:busy.unlink(missing_ok=True))
     blocked_games=set();blocked_keys=set()
     if a.extra_training:
         with np.load('data/processed/feb.npz') as z:

@@ -1,0 +1,21 @@
+{
+  "attempts": [
+    {
+      "experiment": "december-incumbent",
+      "stage": "shared-cache preparation / startup; no completed epoch",
+      "exit_code": 137
+    },
+    {
+      "experiment": "december-wider-head",
+      "stage": "shared-cache preparation / startup; no completed epoch",
+      "exit_code": 137
+    },
+    {
+      "experiment": "december-deeper-head",
+      "stage": "shared-cache preparation / startup; no completed epoch",
+      "exit_code": 130
+    }
+  ],
+  "cause": "Training was launched before shared-cache construction completed. Two redundant preparations exited 137 under heavy memory use (consistent with memory pressure); the third was interrupted. No completed epoch results or checkpoints were produced.",
+  "resolution": "Verified completed cache hashes, added exclusive construction lock and atomic publication, then restarted the same configurations."
+}

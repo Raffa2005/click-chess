@@ -1,5 +1,8 @@
 # Bounded CPU research
 
+For the completed follow-up study and current deployment decision, see
+[round2/README.md](round2/README.md).
+
 This is an implemented measure/keep/discard project, inspired by
 [karpathy/autoresearch](https://github.com/karpathy/autoresearch). It uses an
 explicit experiment plan and a small NumPy trainer, rather than an unattended

@@ -1,0 +1,37 @@
+{
+  "config": {
+    "name": "blend-deep-75",
+    "kind": "weight_blend",
+    "parents": [
+      "december-incumbent",
+      "december-deeper-head"
+    ],
+    "second_fraction": 0.75,
+    "hidden": [
+      96,
+      32,
+      32
+    ],
+    "feature_version": 2,
+    "hypothesis": "Average aligned weights in nearby fine-tuning solutions without adding deployed parameters."
+  },
+  "validation": {
+    "accuracy": 0.8410781701088164,
+    "nll": 0.35439375042915344,
+    "top2": 0.9874528092382856
+  },
+  "parameter_count": 18401,
+  "best_epoch": 0,
+  "curve": [],
+  "seconds": 0.5666719429991645,
+  "validation_examples": 36024,
+  "train_examples": 1227149,
+  "status": "discard",
+  "source_hashes": {
+    "/workspace/scratch/20c31a15abeb/tiny-chess-input/src/tinychess/round2_blend.py": "7eca530a55a5a21efc94e8dfb120cf8ab42e1c00381cb07f20279d3938894dc1"
+  },
+  "parent_sha256": {
+    "research/round2/checkpoints/december-incumbent.json": "b76d247f00b49a1b27164d979ff597342b9fb8c9e1d0f1fce5ba3b00c6748203",
+    "research/round2/checkpoints/december-deeper-head.json": "2a08db5f7ba00f029fb8dab9e1115f9aeb8ae6be8467f40229a7e38ae74f4445"
+  }
+}

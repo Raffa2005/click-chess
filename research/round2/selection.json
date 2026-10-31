@@ -1,0 +1,12 @@
+{
+  "selected_experiment": "december-incumbent",
+  "minimum_nll_experiment": "december-deeper-head",
+  "incumbent_minus_deep_validation_nll": 0.00027199683245271444,
+  "paired_nll_difference_95pct_game_bootstrap": [
+    -0.00036514497029903884,
+    0.0009075510564019746
+  ],
+  "rule": "Apply the existing preference for a cheaper model when validation results are effectively tied: retain the 17345-parameter architecture if the paired game-bootstrap interval includes zero. This judgment is made before any fresh test evaluation.",
+  "validation_games": 1132,
+  "validation_examples": 36024
+}

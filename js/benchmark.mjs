@@ -6,7 +6,7 @@ import {features,OriginRanker} from './ranker.mjs';
 const fixtures=JSON.parse(fs.readFileSync('tests/fixtures.json','utf8'));
 const modelPath=process.argv[2]||'models/origin-ranker.int8.json';
 const outputPath=process.argv[3]||'results/latency-node.json';
-const ranker=new OriginRanker(JSON.parse(fs.readFileSync(modelPath,'utf8')));
+const ranker=modelPath.endsWith('.bin')?OriginRanker.fromBinary(fs.readFileSync(modelPath)):new OriginRanker(JSON.parse(fs.readFileSync(modelPath,'utf8')));
 const inputs=fixtures.map(f=>({f,engine:new Chess(f.fen),history:f.history.map(m=>({from:m.slice(0,2),to:m.slice(2,4)}))}));
 for(const v of inputs){v.legal=v.engine.moves({verbose:true});v.session=ranker.clickSession(v.f.fen,v.legal,v.f.destination,v.history);}
 function bench(fn,iterations=3000){

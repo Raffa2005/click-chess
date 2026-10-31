@@ -1,0 +1,14 @@
+experiment	status	val_nll	accuracy	parameters	seconds
+incumbent-refine	keep	0.3590169	0.8393016	17345	240.9
+pooled-64-32	discard	0.3633005	0.8368865	17473	242.1
+pooled-72-32	discard	0.3633957	0.8365256	19649	240.6
+set-mean-warm	discard	0.3636651	0.8374417	13633	302.1
+set-mean-max	discard	0.3695252	0.8324173	18785	305.9
+december-incumbent	keep	0.3541363	0.8419109	17345	407.3
+december-deeper-head	keep	0.3538643	0.8410227	18401	421.0
+december-wider-head	discard	0.3542530	0.8405230	18913	421.1
+blend-refine-25	discard	0.3549689	0.8409116	17345	0.6
+blend-refine-50	discard	0.3561309	0.8404397	17345	0.4
+blend-refine-75	discard	0.3574754	0.8392461	17345	0.4
+blend-deep-25	discard	0.3544980	0.8416056	18401	0.4
+blend-deep-50	discard	0.3546922	0.8415501	18401	0.5

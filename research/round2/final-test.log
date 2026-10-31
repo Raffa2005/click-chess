@@ -1,0 +1,4 @@
+test_sets fresh_may_2023 {"incumbent_int8": 0.8513115354600328, "candidate_float32": 0.8541464269219131, "candidate_int8": 0.8538517893261559}
+test_sets fresh_classical_2025 {"incumbent_int8": 0.8238790760869565, "candidate_float32": 0.8237092391304348, "candidate_int8": 0.821671195652174}
+regression_sets april_2023 {"incumbent_int8": 0.8510903864916891, "candidate_float32": 0.8543074881116668, "candidate_int8": 0.8545623950706268}
+regression_sets tata_steel_2025 {"incumbent_int8": 0.8298012373305252, "candidate_float32": 0.8376990917467422, "candidate_int8": 0.8395419244438594}

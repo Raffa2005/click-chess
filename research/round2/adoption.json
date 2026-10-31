@@ -1,0 +1,12 @@
+{
+  "adopted": false,
+  "accuracy_improved_on_both_fresh_tests": false,
+  "latency_passed": true,
+  "rule": "Promote only if top-1 accuracy improves on both fresh tests and ranking p95 remains below 1 ms; no retraining using these results.",
+  "lossless_binary_export": true,
+  "deployment_sizes": {
+    "origin-ranker.bin": 18619,
+    "origin-ranker.bin.gz": 16755,
+    "origin-ranker.int8.json.gz": 23696
+  }
+}
