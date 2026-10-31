@@ -6,3 +6,5 @@ data/raw/
 data/processed/
 models/checkpoints/
 node_modules/
+research/checkpoints/
+research/cache/

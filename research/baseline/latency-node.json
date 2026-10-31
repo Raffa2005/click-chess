@@ -1,0 +1,26 @@
+{
+  "runtime": "v24.22.1",
+  "platform": "linux",
+  "architecture": "x64",
+  "cpu": "unavailable",
+  "fixture_count": 105,
+  "rank_with_features_legal_moves_supplied": {
+    "iterations": 3000,
+    "median_us": 91.39600000003156,
+    "p95_us": 295.18099999995684,
+    "p99_us": 645.2679999999873
+  },
+  "full_chessjs_legal_generation_and_ranking": {
+    "iterations": 3000,
+    "median_us": 4302.440000000388,
+    "p95_us": 8721.842999999353,
+    "p99_us": 12737.341000000015
+  },
+  "cached_second_click": {
+    "iterations": 10000,
+    "median_us": 0.07199999890872277,
+    "p95_us": 0.1249999986612238,
+    "p99_us": 0.32500000088475645
+  },
+  "note": "Warm Node.js CPU benchmark; excludes UI rendering, cold model load, network, and history reconstruction. No claim about mobile/browser latency."
+}

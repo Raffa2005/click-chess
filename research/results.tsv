@@ -1,0 +1,17 @@
+experiment	status	val_nll	accuracy	parameters	seconds	hypothesis
+baseline-recheck	keep	0.4203747	0.8089885	6977	70.8	Reproduce the initial baseline with unchanged optimization.
+cosine-64	keep	0.4147708	0.8122640	6977	120.1	Learning-rate decay improves the small model after its previous plateau.
+normalized-64	discard	0.4188868	0.8111259	6977	120.2	Scaling rare or low-amplitude features improves optimization.
+normalized-128	discard	0.4175597	0.8127082	13953	120.2	Doubling width captures useful interactions while remaining tiny.
+rich-64	keep	0.3786230	0.8305296	9537	120.7	Static board-wide risk and competing-origin context improve intention prediction; compare compact architectures.
+deep-64-32	discard	0.4085456	0.8168721	9025	120.2	A second small layer models feature interactions more efficiently than width.
+rich-deep-64-32	keep	0.3726821	0.8319454	11585	120.9	Static board-wide risk and competing-origin context improve intention prediction; compare compact architectures.
+deep-96-32	discard	0.4091463	0.8180380	13505	117.3	A moderate two-layer model improves accuracy below the parameter cap.
+rich-deep-96-32	keep	0.3716347	0.8336387	17345	120.8	Static board-wide risk and competing-origin context improve intention prediction; compare compact architectures.
+rich-normalized-96-32	discard	0.3732054	0.8324173	17345	110.3	Static board-wide risk and competing-origin context improve intention prediction; compare compact architectures.
+controlled-rich	discard	0.3717195	0.8343882	17345	111.1	Equal 24-epoch control for the feature ablations.
+extra-warm	keep	0.3627946	0.8383300	17345	240.9	More independent January games improve the best February model.
+controlled-no-context	discard	0.3721850	0.8328892	17345	133.9	Remove competing-origin context at the same epoch budget.
+controlled-no-risk	discard	0.4058877	0.8149012	17345	129.1	Remove board-wide risk at the same epoch budget.
+extra-warm-refine	keep	0.3625832	0.8374139	17345	180.9	A final low-learning-rate pass improves or confirms the extra-data plateau.
+extra-scratch-seed2	keep	0.3600580	0.8371641	17345	240.9	Confirm the architecture on combined data with a fresh initialization.

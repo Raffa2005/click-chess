@@ -1,0 +1,22 @@
+{
+  "5a7aa5b66251f3d8d69ad28e7d8f5fe3dc8edd9340dffa9cf91eea961574ba15": {
+    "file": "research/source-snapshots/5a7aa5b66251-research.py",
+    "local_commit": "eeecf56cf135955a5cdec32327e859f94fbfab17",
+    "original_path": "src/tinychess/research.py"
+  },
+  "934027b86c411cd2ad2f5cddb4c54717ff67f66801cd56adf76097b7db3df39e": {
+    "file": "research/source-snapshots/934027b86c41-research.py",
+    "local_commit": "working-source",
+    "original_path": "src/tinychess/research.py"
+  },
+  "320f586490c7262e7bcbd4dcf3dff98d693d7dceb307db3c274e0ade46c64a30": {
+    "file": "research/source-snapshots/320f586490c7-research_rich.py",
+    "local_commit": "77155b0df26a8cac911ec01188080c1e0a2ad92f",
+    "original_path": "src/tinychess/research_rich.py"
+  },
+  "d4b564fc9495b80c622ec2658f258e2c1b7f41a71b95f46a50aa42539c187414": {
+    "file": "research/source-snapshots/d4b564fc9495-research_rich.py",
+    "local_commit": "working-source",
+    "original_path": "src/tinychess/research_rich.py"
+  }
+}

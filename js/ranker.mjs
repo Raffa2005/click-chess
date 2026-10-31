@@ -27,6 +27,20 @@ function attacks(b,s){
 function attackers(b,color,s){const out=[];for(let i=0;i<64;i++)if(Math.sign(b[i])===color&&attacks(b,i).includes(s))out.push(i);return out;}
 function attackInfo(b,c,s){const a=attackers(b,c,s);return [Math.min(a.length,8)/8,a.length?Math.min(...a.map(t=>values[Math.abs(b[t])]))/12:0];}
 function activity(b,s,c){const a=attacks(b,s),enemy=a.filter(t=>Math.sign(b[t])===-c),friend=a.filter(t=>Math.sign(b[t])===c);return [a.length/32,enemy.length/8,enemy.length?Math.max(...enemy.map(t=>values[Math.abs(b[t])]))/12:0,friend.length/8];}
+function attackMaps(b){
+  const maps={1:{count:new Uint8Array(64),min:new Float32Array(64)},'-1':{count:new Uint8Array(64),min:new Float32Array(64)}};
+  for(let s=0;s<64;s++)if(b[s]){const m=maps[Math.sign(b[s])],v=values[Math.abs(b[s])];for(const t of attacks(b,s)){if(!m.count[t]||v<m.min[t])m.min[t]=v;m.count[t]++;}}
+  return maps;
+}
+function mappedAttackInfo(maps,color,s){const m=maps[color];return [Math.min(m.count[s],8)/8,m.min[s]/12];}
+function riskSummary(b,c,maps){
+  const risks=[];let loose=0,material=0;
+  for(let s=0;s<64;s++)if(Math.sign(b[s])===c&&Math.abs(b[s])!==6&&maps[-c].count[s]){
+    const value=values[Math.abs(b[s])];material+=value;
+    if(!maps[c].count[s]){risks.push(value);loose++;}else risks.push(Math.max(0,value-maps[-c].min[s]));
+  }
+  risks.sort((a,b)=>b-a);return [risks.reduce((a,b)=>a+b,0)/40,(risks[0]||0)/12,(risks[1]||0)/12,loose/16,material/40];
+}
 function pinned(b,s,c,k){
   let dx=s%8-k%8,dy=(s>>3)-(k>>3);if(!(dx===0||dy===0||Math.abs(dx)===Math.abs(dy)))return 0;
   dx=Math.sign(dx);dy=Math.sign(dy);if(!dx&&!dy)return 0;
@@ -40,7 +54,7 @@ function moveInfo(position,m){
     ep:flags.includes('e')||(type===1&&t===position.ep&&!position.board[t]&&f%8!==t%8)};
 }
 
-export function features(fen,moves,history=[],representation='history'){
+export function features(fen,moves,history=[],representation='history',featureVersion=1){
   const pos=parse(fen),{board:b,side:c,rights}=pos,flip=c===1?0:56;
   const ownking=b.indexOf(6*c),enemyking=b.indexOf(-6*c);
   if(ownking<0||enemyking<0)throw new Error('Both kings required');
@@ -53,18 +67,23 @@ export function features(fen,moves,history=[],representation='history'){
     return moves.map(m=>{const x=base.slice();x[775+(square(m.from)^flip)]=1;x[839+(square(m.to)^flip)]=1;return x;});
   }
   const globals=[Math.min(pos.ply,200)/200,Math.min(pos.half,100)/100,Number(attackers(b,-c,ownking).length>0),...castling];
-  return moves.map(m=>{
+  const beforeMaps=featureVersion===2?attackMaps(b):null;
+  const beforeRisk=beforeMaps?[...riskSummary(b,c,beforeMaps),...riskSummary(b,-c,beforeMaps)]:null;
+  const risks=[];
+  const rows=moves.map(m=>{
     const {f,t,promotion,castle,ep}=moveInfo(pos,m),cf=f^flip,ct=t^flip,ff=cf%8,fr=cf>>3,tf=ct%8,tr=ct>>3,type=Math.abs(b[f]);
     const row=[];for(let p=1;p<=6;p++)row.push(Number(p===type));
     for(const v of [ff,fr,tf,tr])for(let j=0;j<8;j++)row.push(Number(v===j));
     row.push((tf-ff)/7,(tr-fr)/7,Math.max(Math.abs(tf-ff),Math.abs(tr-fr))/7,(Math.abs(tf-ff)+Math.abs(tr-fr))/14,(Math.abs(ff-3.5)+Math.abs(fr-3.5))/7,(Math.abs(tf-3.5)+Math.abs(tr-3.5))/7,...counts,...globals);
     const captured=Math.abs(b[t])||(ep?1:0);
-    row.push(Number(captured>0),values[captured]/12,Number(promotion>0),Number(castle),Number(ep),values[type]/12,...attackInfo(b,-c,f),...attackInfo(b,c,f));
+    row.push(Number(captured>0),values[captured]/12,Number(promotion>0),Number(castle),Number(ep),values[type]/12,...(beforeMaps?mappedAttackInfo(beforeMaps,-c,f):attackInfo(b,-c,f)),...(beforeMaps?mappedAttackInfo(beforeMaps,c,f):attackInfo(b,c,f)));
     const before=activity(b,f,c),pin=pinned(b,f,c,ownking);
     let same=0,adjacent=0;for(let s=0;s<64;s++)if(b[s]===c){if(s%8===tf)same++;if(Math.abs(s%8-tf)===1)adjacent++;}
     const after=b.slice();after[f]=0;after[t]=(promotion||type)*c;if(ep)after[t-8*c]=0;
     if(castle){const rookFrom=t>f?f+3:f-4,rookTo=t>f?f+1:f-1;after[rookFrom]=0;after[rookTo]=4*c;}
-    row.push(...attackInfo(after,-c,t),...attackInfo(after,c,t),...before,...activity(after,t,c),Number(attackers(after,c,enemyking).length>0),dist(f,ownking)/7,dist(t,ownking)/7,dist(f,enemyking)/7,dist(t,enemyking)/7,pin,same/8,adjacent/16);
+    const afterMaps=featureVersion===2?attackMaps(after):null;
+    if(afterMaps)risks.push([...riskSummary(after,c,afterMaps),...riskSummary(after,-c,afterMaps)]);
+    row.push(...(afterMaps?mappedAttackInfo(afterMaps,-c,t):attackInfo(after,-c,t)),...(afterMaps?mappedAttackInfo(afterMaps,c,t):attackInfo(after,c,t)),...before,...activity(after,t,c),Number(afterMaps?afterMaps[c].count[enemyking]>0:attackers(after,c,enemyking).length>0),dist(f,ownking)/7,dist(t,ownking)/7,dist(f,enemyking)/7,dist(t,enemyking)/7,pin,same/8,adjacent/16);
     if(representation==='history')for(let i=1;i<=2;i++){
       const h=history[history.length-i];if(!h){row.push(0,0,0,0,0,0,0);continue;}
       const hf=square(h.from),ht=square(h.to),pf=hf^flip,pt=ht^flip;
@@ -72,13 +91,21 @@ export function features(fen,moves,history=[],representation='history'){
     }
     return row;
   });
+  if(featureVersion===2&&rows.length){
+    const ctx=Array(6).fill(0);for(const x of rows)for(let j=0;j<6;j++)ctx[j]+=x[j]/rows.length;
+    // v1 feature indices: value=68, from_enemy_count=69.
+    ctx.push(rows.length/8,Math.min(...rows.map(x=>x[68])),Math.max(...rows.map(x=>x[69])),Math.max(...rows.map(x=>x[69]>0?x[68]:0)));
+    return rows.map((x,i)=>[...x,...ctx,...beforeRisk,...risks[i],...risks[i].map((v,j)=>v-beforeRisk[j])]);
+  }
+  return rows;
 }
 
 export class OriginRanker {
   constructor(artifact){
-    if(artifact.feature_version!==1)throw new Error('Unsupported feature version');
+    if(![1,2].includes(artifact.feature_version))throw new Error('Unsupported feature version');
+    this.featureVersion=artifact.feature_version;
     this.representation=artifact.representation;
-    const source=artifact.weights||artifact.weights_int8.map((w,i)=>w.map(row=>row.map(v=>v*artifact.weight_scales[i])));
+    const source=artifact.weights||artifact.weights_int8.map((w,i)=>w.map(row=>row.map((v,j)=>v*(Array.isArray(artifact.weight_scales[i])?artifact.weight_scales[i][j]:artifact.weight_scales[i]))));
     this.layers=source.map((w,i)=>({input:w.length,output:w[0].length,w:Float32Array.from(w.flat()),b:Float32Array.from(artifact.biases[i])}));
   }
   score(row){
@@ -95,7 +122,7 @@ export class OriginRanker {
     for(const m of legal)if(!unique.has(square(m.from))||m.promotion==='q')unique.set(square(m.from),m);
     const moves=[...unique.entries()].sort((a,b)=>a[0]-b[0]).map(e=>e[1]);if(!moves.length)return [];
     let probs=[1];
-    if(moves.length>1){const s=features(fen,moves,history,this.representation).map(x=>this.score(x)),max=Math.max(...s);probs=s.map(v=>Math.exp(v-max));const total=probs.reduce((a,b)=>a+b,0);probs=probs.map(v=>v/total);}
+    if(moves.length>1){const s=features(fen,moves,history,this.representation,this.featureVersion).map(x=>this.score(x)),max=Math.max(...s);probs=s.map(v=>Math.exp(v-max));const total=probs.reduce((a,b)=>a+b,0);probs=probs.map(v=>v/total);}
     return moves.map((m,i)=>({from:squareName(square(m.from)),probability:probs[i],moves:legal.filter(v=>square(v.from)===square(m.from)).map(v=>squareName(square(v.from))+squareName(square(v.to))+(v.promotion||''))})).sort((a,b)=>b.probability-a.probability);
   }
   probabilities64(fen,legalMoves,destination,history=[]){const p=new Float32Array(64);for(const r of this.rank(fen,legalMoves,destination,history))p[square(r.from)]=r.probability;return p;}

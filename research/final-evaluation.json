@@ -1,0 +1,428 @@
+{
+  "frozen": {
+    "selected_experiment": "extra-scratch-seed2",
+    "float32_validation": {
+      "accuracy": 0.8371641128136798,
+      "nll": 0.3600579500198364
+    },
+    "quantization_options": [
+      {
+        "quantization": "symmetric-int8-per-tensor",
+        "gzip_bytes": 19488,
+        "json_bytes": 54025,
+        "validation": {
+          "accuracy": 0.8377470575172108,
+          "nll": 0.36050131916999817
+        },
+        "eligible": true
+      },
+      {
+        "quantization": "symmetric-int8-per-output",
+        "gzip_bytes": 23696,
+        "json_bytes": 61125,
+        "validation": {
+          "accuracy": 0.8374417055296469,
+          "nll": 0.3603564202785492
+        },
+        "eligible": true
+      }
+    ],
+    "selected_quantization": {
+      "quantization": "symmetric-int8-per-output",
+      "gzip_bytes": 23696,
+      "json_bytes": 61125,
+      "validation": {
+        "accuracy": 0.8374417055296469,
+        "nll": 0.3603564202785492
+      },
+      "eligible": true
+    },
+    "float32_sha256": "a4b2febd269d72e2c8e61e11091acb67967f6f638ac3d8fc227e36cea722be10",
+    "int8_sha256": "86f61d98aae13567c612828b0ce8efe788f151991cf8d2492c394576ca9ba629",
+    "checkpoint_sha256": "a4b2febd269d72e2c8e61e11091acb67967f6f638ac3d8fc227e36cea722be10",
+    "note": "Selected and frozen using validation only, before fresh test evaluation."
+  },
+  "test_sets": {
+    "fresh_april_2023": {
+      "removed_development_game_examples": 0,
+      "models": {
+        "baseline_int8": {
+          "examples": 113767,
+          "games": 2981,
+          "accuracy": 0.8196577214833827,
+          "nll": 0.39619526267051697,
+          "accuracy_95pct_game_bootstrap": [
+            0.8170174281511408,
+            0.822120893182979
+          ],
+          "top2": 0.9830442922815931,
+          "mean_reciprocal_rank": 0.9069010931699585,
+          "mean_clicks_if_cycling": 1.1985373614492778,
+          "uniform_legal_origin_accuracy": 0.44495430719511514
+        },
+        "improved_float32": {
+          "examples": 113767,
+          "games": 2981,
+          "accuracy": 0.8513452934506491,
+          "nll": 0.33229860663414,
+          "accuracy_95pct_game_bootstrap": [
+            0.8488577521141728,
+            0.8536881930431469
+          ],
+          "top2": 0.9878259952358769,
+          "mean_reciprocal_rank": 0.9235907600622325,
+          "mean_clicks_if_cycling": 1.1614703736584422,
+          "uniform_legal_origin_accuracy": 0.44495430719511514
+        },
+        "improved_int8": {
+          "examples": 113767,
+          "games": 2981,
+          "accuracy": 0.8510903864916891,
+          "nll": 0.3323608338832855,
+          "accuracy_95pct_game_bootstrap": [
+            0.8485562910385813,
+            0.8534573956498437
+          ],
+          "top2": 0.9877293063893747,
+          "mean_reciprocal_rank": 0.9234464592837408,
+          "mean_clicks_if_cycling": 1.161830759359041,
+          "uniform_legal_origin_accuracy": 0.44495430719511514
+        }
+      },
+      "novel": {
+        "baseline_int8": {
+          "examples": 94626,
+          "games": 2976,
+          "accuracy": 0.7993574704626636,
+          "nll": 0.4348090589046478,
+          "accuracy_95pct_game_bootstrap": [
+            0.7963807680316084,
+            0.8020896979527562
+          ],
+          "top2": 0.9805550271595544,
+          "mean_reciprocal_rank": 0.8963181366643417,
+          "mean_clicks_if_cycling": 1.2215458753408155,
+          "uniform_legal_origin_accuracy": 0.44681641409337813
+        },
+        "improved_float32": {
+          "examples": 94626,
+          "games": 2976,
+          "accuracy": 0.8337454822141906,
+          "nll": 0.3669309914112091,
+          "accuracy_95pct_game_bootstrap": [
+            0.8308847361795908,
+            0.8361898917185117
+          ],
+          "top2": 0.9861243210111386,
+          "mean_reciprocal_rank": 0.9144983056101564,
+          "mean_clicks_if_cycling": 1.1808805190962315,
+          "uniform_legal_origin_accuracy": 0.44681641409337813
+        },
+        "improved_int8": {
+          "examples": 94626,
+          "games": 2976,
+          "accuracy": 0.8336715067740368,
+          "nll": 0.3670106530189514,
+          "accuracy_95pct_game_bootstrap": [
+            0.8308542378932773,
+            0.8362136229222844
+          ],
+          "top2": 0.9860080738908968,
+          "mean_reciprocal_rank": 0.9144410627100373,
+          "mean_clicks_if_cycling": 1.181081309576649,
+          "uniform_legal_origin_accuracy": 0.44681641409337813
+        }
+      },
+      "paired_accuracy_gain": 0.03143266500830644,
+      "paired_gain_95pct_game_bootstrap": [
+        0.02954795354084328,
+        0.0332822667040205
+      ],
+      "relative_error_reduction": 0.17429448749817214,
+      "source_manifest": {
+        "source_sha256": {
+          "data/raw/lichess_elite_2023-04.zip": "584f67b06be2a94353d807a38763bede0c7b0db889db8bb946cd48b2facf4fce"
+        },
+        "modulus": 96,
+        "min_both_elo": 2100,
+        "extra_training": false,
+        "counts": {
+          "archive_games": 286943,
+          "selected_games": 2982,
+          "plies": 255578,
+          "examples": 113767,
+          "promotion_only": 388,
+          "duplicate_or_validation_games_skipped": 3
+        },
+        "dates": {
+          "2023.04.01": 106,
+          "2023.04.02": 78,
+          "2023.04.03": 82,
+          "2023.04.04": 107,
+          "2023.04.05": 85,
+          "2023.04.06": 101,
+          "2023.04.07": 97,
+          "2023.04.08": 104,
+          "2023.04.09": 90,
+          "2023.04.10": 108,
+          "2023.04.11": 113,
+          "2023.04.12": 125,
+          "2023.04.13": 87,
+          "2023.04.14": 106,
+          "2023.04.15": 66,
+          "2023.04.16": 104,
+          "2023.04.17": 122,
+          "2023.04.18": 104,
+          "2023.04.19": 107,
+          "2023.04.20": 94,
+          "2023.04.21": 108,
+          "2023.04.22": 102,
+          "2023.04.23": 102,
+          "2023.04.24": 109,
+          "2023.04.25": 88,
+          "2023.04.26": 93,
+          "2023.04.27": 105,
+          "2023.04.28": 111,
+          "2023.04.29": 88,
+          "2023.04.30": 90
+        },
+        "events": {
+          "Rated Blitz game": 2608,
+          "Rated Rapid game": 217,
+          "Rated Blitz tournament o9F102iM": 6,
+          "Rated Blitz tournament IPMhl5oW": 2,
+          "Rated Blitz tournament KIukRiuo": 1,
+          "Rated Blitz tournament 4GslrmVS": 1,
+          "Rated Rapid tournament HLSN1zy1": 2,
+          "Rated Blitz tournament aA0MUco7": 1,
+          "Rated Blitz tournament psgudfc5": 1,
+          "Rated Blitz tournament 0Wtg1HEM": 2,
+          "Rated Blitz tournament IXs97gcU": 1,
+          "Rated Blitz tournament 1IBKbfNb": 3,
+          "Rated Blitz tournament knFVNdcM": 1,
+          "Rated Blitz tournament vg8DIVX5": 1,
+          "Rated Blitz tournament 6F56NQL1": 2,
+          "Rated Blitz tournament j8dUJ2Zr": 1,
+          "Rated Blitz tournament wfUkCAnW": 1,
+          "Rated Blitz tournament uK7l8XIh": 3,
+          "Rated Blitz tournament aYllvcE6": 2,
+          "Rated Blitz tournament PoqHK2lp": 1,
+          "Rated Classical game": 17,
+          "Rated Blitz tournament 9SwP8afH": 1,
+          "Rated Blitz tournament T6jno5Bh": 1,
+          "Rated Rapid tournament Jg9xnla0": 1,
+          "Rated Blitz tournament ri07Zak7": 1,
+          "Rated Rapid tournament tHryMsNG": 1,
+          "Rated Blitz tournament XXD69rL9": 1,
+          "Rated Blitz tournament OVJs8oFm": 1,
+          "Rated Blitz tournament c4E9NGMw": 1,
+          "Rated Blitz tournament 8rMRRceb": 1,
+          "Rated Blitz tournament WrzfY0JV": 1,
+          "Rated Blitz tournament apr23str": 2,
+          "Rated Blitz tournament Y4fR6aVz": 1,
+          "Rated Blitz tournament l5zFnqVp": 2,
+          "Rated Blitz tournament lvFENjNJ": 1,
+          "Rated Blitz tournament wk2A2mKq": 1,
+          "Rated Blitz tournament FhbThSAk": 1,
+          "Rated Blitz tournament DIc1GhS8": 2,
+          "Rated Blitz tournament AzqtW66Z": 4,
+          "Rated Blitz tournament yKa3FUqR": 2,
+          "Rated Blitz tournament kpZfT4g6": 1,
+          "Rated Blitz tournament YKDXEnOU": 2,
+          "Rated Blitz tournament uQUq1jrj": 1,
+          "Rated Blitz tournament QFVmcP3G": 1,
+          "Rated Blitz tournament y1woaUGM": 2,
+          "Rated Blitz tournament dbzQ6ae2": 2,
+          "Rated Blitz tournament imJMOB6y": 1,
+          "Rated Rapid tournament gNjRfOn8": 1,
+          "Rated Blitz tournament uVVlZThy": 1,
+          "Rated Blitz tournament XZ7KasKG": 2,
+          "Rated Blitz tournament 8CMAoOvD": 2,
+          "Rated Blitz tournament DAAzMhEz": 2,
+          "Rated Blitz tournament EfdQ11bp": 4,
+          "Rated Blitz tournament 7h8CM2MO": 1,
+          "Rated Blitz tournament VUcnjgXA": 1,
+          "Rated Blitz tournament s85bimdN": 1,
+          "Rated Blitz tournament n0A8XX7f": 1,
+          "Rated Blitz tournament rx1DEY0m": 1,
+          "Rated Blitz tournament Ru00ajIl": 1,
+          "Rated Blitz tournament mKOUt9Jg": 1,
+          "Rated Blitz tournament cU3YUHTB": 1,
+          "Rated Blitz tournament 0f2xI0Ez": 1,
+          "Rated Blitz tournament xAojJU0A": 1,
+          "Rated Blitz tournament AFv0BOBm": 1,
+          "Rated Blitz tournament H0ASONuZ": 1,
+          "Rated Blitz tournament 1AXArh2T": 1,
+          "Rated Blitz tournament V5kyTdtm": 1,
+          "Rated Blitz tournament nZ6lVZ7M": 2,
+          "Rated Blitz tournament iZFhcRW8": 1,
+          "Rated Blitz tournament HUwIwBsk": 2,
+          "Rated Blitz tournament HoSr3Q6B": 1,
+          "Rated Blitz tournament Qmp3DJF4": 5,
+          "Rated Blitz tournament vXiRsAzb": 1,
+          "Rated Blitz tournament TQui2Qfc": 1,
+          "Rated Blitz tournament lf7ruoYB": 1,
+          "Rated Blitz tournament 2ROsrKpU": 1,
+          "Rated Blitz tournament ZX4v40nd": 1,
+          "Rated Blitz tournament M0qI2NgY": 3,
+          "Rated Blitz tournament uvFwkrVZ": 3,
+          "Rated Blitz tournament 6q16WePu": 1,
+          "Rated Blitz tournament uzY5iVg5": 1,
+          "Rated Blitz tournament tIsU9xt7": 1,
+          "Rated Blitz tournament Tqu2XZ0i": 1,
+          "Rated Blitz tournament QnWcF30u": 3,
+          "Rated Blitz tournament IET4e5S1": 2,
+          "Rated Blitz tournament 2fyNL0tr": 1,
+          "Rated Rapid tournament nO38B6Ve": 1,
+          "Rated Blitz tournament 3lvJBd4U": 1,
+          "Rated Blitz tournament hnk8guj5": 2,
+          "Rated Blitz tournament loHtjbx5": 1,
+          "Rated Blitz tournament nDc2Dag8": 1,
+          "Rated Blitz tournament Yt7FvaiA": 1,
+          "Rated Blitz tournament XF0P0rsk": 1,
+          "Rated Blitz tournament PdHwmkk0": 1,
+          "Rated Blitz tournament AunhwGd3": 1,
+          "Rated Blitz tournament fM5gJQir": 1,
+          "Rated Blitz tournament hPYoiAoA": 1,
+          "Rated Blitz tournament FP9vOUpa": 1,
+          "Rated Blitz tournament 7pN0hcg5": 1
+        },
+        "feature_version": 2,
+        "seconds": 109.97693067299952
+      }
+    },
+    "fresh_classical_2025": {
+      "removed_development_game_examples": 0,
+      "models": {
+        "baseline_int8": {
+          "examples": 7597,
+          "games": 168,
+          "accuracy": 0.8055811504541266,
+          "nll": 0.4240674674510956,
+          "accuracy_95pct_game_bootstrap": [
+            0.7954889344903525,
+            0.8157831524664062
+          ],
+          "top2": 0.9795972094247729,
+          "mean_reciprocal_rank": 0.8992913869509894,
+          "mean_clicks_if_cycling": 1.216006318283533,
+          "uniform_legal_origin_accuracy": 0.44178184371023643
+        },
+        "improved_float32": {
+          "examples": 7597,
+          "games": 168,
+          "accuracy": 0.8301961300513361,
+          "nll": 0.3643941879272461,
+          "accuracy_95pct_game_bootstrap": [
+            0.8196137230243391,
+            0.8396938399847963
+          ],
+          "top2": 0.9851257075161248,
+          "mean_reciprocal_rank": 0.9124873853714185,
+          "mean_clicks_if_cycling": 1.1862577333157824,
+          "uniform_legal_origin_accuracy": 0.44178184371023643
+        },
+        "improved_int8": {
+          "examples": 7597,
+          "games": 168,
+          "accuracy": 0.8298012373305252,
+          "nll": 0.36473163962364197,
+          "accuracy_95pct_game_bootstrap": [
+            0.8196892667572775,
+            0.8393515085626523
+          ],
+          "top2": 0.9852573384230617,
+          "mean_reciprocal_rank": 0.9123228467377473,
+          "mean_clicks_if_cycling": 1.1863893642227195,
+          "uniform_legal_origin_accuracy": 0.44178184371023643
+        }
+      },
+      "novel": {
+        "baseline_int8": {
+          "examples": 6263,
+          "games": 168,
+          "accuracy": 0.7779019639150567,
+          "nll": 0.4755558967590332,
+          "accuracy_95pct_game_bootstrap": [
+            0.7660657536553529,
+            0.7898150852962489
+          ],
+          "top2": 0.9758901484911384,
+          "mean_reciprocal_rank": 0.8848129224546278,
+          "mean_clicks_if_cycling": 1.2476448986108895,
+          "uniform_legal_origin_accuracy": 0.4439672148597584
+        },
+        "improved_float32": {
+          "examples": 6263,
+          "games": 168,
+          "accuracy": 0.8052051732396615,
+          "nll": 0.41309571266174316,
+          "accuracy_95pct_game_bootstrap": [
+            0.7938060236522956,
+            0.816044747758916
+          ],
+          "top2": 0.9824365320134121,
+          "mean_reciprocal_rank": 0.8995156740646123,
+          "mean_clicks_if_cycling": 1.2142743094363724,
+          "uniform_legal_origin_accuracy": 0.4439672148597584
+        },
+        "improved_int8": {
+          "examples": 6263,
+          "games": 168,
+          "accuracy": 0.8053648411304487,
+          "nll": 0.4133828282356262,
+          "accuracy_95pct_game_bootstrap": [
+            0.7941005638392044,
+            0.8166558329866075
+          ],
+          "top2": 0.9825961999041992,
+          "mean_reciprocal_rank": 0.8996354249827025,
+          "mean_clicks_if_cycling": 1.213795305764011,
+          "uniform_legal_origin_accuracy": 0.4439672148597584
+        }
+      },
+      "paired_accuracy_gain": 0.02422008687639865,
+      "paired_gain_95pct_game_bootstrap": [
+        0.016288643061300644,
+        0.03206940783418563
+      ],
+      "relative_error_reduction": 0.12457684495599222,
+      "source_manifest": {
+        "source_sha256": {
+          "data/raw/classical-2025-sealed.pgn": "617bb787f6a5a00442d727c92d4db951cb6d8a3f7dc5043520e981274d09c17a"
+        },
+        "modulus": 1,
+        "min_both_elo": 2100,
+        "extra_training": false,
+        "counts": {
+          "archive_games": 168,
+          "selected_games": 168,
+          "plies": 15493,
+          "examples": 7597,
+          "promotion_only": 11
+        },
+        "dates": {
+          "2025.01.18": 14,
+          "2025.01.19": 14,
+          "2025.01.20": 14,
+          "2025.01.21": 14,
+          "2025.01.22": 14,
+          "2025.01.25": 14,
+          "2025.01.26": 14,
+          "2025.01.28": 14,
+          "2025.01.29": 14,
+          "2025.01.31": 14,
+          "2025.02.01": 14,
+          "2025.02.02": 14
+        },
+        "events": {
+          "Tata Steel Chess Tournament 2025 Challengers": 84,
+          "Tata Steel Chess Tournament 2025 Masters": 84
+        },
+        "feature_version": 2,
+        "seconds": 6.012289475999751
+      }
+    }
+  },
+  "novel_definition": "Position + destination absent from all February development and January extra-training records."
+}

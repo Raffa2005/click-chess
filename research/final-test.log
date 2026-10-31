@@ -1,0 +1,2 @@
+fresh_april_2023 {"baseline_int8": 0.8196577214833827, "improved_float32": 0.8513452934506491, "improved_int8": 0.8510903864916891}
+fresh_classical_2025 {"baseline_int8": 0.8055811504541266, "improved_float32": 0.8301961300513361, "improved_int8": 0.8298012373305252}

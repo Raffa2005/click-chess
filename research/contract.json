@@ -1,0 +1,6 @@
+{
+  "data_sha256": "863b4866f4a56eef02c81314346f6b1b3a0846e51d9ac8c41a1a82ff27cfa902",
+  "validation_indices_sha256": "c0d03a0fe8b58568373c71eeede6d4348d696bdb8293540812f8fb5290bea424",
+  "validation_examples": 36024,
+  "train_examples": 376508
+}

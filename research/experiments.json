@@ -1,0 +1,251 @@
+[
+  {
+    "name": "baseline-recheck",
+    "hidden": [
+      64
+    ],
+    "epochs": 45,
+    "patience": 4,
+    "lr": 0.002,
+    "seed": 20261031,
+    "seconds": 120,
+    "hypothesis": "Reproduce the initial baseline with unchanged optimization."
+  },
+  {
+    "name": "cosine-64",
+    "hidden": [
+      64
+    ],
+    "epochs": 65,
+    "patience": 20,
+    "lr": 0.002,
+    "schedule": "cosine",
+    "seed": 20261031,
+    "seconds": 120,
+    "hypothesis": "Learning-rate decay improves the small model after its previous plateau."
+  },
+  {
+    "name": "normalized-64",
+    "hidden": [
+      64
+    ],
+    "epochs": 65,
+    "patience": 20,
+    "lr": 0.002,
+    "schedule": "cosine",
+    "normalize": true,
+    "seed": 20261031,
+    "seconds": 120,
+    "hypothesis": "Scaling rare or low-amplitude features improves optimization."
+  },
+  {
+    "name": "normalized-128",
+    "hidden": [
+      128
+    ],
+    "epochs": 65,
+    "patience": 20,
+    "lr": 0.002,
+    "schedule": "cosine",
+    "normalize": true,
+    "seed": 20261031,
+    "seconds": 120,
+    "hypothesis": "Doubling width captures useful interactions while remaining tiny."
+  },
+  {
+    "name": "deep-64-32",
+    "hidden": [
+      64,
+      32
+    ],
+    "epochs": 65,
+    "patience": 20,
+    "lr": 0.002,
+    "schedule": "cosine",
+    "normalize": true,
+    "seed": 20261031,
+    "seconds": 120,
+    "hypothesis": "A second small layer models feature interactions more efficiently than width."
+  },
+  {
+    "name": "deep-96-32",
+    "hidden": [
+      96,
+      32
+    ],
+    "epochs": 65,
+    "patience": 20,
+    "lr": 0.002,
+    "schedule": "cosine",
+    "normalize": true,
+    "seed": 20261031,
+    "seconds": 120,
+    "hypothesis": "A moderate two-layer model improves accuracy below the parameter cap."
+  },
+  {
+    "name": "rich-64",
+    "hidden": [
+      64
+    ],
+    "epochs": 65,
+    "patience": 20,
+    "lr": 0.002,
+    "schedule": "cosine",
+    "normalize": false,
+    "seed": 20261031,
+    "seconds": 120,
+    "feature_version": 2,
+    "hypothesis": "Static board-wide risk and competing-origin context improve intention prediction; compare compact architectures."
+  },
+  {
+    "name": "rich-deep-64-32",
+    "hidden": [
+      64,
+      32
+    ],
+    "epochs": 65,
+    "patience": 20,
+    "lr": 0.002,
+    "schedule": "cosine",
+    "normalize": false,
+    "seed": 20261031,
+    "seconds": 120,
+    "feature_version": 2,
+    "hypothesis": "Static board-wide risk and competing-origin context improve intention prediction; compare compact architectures."
+  },
+  {
+    "name": "rich-deep-96-32",
+    "hidden": [
+      96,
+      32
+    ],
+    "epochs": 65,
+    "patience": 20,
+    "lr": 0.002,
+    "schedule": "cosine",
+    "normalize": false,
+    "seed": 20261031,
+    "seconds": 120,
+    "feature_version": 2,
+    "hypothesis": "Static board-wide risk and competing-origin context improve intention prediction; compare compact architectures."
+  },
+  {
+    "name": "rich-normalized-96-32",
+    "hidden": [
+      96,
+      32
+    ],
+    "epochs": 65,
+    "patience": 20,
+    "lr": 0.002,
+    "schedule": "cosine",
+    "normalize": true,
+    "seed": 20261031,
+    "seconds": 120,
+    "feature_version": 2,
+    "hypothesis": "Static board-wide risk and competing-origin context improve intention prediction; compare compact architectures."
+  },
+  {
+    "hidden": [
+      96,
+      32
+    ],
+    "epochs": 24,
+    "patience": 24,
+    "lr": 0.002,
+    "schedule": "cosine",
+    "normalize": false,
+    "seed": 20261031,
+    "seconds": 180,
+    "feature_version": 2,
+    "name": "controlled-rich",
+    "hypothesis": "Equal 24-epoch control for the feature ablations."
+  },
+  {
+    "hidden": [
+      96,
+      32
+    ],
+    "epochs": 24,
+    "patience": 24,
+    "lr": 0.002,
+    "schedule": "cosine",
+    "normalize": false,
+    "seed": 20261031,
+    "seconds": 180,
+    "feature_version": 2,
+    "name": "controlled-no-context",
+    "hypothesis": "Remove competing-origin context at the same epoch budget.",
+    "ablate_context": true
+  },
+  {
+    "hidden": [
+      96,
+      32
+    ],
+    "epochs": 24,
+    "patience": 24,
+    "lr": 0.002,
+    "schedule": "cosine",
+    "normalize": false,
+    "seed": 20261031,
+    "seconds": 180,
+    "feature_version": 2,
+    "name": "controlled-no-risk",
+    "hypothesis": "Remove board-wide risk at the same epoch budget.",
+    "ablate_risk": true
+  },
+  {
+    "hidden": [
+      96,
+      32
+    ],
+    "epochs": 40,
+    "patience": 24,
+    "lr": 0.0007,
+    "schedule": "cosine",
+    "normalize": false,
+    "seed": 20261031,
+    "seconds": 240,
+    "feature_version": 2,
+    "name": "extra-warm",
+    "hypothesis": "More independent January games improve the best February model.",
+    "extra_training": true,
+    "init": "research/checkpoints/rich-deep-96-32.json"
+  },
+  {
+    "hidden": [
+      96,
+      32
+    ],
+    "epochs": 65,
+    "patience": 24,
+    "lr": 0.002,
+    "schedule": "cosine",
+    "normalize": false,
+    "seed": 20261101,
+    "seconds": 240,
+    "feature_version": 2,
+    "name": "extra-scratch-seed2",
+    "hypothesis": "Confirm the architecture on combined data with a fresh initialization.",
+    "extra_training": true
+  },
+  {
+    "hidden": [
+      96,
+      32
+    ],
+    "epochs": 30,
+    "patience": 12,
+    "lr": 0.00025,
+    "schedule": "cosine",
+    "normalize": false,
+    "seed": 20261031,
+    "seconds": 180,
+    "feature_version": 2,
+    "name": "extra-warm-refine",
+    "hypothesis": "A final low-learning-rate pass improves or confirms the extra-data plateau.",
+    "extra_training": true,
+    "init": "research/checkpoints/extra-warm.json"
+  }
+]

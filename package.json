@@ -1,8 +1,13 @@
 {
-  "name": "tiny-chess-input",
-  "version": "0.1.0",
+  "name": "click-chess",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
-  "scripts": {"test": "node js/test.mjs", "benchmark": "node js/benchmark.mjs"},
-  "devDependencies": {"chess.js": "1.4.0"}
+  "scripts": {
+    "test": "node js/test.mjs",
+    "benchmark": "node js/benchmark.mjs"
+  },
+  "devDependencies": {
+    "chess.js": "1.4.0"
+  }
 }

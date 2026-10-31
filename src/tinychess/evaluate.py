@@ -27,6 +27,7 @@ def params(art):
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--train',required=True);ap.add_argument('--test',required=True);ap.add_argument('--classical',required=True);a=ap.parse_args()
     art=json.loads(pathlib.Path('models/origin-ranker.json').read_text());pars=params(art)
+    if art['feature_version']!=1:raise ValueError('This is the original baseline evaluator. Use tinychess.research_evaluate for v2 models.')
     train=load(a.train);trainkeys=set(train['key'][~train['validation']]);developmentgames=set(train['game'])
     # Quantize weights only; bias stays float32. Test metrics include this deployable variant.
     quant=dict(art);quant['weights']=[];scales=[];ints=[]

@@ -7,10 +7,10 @@ class Ranker:
     def __init__(self, artifact):
         if isinstance(artifact,(str,bytes,os.PathLike)):
             with open(artifact) as f: artifact=json.load(f)
-        if artifact['feature_version']!=VERSION:raise ValueError('Unsupported feature version')
+        if artifact['feature_version'] not in (1,2):raise ValueError('Unsupported feature version')
         self.artifact=artifact
         if 'weights' in artifact:self.weights=[np.array(w,dtype=np.float32) for w in artifact['weights']]
-        else:self.weights=[np.array(w,dtype=np.float32)*s for w,s in zip(artifact['weights_int8'],artifact['weight_scales'])]
+        else:self.weights=[np.array(w,dtype=np.float32)*np.asarray(s,dtype=np.float32) for w,s in zip(artifact['weights_int8'],artifact['weight_scales'])]
         self.biases=[np.array(b,dtype=np.float32) for b in artifact['biases']]
 
     def scores(self,x):
@@ -31,6 +31,9 @@ class Ranker:
         else:
             rep=self.artifact['representation']
             x=planes(board,ms) if rep=='planes' else encode(board,ms,history=rep=='history')
+            if self.artifact['feature_version']==2:
+                from .tactical import augment
+                x=augment(board,ms,x)
             s=self.scores(x);p=np.exp(s-s.max());p/=p.sum()
         legal=destination_moves(board,destination)
         # Stable tie ordering by a1=0,...,h8=63; same as training and JavaScript.

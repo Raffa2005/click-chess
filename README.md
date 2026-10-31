@@ -1,4 +1,4 @@
-# tiny-chess-input
+# click-chess
 
 A CPU-trained neural network that predicts the intended **origin square**, given
 a standard-chess position and a clicked destination. It ranks only legal origins.
@@ -16,19 +16,30 @@ are counted separately.
 
 ## Model and results
 
-Measured results are in [RESULTS.md](RESULTS.md), with machine-readable reports in
-[results/](results/). The model is a shared candidate scorer: the same tiny MLP
+The improved network has **17,345 parameters**, a **23.7 KB gzipped model**, and
+**0.40 ms p95** feature extraction + ranking in the warm Node benchmark with legal
+moves supplied. On fresh tests it selects the played origin **85.11%** of the time
+online and **82.98%** in classical games. Second-choice coverage is 98.77% and
+98.53%, respectively. Repeated clicks cycle a cached ranking.
+
+The improved model and fresh held-out comparisons are in [RESULTS.md](RESULTS.md).
+The bounded [research protocol](program.md), [trial log](research/results.tsv), and
+[reproduction guide](research/README.md) preserve successful and unsuccessful experiments.
+Original baseline reports remain in [results/](results/) and [research/baseline/](research/baseline/). The model is a shared candidate scorer: the same tiny MLP
 produces one logit for each legal origin. A softmax over these logits is trained
 with cross entropy against the origin used in the actual game. A 64-entry output
 is available, with zero probability at illegal origins.
 
 Candidate features include piece type, origin/destination geometry, material,
 castling rights, check, attack/defense information before and after the candidate,
-mobility, king distances and pawn-file counts. They are computed solely from the
+mobility, king distances and pawn-file counts. Version 2 adds competing-origin
+context and board-wide material-at-risk summaries before and after each candidate.
+These are cheap attack-map heuristics, including pinned attackers, not an engine
+evaluation. All 147 features are computed solely from the
 pre-move position; examining each legal candidate is not looking at the observed
-answer. Black positions are rank-reflected. An ablation adds the last two plies;
-another uses the raw 12-plane board. See the versioned feature names in
-[`features.py`](src/tinychess/features.py).
+answer. Black positions are rank-reflected. The selected model includes the last
+two plies. Initial experiments also compared no history and raw board planes. See
+[`features.py`](src/tinychess/features.py) and [`tactical.py`](src/tinychess/tactical.py).
 
 ## Use in Python
 
@@ -81,7 +92,8 @@ For a game already in progress, pass its previous two plies as the fourth argume
 to `rank` or `clickSession` (after the destination). The selected model uses this
 history. A FEN alone does not contain it. In Python, retain the `chess.Board` move
 stack. If history is unavailable, load `models/origin-ranker.no-history.json`
-instead; that separately trained model uses only the current position.
+instead; that separately trained baseline uses only the current position and has
+not received the new research improvements.
 
 Use the current position's complete legal move list, including underpromotions.
 Do not pass pseudo-legal moves: JavaScript delegates legality and board validity to
@@ -90,28 +102,25 @@ fields; chess.js verbose moves work directly. History-enabled experimental model
 also take an array of prior `{from,to}` moves, oldest first, retaining at least the
 last two. Avoid reconstructing full game history on each click.
 
-## Reproduce
+## Reproduce and improve
 
 ```sh
 export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1
-python -m tinychess.download
-python -m tinychess.data data/raw/lichess_elite_2023-02.zip --output data/processed/feb.npz --modulus 24
-python -m tinychess.data data/raw/lichess_elite_2023-03.zip --output data/processed/march.npz --modulus 96
-python -m tinychess.data data/raw/classical-2024.pgn --output data/processed/classical.npz --corpus classical
-python -m tinychess.train --data data/processed/feb.npz --epochs 18
-python -m tinychess.train --data data/processed/feb.npz --epochs 45 --extended
-python -m tinychess.evaluate --train data/processed/feb.npz --test data/processed/march.npz --classical data/processed/classical.npz
 python -m unittest discover -s tests -v
 npm ci --ignore-scripts
 npm test
 npm run benchmark
 ```
 
-Downloads total approximately 154 MB compressed. Training needs NumPy, not a GPU
-or PyTorch. Extracting features uses considerably more memory than inference.
-Archives and processed arrays are deliberately not committed. Source hashes,
-sampling parameters, counts, seeds, epoch logs and selection criteria are recorded.
-Exact numerical results may vary slightly with NumPy/BLAS/platform versions.
+See [research/README.md](research/README.md) for downloading sources, preparing
+features, reproducing the study, and adding bounded experiments. Training uses
+NumPy on CPU; no GPU or PyTorch is needed. Data preparation uses substantially
+more memory than inference. Archives and caches are not committed.
+
+The old `tinychess.train` / `tinychess.evaluate` commands reproduce the original
+baseline and can overwrite deployment files. Use the new research runner for
+version-2 experiments. Every completed trial remains in the log. A resumed plan
+skips those trials; it does not silently train forever.
 
 ## Evaluation design
 
@@ -122,8 +131,12 @@ Exact numerical results may vary slightly with NumPy/BLAS/platform versions.
   games. Training samples are not limited to SAN-disambiguated moves.
 - Validation examples matching a training position+destination are removed before
   model selection. Choose lowest validation negative log likelihood.
-- March 2023 is a separate temporal test; 2024 classical broadcast games are an
-  external test. Neither test set is used for model/hyperparameter selection.
+- January 2023 adds training examples after excluding every February validation
+  game and position+destination. The February validation set remains fixed.
+- The original March 2023 and classical 2024 results were already visible before
+  this research. New final tests use April 2023 online games and 2025 Tata Steel
+  Masters/Challengers classical games. The new tests are scored only after
+  architecture, weights and quantization have been selected on validation.
 - Complete move-sequence duplicates are removed within archives and across
   development/test sets. Report both full test and novel-position results.
 - Accuracy is per ambiguous origin decision; confidence intervals bootstrap whole

@@ -16,6 +16,11 @@ for(const f of fixtures){
     const delta=Math.abs(x[i][j]-f.features[i][j]);maxError=Math.max(maxError,delta);
     assert.ok(delta<1e-6,`Feature mismatch ${i},${j}: ${x[i][j]} vs ${f.features[i][j]} at ${f.fen}`);
   }
+  if(f.rich_features){
+    const rich=features(f.fen,moves,history,'history',2);
+    assert.equal(rich[0].length,147);
+    for(let i=0;i<rich.length;i++)for(let j=0;j<rich[i].length;j++)assert.ok(Math.abs(rich[i][j]-f.rich_features[i][j])<1e-6,`Rich feature mismatch ${i},${j}`);
+  }
 }
 for(const suffix of ['', '.int8']){
 const modelPath=`models/origin-ranker${suffix}.json`;

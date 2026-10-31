@@ -1,0 +1,12 @@
+{
+  "events": {
+    "Tata Steel Chess Tournament 2025 Challengers": 84,
+    "Tata Steel Chess Tournament 2025 Masters": 84
+  },
+  "tiebreaks_excluded": 3,
+  "license": "CC BY-SA 4.0, Lichess broadcasts",
+  "source_urls": [
+    "https://database.lichess.org/broadcast/lichess_db_broadcast_2025-01.pgn.zst",
+    "https://database.lichess.org/broadcast/lichess_db_broadcast_2025-02.pgn.zst"
+  ]
+}

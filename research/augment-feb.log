@@ -1,0 +1,22 @@
+{"batches": 1, "total": 838, "seconds": 0.7849453959997845}
+{"batches": 41, "total": 838, "seconds": 5.4134112339997955}
+{"batches": 81, "total": 838, "seconds": 10.31294873800016}
+{"batches": 121, "total": 838, "seconds": 14.883158784999978}
+{"batches": 161, "total": 838, "seconds": 19.027311933999954}
+{"batches": 201, "total": 838, "seconds": 23.69804234000003}
+{"batches": 241, "total": 838, "seconds": 29.216766255999573}
+{"batches": 281, "total": 838, "seconds": 34.95726340900001}
+{"batches": 321, "total": 838, "seconds": 41.218102673999965}
+{"batches": 361, "total": 838, "seconds": 47.18566540200027}
+{"batches": 401, "total": 838, "seconds": 51.86198867700023}
+{"batches": 441, "total": 838, "seconds": 56.162027032999504}
+{"batches": 481, "total": 838, "seconds": 60.47328672999993}
+{"batches": 521, "total": 838, "seconds": 64.96019218899983}
+{"batches": 561, "total": 838, "seconds": 69.1834609790003}
+{"batches": 601, "total": 838, "seconds": 74.0220403659996}
+{"batches": 641, "total": 838, "seconds": 81.1693282819997}
+{"batches": 681, "total": 838, "seconds": 85.84715475499979}
+{"batches": 721, "total": 838, "seconds": 90.04042741099965}
+{"batches": 761, "total": 838, "seconds": 94.55415321599958}
+{"batches": 801, "total": 838, "seconds": 99.8660174050001}
+{"source_data_sha256": "863b4866f4a56eef02c81314346f6b1b3a0846e51d9ac8c41a1a82ff27cfa902", "output_sha256": "c5b194692be340874bc35b38a77ab5987551212ccf668d08d86869602e0cffb2", "shape": [991368, 147], "feature_version": 2, "feature_names": ["piece_1", "piece_2", "piece_3", "piece_4", "piece_5", "piece_6", "from_file_0", "from_file_1", "from_file_2", "from_file_3", "from_file_4", "from_file_5", "from_file_6", "from_file_7", "from_rank_0", "from_rank_1", "from_rank_2", "from_rank_3", "from_rank_4", "from_rank_5", "from_rank_6", "from_rank_7", "to_file_0", "to_file_1", "to_file_2", "to_file_3", "to_file_4", "to_file_5", "to_file_6", "to_file_7", "to_rank_0", "to_rank_1", "to_rank_2", "to_rank_3", "to_rank_4", "to_rank_5", "to_rank_6", "to_rank_7", "dx", "dy", "distance", "manhattan", "from_center", "to_center", "us_count_1", "us_count_2", "us_count_3", "us_count_4", "us_count_5", "us_count_6", "them_count_1", "them_count_2", "them_count_3", "them_count_4", "them_count_5", "them_count_6", "ply", "halfmove", "check", "our_oo", "our_ooo", "their_oo", "their_ooo", "capture", "captured_value", "promotion", "castle", "en_passant", "value", "from_enemy_count", "from_enemy_min_value", "from_friend_count", "from_friend_min_value", "to_after_enemy_count", "to_after_enemy_min_value", "to_after_friend_count", "to_after_friend_min_value", "before_mobility", "before_targets", "before_max_target", "before_defended", "after_mobility", "after_targets", "after_max_target", "after_defended", "gives_check", "from_own_king", "to_own_king", "from_enemy_king", "to_enemy_king", "from_pinned", "pawn_same_file", "pawn_adjacent_files", "past_1_exists", "past_1_from_dx", "past_1_from_dy", "past_1_to_dx", "past_1_to_dy", "past_1_same_piece", "past_1_same_destination", "past_2_exists", "past_2_from_dx", "past_2_from_dy", "past_2_to_dx", "past_2_to_dy", "past_2_same_piece", "past_2_same_destination", "candidate_fraction_1", "candidate_fraction_2", "candidate_fraction_3", "candidate_fraction_4", "candidate_fraction_5", "candidate_fraction_6", "candidate_count", "candidate_min_value", "candidate_max_attacks", "candidate_attacked_max_value", "before_us_sum_risk", "before_us_max_risk", "before_us_second_risk", "before_us_loose_count", "before_us_attacked_material", "before_them_sum_risk", "before_them_max_risk", "before_them_second_risk", "before_them_loose_count", "before_them_attacked_material", "after_us_sum_risk", "after_us_max_risk", "after_us_second_risk", "after_us_loose_count", "after_us_attacked_material", "after_them_sum_risk", "after_them_max_risk", "after_them_second_risk", "after_them_loose_count", "after_them_attacked_material", "delta_us_sum_risk", "delta_us_max_risk", "delta_us_second_risk", "delta_us_loose_count", "delta_us_attacked_material", "delta_them_sum_risk", "delta_them_max_risk", "delta_them_second_risk", "delta_them_loose_count", "delta_them_attacked_material"], "seconds": 105.83138048}
