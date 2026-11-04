@@ -1,0 +1,313 @@
+{
+  "primary": "manual-relu",
+  "ablation": "manual-linear",
+  "training_steps": 0,
+  "selection": "One predeclared nonlinear model and its linear ablation; no model selection or test-feedback revisions.",
+  "builder_sha256": "754983de26bd3e11dc997806f6105914734b5a5e42aa97449849468447c5dac5",
+  "incumbent_file": "models/origin-ranker.bin",
+  "incumbent_sha256": "592efffc0cef663b7b8041669fe4332322fb5e41b13990893f8d36046c256839",
+  "feature_names": [
+    "piece_1",
+    "piece_2",
+    "piece_3",
+    "piece_4",
+    "piece_5",
+    "piece_6",
+    "from_file_0",
+    "from_file_1",
+    "from_file_2",
+    "from_file_3",
+    "from_file_4",
+    "from_file_5",
+    "from_file_6",
+    "from_file_7",
+    "from_rank_0",
+    "from_rank_1",
+    "from_rank_2",
+    "from_rank_3",
+    "from_rank_4",
+    "from_rank_5",
+    "from_rank_6",
+    "from_rank_7",
+    "to_file_0",
+    "to_file_1",
+    "to_file_2",
+    "to_file_3",
+    "to_file_4",
+    "to_file_5",
+    "to_file_6",
+    "to_file_7",
+    "to_rank_0",
+    "to_rank_1",
+    "to_rank_2",
+    "to_rank_3",
+    "to_rank_4",
+    "to_rank_5",
+    "to_rank_6",
+    "to_rank_7",
+    "dx",
+    "dy",
+    "distance",
+    "manhattan",
+    "from_center",
+    "to_center",
+    "us_count_1",
+    "us_count_2",
+    "us_count_3",
+    "us_count_4",
+    "us_count_5",
+    "us_count_6",
+    "them_count_1",
+    "them_count_2",
+    "them_count_3",
+    "them_count_4",
+    "them_count_5",
+    "them_count_6",
+    "ply",
+    "halfmove",
+    "check",
+    "our_oo",
+    "our_ooo",
+    "their_oo",
+    "their_ooo",
+    "capture",
+    "captured_value",
+    "promotion",
+    "castle",
+    "en_passant",
+    "value",
+    "from_enemy_count",
+    "from_enemy_min_value",
+    "from_friend_count",
+    "from_friend_min_value",
+    "to_after_enemy_count",
+    "to_after_enemy_min_value",
+    "to_after_friend_count",
+    "to_after_friend_min_value",
+    "before_mobility",
+    "before_targets",
+    "before_max_target",
+    "before_defended",
+    "after_mobility",
+    "after_targets",
+    "after_max_target",
+    "after_defended",
+    "gives_check",
+    "from_own_king",
+    "to_own_king",
+    "from_enemy_king",
+    "to_enemy_king",
+    "from_pinned",
+    "pawn_same_file",
+    "pawn_adjacent_files",
+    "past_1_exists",
+    "past_1_from_dx",
+    "past_1_from_dy",
+    "past_1_to_dx",
+    "past_1_to_dy",
+    "past_1_same_piece",
+    "past_1_same_destination",
+    "past_2_exists",
+    "past_2_from_dx",
+    "past_2_from_dy",
+    "past_2_to_dx",
+    "past_2_to_dy",
+    "past_2_same_piece",
+    "past_2_same_destination",
+    "candidate_fraction_1",
+    "candidate_fraction_2",
+    "candidate_fraction_3",
+    "candidate_fraction_4",
+    "candidate_fraction_5",
+    "candidate_fraction_6",
+    "candidate_count",
+    "candidate_min_value",
+    "candidate_max_attacks",
+    "candidate_attacked_max_value",
+    "before_us_sum_risk",
+    "before_us_max_risk",
+    "before_us_second_risk",
+    "before_us_loose_count",
+    "before_us_attacked_material",
+    "before_them_sum_risk",
+    "before_them_max_risk",
+    "before_them_second_risk",
+    "before_them_loose_count",
+    "before_them_attacked_material",
+    "after_us_sum_risk",
+    "after_us_max_risk",
+    "after_us_second_risk",
+    "after_us_loose_count",
+    "after_us_attacked_material",
+    "after_them_sum_risk",
+    "after_them_max_risk",
+    "after_them_second_risk",
+    "after_them_loose_count",
+    "after_them_attacked_material",
+    "delta_us_sum_risk",
+    "delta_us_max_risk",
+    "delta_us_second_risk",
+    "delta_us_loose_count",
+    "delta_us_attacked_material",
+    "delta_them_sum_risk",
+    "delta_them_max_risk",
+    "delta_them_second_risk",
+    "delta_them_loose_count",
+    "delta_them_attacked_material"
+  ],
+  "base": {
+    "captured_value": 12.0,
+    "value": -0.96,
+    "piece_6": 0.96,
+    "promotion": 8.0,
+    "castle": 2.5,
+    "gives_check": 0.6,
+    "before_mobility": -1.12,
+    "after_mobility": 1.12,
+    "before_targets": -0.8,
+    "after_targets": 0.8,
+    "after_max_target": 0.6000000000000001,
+    "from_center": 0.2,
+    "to_center": -0.2,
+    "delta_us_sum_risk": -24.0,
+    "after_us_max_risk": -15.0,
+    "after_us_second_risk": -3.5999999999999996,
+    "after_them_max_risk": 7.800000000000001,
+    "after_them_second_risk": 3.0
+  },
+  "gates": [
+    {
+      "reason": "Develop a back-rank knight early",
+      "coefficients": {
+        "piece_2": 1,
+        "from_rank_0": 1,
+        "ply": -4
+      },
+      "bias": -1,
+      "output": 1.4
+    },
+    {
+      "reason": "Develop a back-rank bishop early",
+      "coefficients": {
+        "piece_3": 1,
+        "from_rank_0": 1,
+        "ply": -4
+      },
+      "bias": -1,
+      "output": 1.2
+    },
+    {
+      "reason": "Avoid early queen moves",
+      "coefficients": {
+        "piece_5": 1,
+        "ply": -8
+      },
+      "bias": 0,
+      "output": -0.9
+    },
+    {
+      "reason": "Keep a corner rook while both castling rights remain",
+      "coefficients": {
+        "piece_4": 1,
+        "our_oo": 1,
+        "our_ooo": 1,
+        "ply": -4
+      },
+      "bias": -2,
+      "output": -0.6
+    },
+    {
+      "reason": "Avoid moving the same piece twice in the opening",
+      "coefficients": {
+        "past_2_same_piece": 1,
+        "ply": -5
+      },
+      "bias": 0,
+      "output": -0.55
+    },
+    {
+      "reason": "Encourage the d-pawn center push",
+      "coefficients": {
+        "piece_1": 1,
+        "to_file_3": 1,
+        "to_rank_3": 1,
+        "ply": -4
+      },
+      "bias": -2,
+      "output": 0.55
+    },
+    {
+      "reason": "Encourage the e-pawn center push",
+      "coefficients": {
+        "piece_1": 1,
+        "to_file_4": 1,
+        "to_rank_3": 1,
+        "ply": -4
+      },
+      "bias": -2,
+      "output": 0.55
+    },
+    {
+      "reason": "Activate the king when opposing major pieces are absent",
+      "coefficients": {
+        "piece_6": 1,
+        "them_count_5": -8,
+        "them_count_4": -4
+      },
+      "bias": 0,
+      "output": 0.65
+    },
+    {
+      "reason": "Discourage king moves with an opposing queen",
+      "coefficients": {
+        "piece_6": 4,
+        "them_count_5": 8
+      },
+      "bias": -4,
+      "output": -0.9
+    },
+    {
+      "reason": "Pawn advance to the sixth rank",
+      "coefficients": {
+        "piece_1": 1,
+        "to_rank_5": 1
+      },
+      "bias": -1,
+      "output": 0.2
+    },
+    {
+      "reason": "Pawn advance to the seventh rank",
+      "coefficients": {
+        "piece_1": 1,
+        "to_rank_6": 1
+      },
+      "bias": -1,
+      "output": 0.45
+    }
+  ],
+  "artifacts": {
+    "manual-relu": {
+      "file": "research/manual-weights/manual-relu.json",
+      "sha256": "6bc3a74bd3239bb574f8aaa43599f0ddf761ebfa57813692b242bbf2132c77bf",
+      "parameter_count": 1938,
+      "nonzero_parameter_count": 88,
+      "float32_parameter_bytes": 7752,
+      "json_bytes": 9049,
+      "json_gzip_bytes": 632
+    },
+    "manual-linear": {
+      "file": "research/manual-weights/manual-linear.json",
+      "sha256": "9c5438c5ae3de3d0af1334fab21dd26bc85c580b4c21018d51ffa7847cbe4ae7",
+      "parameter_count": 148,
+      "nonzero_parameter_count": 18,
+      "float32_parameter_bytes": 592,
+      "json_bytes": 1349,
+      "json_gzip_bytes": 357
+    }
+  },
+  "benchmarks": {
+    "online": "May 2023 Lichess Elite, raw-PGN SHA-256 modulo 96, both Elo >=2100",
+    "classical": "The existing 2025 Prague Masters/Challengers and Cyprus Women Grand Prix allowlist; tiebreaks excluded"
+  },
+  "status": "Frozen before this experiment scored any benchmark labels. These are previously published regression benchmarks, not newly unseen test sets."
+}
