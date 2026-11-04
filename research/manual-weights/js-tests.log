@@ -1,0 +1,8 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> click-chess@0.3.0 test
+> node js/test.mjs
+
+{"fixtures":305,"maxFeatureError":2.5544847792602354e-8,"status":"passed"}
+{"experimental_architectures":3,"binary_parity":"passed"}
+{"binary_fixtures":305,"status":"passed"}

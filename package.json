@@ -4,8 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node js/test.mjs",
-    "benchmark": "node js/benchmark.mjs"
+    "test": "node js/test.mjs && node js/manual-test.mjs",
+    "benchmark": "node js/benchmark.mjs",
+    "benchmark:manual": "node js/manual-benchmark.mjs"
   },
   "devDependencies": {
     "chess.js": "1.4.0"

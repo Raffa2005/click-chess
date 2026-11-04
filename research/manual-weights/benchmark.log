@@ -1,0 +1,88 @@
+{
+  "runtime": "v24.22.1",
+  "platform": "linux",
+  "architecture": "x64",
+  "cpu": "unavailable",
+  "fixture_count": 305,
+  "score_only_features_supplied": {
+    "manual_relu": {
+      "iterations": 3000,
+      "median_us": 9.62300000014693,
+      "p95_us": 19.340000000056534,
+      "p99_us": 139.40000000002328
+    },
+    "manual_linear": {
+      "iterations": 3000,
+      "median_us": 2.720000000181244,
+      "p95_us": 4.897000000028129,
+      "p99_us": 19.978000000037355
+    },
+    "trained_int8": {
+      "iterations": 3000,
+      "median_us": 82.54100000021936,
+      "p95_us": 257.16000000011263,
+      "p99_us": 565.9270000001015
+    }
+  },
+  "rank_with_features_legal_moves_supplied": {
+    "manual_relu": {
+      "iterations": 3000,
+      "median_us": 62.06700000029741,
+      "p95_us": 243.17299999984243,
+      "p99_us": 1142.5160000003416
+    },
+    "manual_linear": {
+      "iterations": 3000,
+      "median_us": 52.027000000180124,
+      "p95_us": 164.56700000026103,
+      "p99_us": 1185.9669999998914
+    },
+    "trained_int8": {
+      "iterations": 3000,
+      "median_us": 149.15300000029674,
+      "p95_us": 562.6819999997679,
+      "p99_us": 1966.4600000000974
+    }
+  },
+  "full_chessjs_legal_generation_and_ranking": {
+    "manual_relu": {
+      "iterations": 3000,
+      "median_us": 3563.3600000001024,
+      "p95_us": 6734.537000000273,
+      "p99_us": 9311.310000000958
+    },
+    "manual_linear": {
+      "iterations": 3000,
+      "median_us": 3509.051000000909,
+      "p95_us": 6504.402999999002,
+      "p99_us": 9519.917999998142
+    },
+    "trained_int8": {
+      "iterations": 3000,
+      "median_us": 3641.034000000218,
+      "p95_us": 6811.9039999946835,
+      "p99_us": 9314.440000001923
+    }
+  },
+  "cached_second_click": {
+    "manual_relu": {
+      "iterations": 10000,
+      "median_us": 0.07699999696342275,
+      "p95_us": 0.12000000424450263,
+      "p99_us": 0.1740000006975606
+    },
+    "manual_linear": {
+      "iterations": 10000,
+      "median_us": 0.07200000254670158,
+      "p95_us": 0.11900000390596688,
+      "p99_us": 0.17799999477574602
+    },
+    "trained_int8": {
+      "iterations": 10000,
+      "median_us": 0.07100000220816582,
+      "p95_us": 0.12000000424450263,
+      "p99_us": 0.16799999866634607
+    }
+  },
+  "note": "Warm same-process interleaved Node CPU benchmark. Model order rotates each iteration. No Android/UI/cold-start timing claim. Both models use identical v2 features; structural feature computation is included except in score-only timings."
+}

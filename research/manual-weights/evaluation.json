@@ -1,0 +1,555 @@
+{
+  "frozen_sha256": "ec0d8dc656410dfab06a60cc829d79bbcac4d2d17285d166d5d23ee93064e436",
+  "freeze_commit": "240eaf64f3881f01f8bce8d0a4e964e25e4e9d85",
+  "training_steps": 0,
+  "weights_changed_after_scoring": false,
+  "test_status": "Previously published held-out regression sets, exactly reconstructed; not new unseen tests.",
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "2.3.5"
+  },
+  "sets": {
+    "online_2100plus": {
+      "source_manifest": {
+        "source_sha256": {
+          "data/raw/lichess_elite_2023-05.zip": "5386aa71165a631c483ac8f0d66158d60afd91e1fe9efc2c262dbe66498a759a"
+        },
+        "modulus": 96,
+        "min_both_elo": 2100,
+        "extra_training": false,
+        "counts": {
+          "archive_games": 312992,
+          "selected_games": 3268,
+          "plies": 282144,
+          "examples": 125578,
+          "promotion_only": 497
+        },
+        "dates": {
+          "2023.05.01": 104,
+          "2023.05.02": 100,
+          "2023.05.03": 88,
+          "2023.05.04": 123,
+          "2023.05.05": 96,
+          "2023.05.06": 122,
+          "2023.05.07": 96,
+          "2023.05.08": 93,
+          "2023.05.09": 115,
+          "2023.05.10": 93,
+          "2023.05.11": 128,
+          "2023.05.12": 112,
+          "2023.05.13": 92,
+          "2023.05.14": 121,
+          "2023.05.15": 111,
+          "2023.05.16": 108,
+          "2023.05.17": 100,
+          "2023.05.18": 138,
+          "2023.05.19": 84,
+          "2023.05.20": 92,
+          "2023.05.21": 99,
+          "2023.05.22": 93,
+          "2023.05.23": 104,
+          "2023.05.24": 115,
+          "2023.05.25": 127,
+          "2023.05.26": 129,
+          "2023.05.27": 100,
+          "2023.05.28": 107,
+          "2023.05.29": 79,
+          "2023.05.30": 96,
+          "2023.05.31": 103
+        },
+        "events": {
+          "Rated Blitz game": 2785,
+          "Rated Rapid game": 242,
+          "Rated Blitz tournament qhluNL8j": 1,
+          "Rated Blitz tournament qlq4DRyL": 2,
+          "Rated Blitz tournament PmbaaXzT": 1,
+          "Rated Rapid tournament eCrlWPVC": 1,
+          "Rated Blitz tournament xtG1yMXb": 1,
+          "Rated Rapid tournament PCGY3Lkh": 1,
+          "Rated Blitz tournament 51PptYPW": 2,
+          "Rated Classical game": 3,
+          "Rated Blitz tournament grn188HU": 8,
+          "Rated Blitz tournament 2iLibD8E": 2,
+          "Rated Blitz tournament UMHmS3o0": 1,
+          "Rated Blitz tournament PC7YjjD6": 1,
+          "Rated Blitz tournament may23bua": 3,
+          "Rated Blitz tournament may23bta": 35,
+          "Rated Blitz tournament 1J0bKRS6": 1,
+          "Rated Blitz tournament 7s4qcrrK": 1,
+          "Rated Blitz tournament 4HRLtIAq": 3,
+          "Rated Blitz tournament GShW6PyT": 1,
+          "Rated Blitz tournament jJrhKYfK": 3,
+          "Rated Blitz tournament ktaoj82J": 1,
+          "Rated Blitz tournament HRCG36d6": 1,
+          "Rated Blitz tournament Vl3q8bEL": 1,
+          "Rated Blitz tournament W55y3bul": 3,
+          "Rated Blitz tournament H0CJLCgy": 3,
+          "Rated Blitz tournament T64dZyKx": 1,
+          "Rated Blitz tournament Eyxq95EH": 1,
+          "Rated Blitz tournament BWJ1NxCE": 5,
+          "Rated Blitz tournament GzzhoQ2v": 1,
+          "Rated Blitz tournament 9HE0u2pl": 1,
+          "Rated Blitz tournament EY9Goqqb": 1,
+          "Rated Rapid tournament 78ORYnsV": 1,
+          "Rated Blitz tournament U62J7kdv": 1,
+          "Rated Blitz tournament RtjjRKJe": 2,
+          "Rated Blitz tournament yzH54FyU": 1,
+          "Rated Blitz tournament H5tMPljv": 1,
+          "Rated Blitz tournament J0HfRncj": 1,
+          "Rated Rapid tournament 1dH3Ur0S": 2,
+          "Rated Blitz tournament 8z4iBper": 6,
+          "Rated Blitz tournament ImnBA13I": 1,
+          "Rated Blitz tournament kIcocN07": 2,
+          "Rated Blitz tournament Dgcu3PdX": 3,
+          "Rated Blitz tournament GzcIpi2S": 2,
+          "Rated Blitz tournament QThxyI3p": 1,
+          "Rated Blitz tournament FaKfsygV": 1,
+          "Rated Blitz tournament vukKLRyk": 4,
+          "Rated Blitz tournament pwv5Gmwe": 1,
+          "Rated Blitz tournament pICHkxwY": 1,
+          "Rated Blitz tournament HxRFpd0S": 1,
+          "Rated Blitz tournament QSUTNIEq": 1,
+          "Rated Blitz tournament F7x0ZYyC": 1,
+          "Rated Blitz tournament S9AZBXw5": 1,
+          "Rated Blitz tournament 5xWVdDf0": 7,
+          "Rated Blitz tournament 56uYYiOy": 1,
+          "Rated Blitz tournament 0lqoivHN": 1,
+          "Rated Blitz tournament rchhYl3M": 1,
+          "Rated Blitz tournament E80P86c5": 1,
+          "Rated Blitz tournament zajHUySm": 6,
+          "Rated Blitz tournament VBGkgreq": 2,
+          "Rated Rapid tournament ewGChbFm": 1,
+          "Rated Blitz tournament kRpaxX7F": 1,
+          "Rated Blitz tournament 6Byz889n": 1,
+          "Rated Blitz tournament ihO1cNIK": 1,
+          "Rated Blitz tournament V57t97cf": 2,
+          "Rated Blitz tournament 8VuOwzuu": 2,
+          "Rated Blitz tournament 1NkCHnKM": 1,
+          "Rated Blitz tournament vgCl0jKF": 1,
+          "Rated Blitz tournament uktP2JfR": 1,
+          "Rated Blitz tournament kZUSEgbF": 1,
+          "Rated Blitz tournament 1aplbRQR": 1,
+          "Rated Blitz tournament oMHEvjGg": 1,
+          "Rated Blitz tournament DkqnEDQK": 1,
+          "Rated Blitz tournament PHUFQlu6": 1,
+          "Rated Blitz tournament tDDsve5B": 1,
+          "Rated Blitz tournament XA5JnFAl": 1,
+          "Rated Blitz tournament r5JdLRqd": 1,
+          "Rated Blitz tournament SgYS0YCT": 2,
+          "Rated Blitz tournament jWmPAG5T": 6,
+          "Rated Blitz tournament VJCP1bVf": 1,
+          "Rated Blitz tournament nIk66pa6": 1,
+          "Rated Blitz tournament poAIxJq0": 2,
+          "Rated Blitz tournament UKCGdl9Z": 1,
+          "Rated Blitz tournament kazakh01": 8,
+          "Rated Blitz tournament kazakh02": 22,
+          "Rated Blitz tournament kazakh03": 12,
+          "Rated Blitz tournament YWhcRlV6": 2,
+          "Rated Blitz tournament 6oixfDQU": 2,
+          "Rated Blitz tournament xuhtOLDS": 4,
+          "Rated Blitz tournament YzXJqzSl": 1,
+          "Rated Blitz tournament ofgOcrkZ": 1,
+          "Rated Blitz tournament lgk8HVIc": 1,
+          "Rated Blitz tournament ZjFemrn4": 1,
+          "Rated Blitz tournament lSZEOBXF": 1,
+          "Rated Blitz tournament may23str": 3,
+          "Rated Blitz tournament Ota8kWVG": 1,
+          "Rated Blitz tournament ibnenBqX": 2,
+          "Rated Blitz tournament lvNWfeHQ": 2,
+          "Rated Blitz tournament WLQwrOcn": 1,
+          "Rated Blitz tournament Py5pK6U1": 1
+        },
+        "feature_version": 2,
+        "seconds": 152.187820289
+      },
+      "models": {
+        "manual_relu": {
+          "examples": 125578,
+          "games": 3264,
+          "accuracy": 0.7472726114446798,
+          "nll": 0.5850640535354614,
+          "accuracy_95pct_game_bootstrap": [
+            0.7447718490123515,
+            0.7499508015102961
+          ],
+          "top2": 0.9723757346031948,
+          "mean_reciprocal_rank": 0.8687798287385795,
+          "mean_clicks_if_cycling": 1.283449330296708,
+          "uniform_legal_origin_accuracy": 0.44462445651308347
+        },
+        "manual_linear": {
+          "examples": 125578,
+          "games": 3264,
+          "accuracy": 0.7192024080651069,
+          "nll": 0.6261933445930481,
+          "accuracy_95pct_game_bootstrap": [
+            0.7165291694355149,
+            0.7220052739490163
+          ],
+          "top2": 0.9671837423752568,
+          "mean_reciprocal_rank": 0.8538328104179607,
+          "mean_clicks_if_cycling": 1.3172769115609422,
+          "uniform_legal_origin_accuracy": 0.44462445651308347
+        },
+        "trained_int8": {
+          "examples": 125578,
+          "games": 3264,
+          "accuracy": 0.8513115354600328,
+          "nll": 0.3338182866573334,
+          "accuracy_95pct_game_bootstrap": [
+            0.8492491295309921,
+            0.8534019326384673
+          ],
+          "top2": 0.9886683973307426,
+          "mean_reciprocal_rank": 0.9236860755864881,
+          "mean_clicks_if_cycling": 1.1610154644921882,
+          "uniform_legal_origin_accuracy": 0.44462445651308347
+        }
+      },
+      "slices": {
+        "manual_relu": {
+          "same_piece_type": {
+            "examples": 4642,
+            "accuracy": 0.6490736751400259,
+            "nll": 0.641057550907135
+          },
+          "different_piece_types": {
+            "examples": 120936,
+            "accuracy": 0.7510418733875769,
+            "nll": 0.5829148292541504
+          },
+          "two_origins": {
+            "examples": 87584,
+            "accuracy": 0.7546241322616003,
+            "nll": 0.5237975716590881
+          },
+          "three_plus_origins": {
+            "examples": 37994,
+            "accuracy": 0.7303258409222508,
+            "nll": 0.7262961864471436
+          },
+          "opening_under20ply": {
+            "examples": 36355,
+            "accuracy": 0.8128730573511209,
+            "nll": 0.47073498368263245
+          },
+          "middle_20to79ply": {
+            "examples": 77539,
+            "accuracy": 0.730883813306852,
+            "nll": 0.6222854256629944
+          },
+          "late_80plusply": {
+            "examples": 11684,
+            "accuracy": 0.6519171516603903,
+            "nll": 0.6937881708145142
+          }
+        },
+        "manual_linear": {
+          "same_piece_type": {
+            "examples": 4642,
+            "accuracy": 0.6525204653166738,
+            "nll": 0.6431460380554199
+          },
+          "different_piece_types": {
+            "examples": 120936,
+            "accuracy": 0.7217619236621022,
+            "nll": 0.6255427002906799
+          },
+          "two_origins": {
+            "examples": 87584,
+            "accuracy": 0.7579923273657289,
+            "nll": 0.5337399244308472
+          },
+          "three_plus_origins": {
+            "examples": 37994,
+            "accuracy": 0.6297836500500079,
+            "nll": 0.8393177390098572
+          },
+          "opening_under20ply": {
+            "examples": 36355,
+            "accuracy": 0.7505982670884335,
+            "nll": 0.5857090950012207
+          },
+          "middle_20to79ply": {
+            "examples": 77539,
+            "accuracy": 0.7121964430802564,
+            "nll": 0.6381044983863831
+          },
+          "late_80plusply": {
+            "examples": 11684,
+            "accuracy": 0.6680075316672373,
+            "nll": 0.6731154322624207
+          }
+        },
+        "trained_int8": {
+          "same_piece_type": {
+            "examples": 4642,
+            "accuracy": 0.7621714778112882,
+            "nll": 0.47454625368118286
+          },
+          "different_piece_types": {
+            "examples": 120936,
+            "accuracy": 0.8547330819607065,
+            "nll": 0.3284166157245636
+          },
+          "two_origins": {
+            "examples": 87584,
+            "accuracy": 0.8607736572890026,
+            "nll": 0.29968273639678955
+          },
+          "three_plus_origins": {
+            "examples": 37994,
+            "accuracy": 0.8294993946412591,
+            "nll": 0.4125078618526459
+          },
+          "opening_under20ply": {
+            "examples": 36355,
+            "accuracy": 0.9232842800165039,
+            "nll": 0.19176138937473297
+          },
+          "middle_20to79ply": {
+            "examples": 77539,
+            "accuracy": 0.8271966365312939,
+            "nll": 0.3840140998363495
+          },
+          "late_80plusply": {
+            "examples": 11684,
+            "accuracy": 0.7874015748031497,
+            "nll": 0.4427148103713989
+          }
+        }
+      },
+      "baselines": {
+        "uniform_expected_accuracy": 0.44462445651308347,
+        "first_origin_accuracy": 0.4565528993932058,
+        "least_value_accuracy": 0.5200035037984361
+      },
+      "paired_manual_minus_trained_accuracy": -0.10403892401535297,
+      "paired_manual_minus_trained_95pct_game_bootstrap": [
+        -0.1066877584935669,
+        -0.10135821854279314
+      ],
+      "disagreements": {
+        "manual_only_correct": 6589,
+        "trained_only_correct": 19654
+      },
+      "incumbent_accuracy_exactly_reproduced": true
+    },
+    "classical_2100plus": {
+      "source_manifest": {
+        "source_sha256": {
+          "data/raw/classical-round2-sealed.pgn": "bd24fbdbd28aca580f2f8262e0098f0c0fcd0f3f3e9cfe1e3890f57591cebf60"
+        },
+        "modulus": 1,
+        "min_both_elo": 2100,
+        "extra_training": false,
+        "counts": {
+          "archive_games": 135,
+          "selected_games": 135,
+          "plies": 12471,
+          "examples": 5888,
+          "promotion_only": 2
+        },
+        "dates": {
+          "2025.02.27": 20,
+          "2025.02.28": 10,
+          "2025.03.01": 10,
+          "2025.03.02": 10,
+          "2025.03.04": 10,
+          "2025.03.05": 10,
+          "2025.03.06": 10,
+          "2025.03.07": 10,
+          "2025.03.15": 5,
+          "2025.03.16": 5,
+          "2025.03.17": 5,
+          "2025.03.18": 5,
+          "2025.03.19": 5,
+          "2025.03.21": 5,
+          "2025.03.22": 5,
+          "2025.03.23": 5,
+          "2025.03.24": 5
+        },
+        "events": {
+          "PICF 2025 - Masters": 45,
+          "PICF 2025 - Challengers": 45,
+          "2025 Cyprus FIDE Women's Grand Prix": 45
+        },
+        "feature_version": 2,
+        "seconds": 7.269673672999943
+      },
+      "models": {
+        "manual_relu": {
+          "examples": 5888,
+          "games": 134,
+          "accuracy": 0.7292798913043478,
+          "nll": 0.6202483177185059,
+          "accuracy_95pct_game_bootstrap": [
+            0.7180848033750155,
+            0.7408111802679866
+          ],
+          "top2": 0.9638247282608695,
+          "mean_reciprocal_rank": 0.8583276721014493,
+          "mean_clicks_if_cycling": 1.3102921195652173,
+          "uniform_legal_origin_accuracy": 0.4419270833333333
+        },
+        "manual_linear": {
+          "examples": 5888,
+          "games": 134,
+          "accuracy": 0.703125,
+          "nll": 0.6596904397010803,
+          "accuracy_95pct_game_bootstrap": [
+            0.6900238488216718,
+            0.7160236705036993
+          ],
+          "top2": 0.9590692934782609,
+          "mean_reciprocal_rank": 0.8443783967391304,
+          "mean_clicks_if_cycling": 1.3422214673913044,
+          "uniform_legal_origin_accuracy": 0.4419270833333333
+        },
+        "trained_int8": {
+          "examples": 5888,
+          "games": 134,
+          "accuracy": 0.8238790760869565,
+          "nll": 0.3869493305683136,
+          "accuracy_95pct_game_bootstrap": [
+            0.8127564827362794,
+            0.8348321650030796
+          ],
+          "top2": 0.9823369565217391,
+          "mean_reciprocal_rank": 0.9089249320652174,
+          "mean_clicks_if_cycling": 1.194633152173913,
+          "uniform_legal_origin_accuracy": 0.4419270833333333
+        }
+      },
+      "slices": {
+        "manual_relu": {
+          "same_piece_type": {
+            "examples": 216,
+            "accuracy": 0.6388888888888888,
+            "nll": 0.678676187992096
+          },
+          "different_piece_types": {
+            "examples": 5672,
+            "accuracy": 0.732722143864598,
+            "nll": 0.6180232167243958
+          },
+          "two_origins": {
+            "examples": 4020,
+            "accuracy": 0.745273631840796,
+            "nll": 0.5367653965950012
+          },
+          "three_plus_origins": {
+            "examples": 1868,
+            "accuracy": 0.6948608137044968,
+            "nll": 0.7999064326286316
+          },
+          "opening_under20ply": {
+            "examples": 1533,
+            "accuracy": 0.8127853881278538,
+            "nll": 0.4826827347278595
+          },
+          "middle_20to79ply": {
+            "examples": 3729,
+            "accuracy": 0.7036739072137302,
+            "nll": 0.6798812747001648
+          },
+          "late_80plusply": {
+            "examples": 626,
+            "accuracy": 0.6773162939297125,
+            "nll": 0.6019038558006287
+          }
+        },
+        "manual_linear": {
+          "same_piece_type": {
+            "examples": 216,
+            "accuracy": 0.6435185185185185,
+            "nll": 0.6810891628265381
+          },
+          "different_piece_types": {
+            "examples": 5672,
+            "accuracy": 0.705394922425952,
+            "nll": 0.6588755249977112
+          },
+          "two_origins": {
+            "examples": 4020,
+            "accuracy": 0.7509950248756219,
+            "nll": 0.545536458492279
+          },
+          "three_plus_origins": {
+            "examples": 1868,
+            "accuracy": 0.6001070663811563,
+            "nll": 0.9053536653518677
+          },
+          "opening_under20ply": {
+            "examples": 1533,
+            "accuracy": 0.7645140247879973,
+            "nll": 0.599179208278656
+          },
+          "middle_20to79ply": {
+            "examples": 3729,
+            "accuracy": 0.6822204344328238,
+            "nll": 0.695217490196228
+          },
+          "late_80plusply": {
+            "examples": 626,
+            "accuracy": 0.6773162939297125,
+            "nll": 0.5962450504302979
+          }
+        },
+        "trained_int8": {
+          "same_piece_type": {
+            "examples": 216,
+            "accuracy": 0.7407407407407407,
+            "nll": 0.5087503790855408
+          },
+          "different_piece_types": {
+            "examples": 5672,
+            "accuracy": 0.8270451339915373,
+            "nll": 0.3823109269142151
+          },
+          "two_origins": {
+            "examples": 4020,
+            "accuracy": 0.8425373134328358,
+            "nll": 0.3295067548751831
+          },
+          "three_plus_origins": {
+            "examples": 1868,
+            "accuracy": 0.7837259100642399,
+            "nll": 0.5105677247047424
+          },
+          "opening_under20ply": {
+            "examples": 1533,
+            "accuracy": 0.9243313763861709,
+            "nll": 0.20520369708538055
+          },
+          "middle_20to79ply": {
+            "examples": 3729,
+            "accuracy": 0.7884151246983105,
+            "nll": 0.4524937868118286
+          },
+          "late_80plusply": {
+            "examples": 626,
+            "accuracy": 0.7891373801916933,
+            "nll": 0.44158312678337097
+          }
+        }
+      },
+      "baselines": {
+        "uniform_expected_accuracy": 0.4419270833333333,
+        "first_origin_accuracy": 0.44921875,
+        "least_value_accuracy": 0.48539402173913043
+      },
+      "paired_manual_minus_trained_accuracy": -0.09459918478260876,
+      "paired_manual_minus_trained_95pct_game_bootstrap": [
+        -0.10776063852380431,
+        -0.08074436833938169
+      ],
+      "disagreements": {
+        "manual_only_correct": 377,
+        "trained_only_correct": 934
+      },
+      "incumbent_accuracy_exactly_reproduced": true
+    }
+  },
+  "evaluation_seconds": 6.449700803000042
+}

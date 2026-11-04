@@ -1,0 +1,25 @@
+test_exact_prediction_round_trip (test_binary.BinaryTests.test_exact_prediction_round_trip) ... ok
+test_truncation_and_trailing_data_rejected (test_binary.BinaryTests.test_truncation_and_trailing_data_rejected) ... ok
+test_castling_uses_king_destination (test_core.RulesTests.test_castling_uses_king_destination) ... ok
+test_color_reflection (test_core.RulesTests.test_color_reflection) ... ok
+test_cross_piece_ambiguity (test_core.RulesTests.test_cross_piece_ambiguity) ... ok
+test_en_passant (test_core.RulesTests.test_en_passant) ... ok
+test_features_do_not_change_board_or_history (test_core.RulesTests.test_features_do_not_change_board_or_history) ... ok
+test_gradient (test_core.RulesTests.test_gradient) ... ok
+test_pin_removes_illegal_candidate (test_core.RulesTests.test_pin_removes_illegal_candidate) ... ok
+test_promotion_is_not_four_origins (test_core.RulesTests.test_promotion_is_not_four_origins) ... ok
+test_rank_and_cached_clicks (test_core.RulesTests.test_rank_and_cached_clicks) ... ok
+test_two_pawn_origins_and_promotions (test_core.RulesTests.test_two_pawn_origins_and_promotions) ... ok
+test_both_quantization_formats_load_correctly (test_export.ExportTests.test_both_quantization_formats_load_correctly) ... ok
+test_normalization_folding_preserves_deep_network (test_export.ExportTests.test_normalization_folding_preserves_deep_network) ... ok
+test_frozen_compilation_and_signed_score (test_manual.ManualWeightsTests.test_frozen_compilation_and_signed_score) ... ok
+test_legality_special_moves_and_cycle_preserve_position (test_manual.ManualWeightsTests.test_legality_special_moves_and_cycle_preserve_position) ... ok
+test_dataset_pooling_matches_single_decisions (test_setnet.SetContextTests.test_dataset_pooling_matches_single_decisions) ... ok
+test_masked_gradient_and_permutation (test_setnet.SetContextTests.test_masked_gradient_and_permutation) ... ok
+test_canonical_reconstruction_and_no_mutation (test_tactical.TacticalTests.test_canonical_reconstruction_and_no_mutation) ... ok
+test_hanging_queen (test_tactical.TacticalTests.test_hanging_queen) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.943s
+
+OK

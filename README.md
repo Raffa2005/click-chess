@@ -1,5 +1,7 @@
 # click-chess
 
+A [hand-written-weight comparison](research/manual-weights/README.md) is now available: zero training, tested against the deployed model on the same online and classical benchmarks.
+
 A CPU-trained neural network that predicts the intended **origin square**, given
 a standard-chess position and a clicked destination. It ranks only legal origins.
 It does not play chess, search variations, or infer an illegal move.
