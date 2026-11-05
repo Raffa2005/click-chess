@@ -1,0 +1,46 @@
+{
+  "size": "5m",
+  "data": "research/fullboard/cache/development.npz",
+  "checkpoint_sha256": "4bf0ce94282808400682ad7ed2e205fccdc9d948b92c23a184fafdcc18f0ae37",
+  "temperature": 1.014909056819889,
+  "temperature_fit_on": "research/fullboard/cache/development.npz",
+  "primary_metric": "cross_entropy_nats_per_ambiguous_click",
+  "raw": {
+    "mean": 0.18711274989654597,
+    "ci95": [
+      0.1809268144469572,
+      0.19335253019061943
+    ],
+    "decisions": 44059,
+    "games": 1105
+  },
+  "calibrated": {
+    "mean": 0.18709274234010728,
+    "ci95": [
+      0.18097122346283018,
+      0.19324989589434172
+    ],
+    "decisions": 44059,
+    "games": 1105
+  },
+  "uniform_ce_nats": 0.8316793574561312,
+  "empirical_floor_board_destination": {
+    "empirical_lookup_minimum_nats": 0.00460309217447682,
+    "decisions": 44059,
+    "distinct_inputs": 39900,
+    "singleton_decisions": 38823,
+    "repeated_input_decisions": 5236,
+    "conflicting_label_decisions": 404,
+    "interpretation": "In-sample memorization floor; NOT irreducible population loss."
+  },
+  "empirical_floor_fullboard_inputs": {
+    "empirical_lookup_minimum_nats": 0.003671763484114643,
+    "decisions": 44059,
+    "distinct_inputs": 40475,
+    "singleton_decisions": 39703,
+    "repeated_input_decisions": 4356,
+    "conflicting_label_decisions": 319,
+    "interpretation": "In-sample memorization floor; NOT irreducible population loss."
+  },
+  "cached_predictions": "research/fullboard/cache/development-5m-int8-logits.npz"
+}

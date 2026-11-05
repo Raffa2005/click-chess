@@ -9,6 +9,10 @@ The completed second study, fresh tests, and adoption rule are documented in
 [research/round2/protocol.md](research/round2/protocol.md). Earlier test sets below
 are now regression sets for subsequent work.
 
+The active full-board study and cross-entropy reporting contract are in
+[research/fullboard/protocol.md](research/fullboard/protocol.md). Its revised
+latency-based constraints supersede the parameter cap below for that study.
+
 ## Immutable evaluation contract
 
 - Freeze the original February 2023 game split and the 36,024 novel validation

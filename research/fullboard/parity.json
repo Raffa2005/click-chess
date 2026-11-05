@@ -1,0 +1,12 @@
+{
+  "upstream_history_positions": 48,
+  "numeric_positions": 128,
+  "onnx": {
+    "max_origin_log_probability_error": 1.321518381658393e-05,
+    "mean_origin_log_probability_error": 1.9617125570806442e-06
+  },
+  "int8.onnx": {
+    "max_origin_log_probability_error": 0.46384508436673144,
+    "mean_origin_log_probability_error": 0.05559057216342785
+  }
+}

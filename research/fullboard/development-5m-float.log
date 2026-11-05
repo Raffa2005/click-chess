@@ -1,0 +1,12 @@
+Error in cpuinfo: failed to parse processor information from /proc/cpuinfo
+onnxruntime warning: cpuinfo_initialize failed. May cause CPU EP performance degradation due to undetected CPU features.
+Error in cpuinfo: failed to parse processor information from /proc/cpuinfo
+[0;93m2026-11-05 20:06:54.469289772 [W:onnxruntime:Default, cpuid_info.cc:116 LogEarlyWarning] Failed to initialize PyTorch cpuinfo library. May cause CPU EP performance degradation due to undetected CPU features.[m
+[0;93m2026-11-05 20:06:54.469320008 [W:onnxruntime:Default, cpuid_info.cc:116 LogEarlyWarning] Unknown CPU vendor. cpuinfo_vendor value: 0[m
+{"scored": 32, "total": 10938, "seconds": 1.1}
+{"scored": 2080, "total": 10938, "seconds": 51.1}
+{"scored": 4128, "total": 10938, "seconds": 89.6}
+{"scored": 6176, "total": 10938, "seconds": 114.6}
+{"scored": 8224, "total": 10938, "seconds": 159.7}
+{"scored": 10272, "total": 10938, "seconds": 216.6}
+{"size": "5m", "temperature": 1.0503300977422851, "temperature_fit_on": "research/fullboard/cache/development.npz", "raw": {"mean": 0.1955051109120517, "ci95": [0.1821630703821194, 0.20901539158605006], "decisions": 10938, "games": 269}, "calibrated": {"mean": 0.19527581529721516, "ci95": [0.18242050311089986, 0.2084737868925131], "decisions": 10938, "games": 269}, "uniform_ce_nats": 0.8313254526932199}

@@ -1,0 +1,21 @@
+{
+  "source": "data/raw/broadcast-2026-01.pgn.zst",
+  "sha256": "9abf10d106a8bf5ecd41359825b3bf55c2f124c8a790a380cb98844c2cca5dca",
+  "modulus": 1,
+  "both_elo_min": 2100,
+  "exclude_games_from": null,
+  "counts": {
+    "archive_games": 25362,
+    "selected_games": 168
+  },
+  "decisions": 7605,
+  "events": {
+    "Tata Steel Chess Masters": 84,
+    "Tata Steel Chess Challengers": 84
+  },
+  "dates": {
+    "2026.01.15": 24,
+    "2026.01.17": 144
+  },
+  "seconds": 50.3751995099999
+}

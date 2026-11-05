@@ -1,0 +1,28 @@
+Error in cpuinfo: failed to parse processor information from /proc/cpuinfo
+onnxruntime warning: cpuinfo_initialize failed. May cause CPU EP performance degradation due to undetected CPU features.
+Error in cpuinfo: failed to parse processor information from /proc/cpuinfo
+[0;93m2026-11-05 20:04:12.803737080 [W:onnxruntime:Default, cpuid_info.cc:116 LogEarlyWarning] Failed to initialize PyTorch cpuinfo library. May cause CPU EP performance degradation due to undetected CPU features.[m
+[0;93m2026-11-05 20:04:12.803766407 [W:onnxruntime:Default, cpuid_info.cc:116 LogEarlyWarning] Unknown CPU vendor. cpuinfo_vendor value: 0[m
+{"scored": 64, "total": 44059, "seconds": 1.4}
+{"scored": 2112, "total": 44059, "seconds": 27.6}
+{"scored": 4160, "total": 44059, "seconds": 48.2}
+{"scored": 6208, "total": 44059, "seconds": 80.5}
+{"scored": 8256, "total": 44059, "seconds": 127.8}
+{"scored": 10304, "total": 44059, "seconds": 149.8}
+{"scored": 12352, "total": 44059, "seconds": 184.8}
+{"scored": 14400, "total": 44059, "seconds": 218.8}
+{"scored": 16448, "total": 44059, "seconds": 249.1}
+{"scored": 18496, "total": 44059, "seconds": 266.3}
+{"scored": 20544, "total": 44059, "seconds": 290.3}
+{"scored": 22592, "total": 44059, "seconds": 318.6}
+{"scored": 24640, "total": 44059, "seconds": 356.7}
+{"scored": 26688, "total": 44059, "seconds": 386.3}
+{"scored": 28736, "total": 44059, "seconds": 404.8}
+{"scored": 30784, "total": 44059, "seconds": 419.3}
+{"scored": 32832, "total": 44059, "seconds": 435.0}
+{"scored": 34880, "total": 44059, "seconds": 452.6}
+{"scored": 36928, "total": 44059, "seconds": 466.3}
+{"scored": 38976, "total": 44059, "seconds": 482.1}
+{"scored": 41024, "total": 44059, "seconds": 498.0}
+{"scored": 43072, "total": 44059, "seconds": 512.5}
+{"size": "5m", "temperature": 1.014909056819889, "temperature_fit_on": "research/fullboard/cache/development.npz", "raw": {"mean": 0.18711274989654597, "ci95": [0.1809268144469572, 0.19335253019061943], "decisions": 44059, "games": 1105}, "calibrated": {"mean": 0.18709274234010728, "ci95": [0.18097122346283018, 0.19324989589434172], "decisions": 44059, "games": 1105}, "uniform_ce_nats": 0.8316793574561312}

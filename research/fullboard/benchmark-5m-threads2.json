@@ -1,0 +1,31 @@
+{
+  "model": "5m",
+  "runtime": "1.31.1",
+  "python": "3.12.14",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.39",
+  "threads": 2,
+  "warmup": 20,
+  "measured_positions": 256,
+  "cpu_identity": "Unavailable: sandbox blocks /proc/cpuinfo",
+  "input_onehot": {
+    "p50_ms": 0.038292,
+    "p95_ms": 0.232565,
+    "max_ms": 2.450269
+  },
+  "network_forward": {
+    "p50_ms": 10.658682500000001,
+    "p95_ms": 19.739463999999998,
+    "max_ms": 59.817971
+  },
+  "cached_policy_conditioning": {
+    "p50_ms": 0.1130415,
+    "p95_ms": 0.390338,
+    "max_ms": 6.854429
+  },
+  "input_plus_forward_plus_conditioning": {
+    "p50_ms": 10.946246000000002,
+    "p95_ms": 20.331081750000003,
+    "max_ms": 60.5648
+  },
+  "scope": "Host CPU timing; excludes chess legal generation, reconstructing history from PGN, model load, UI rendering and Android device performance."
+}

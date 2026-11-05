@@ -11,3 +11,10 @@ research/cache/
 
 research/round2/checkpoints/
 research/round2/cache/
+
+research/fullboard/cache/
+research/fullboard/checkpoints/
+
+.venv-fullboard/
+
+ort.quant.*/

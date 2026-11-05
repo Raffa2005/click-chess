@@ -1,0 +1,62 @@
+{
+  "may": {
+    "shipped_ce_nats": {
+      "mean": 0.3338183108051414,
+      "ci95": [
+        0.329901058665727,
+        0.33757731638484073
+      ],
+      "decisions": 125578,
+      "games": 3264
+    },
+    "uniform_ce_nats": 0.8333130082872826,
+    "board_destination_empirical": {
+      "empirical_lookup_minimum_nats": 0.005557441405830257,
+      "decisions": 125578,
+      "distinct_inputs": 113296,
+      "singleton_decisions": 110174,
+      "repeated_input_decisions": 15404,
+      "conflicting_label_decisions": 2369,
+      "interpretation": "In-sample memorization floor; NOT irreducible population loss."
+    },
+    "exact_147_feature_input_empirical": {
+      "empirical_lookup_minimum_nats": 0.005203182129558447,
+      "decisions": 125578,
+      "distinct_inputs": 114348,
+      "singleton_decisions": 111661,
+      "repeated_input_decisions": 13917,
+      "conflicting_label_decisions": 2283,
+      "interpretation": "In-sample memorization floor; NOT irreducible population loss."
+    }
+  },
+  "classical": {
+    "shipped_ce_nats": {
+      "mean": 0.3869493221813981,
+      "ci95": [
+        0.36906943207411724,
+        0.4058184237420825
+      ],
+      "decisions": 5888,
+      "games": 134
+    },
+    "uniform_ce_nats": 0.8402334437279243,
+    "board_destination_empirical": {
+      "empirical_lookup_minimum_nats": 0.0015903978353003464,
+      "decisions": 5888,
+      "distinct_inputs": 5394,
+      "singleton_decisions": 5201,
+      "repeated_input_decisions": 687,
+      "conflicting_label_decisions": 14,
+      "interpretation": "In-sample memorization floor; NOT irreducible population loss."
+    },
+    "exact_147_feature_input_empirical": {
+      "empirical_lookup_minimum_nats": 0.0013549538201644954,
+      "decisions": 5888,
+      "distinct_inputs": 5481,
+      "singleton_decisions": 5364,
+      "repeated_input_decisions": 524,
+      "conflicting_label_decisions": 12,
+      "interpretation": "In-sample memorization floor; NOT irreducible population loss."
+    }
+  }
+}

@@ -1,0 +1,10 @@
+Error in cpuinfo: failed to parse processor information from /proc/cpuinfo
+/workspace/scratch/20c31a15abeb/click-chess/src/tinychess/fullboard_export.py:41: DeprecationWarning: You are using the legacy TorchScript-based ONNX export. Starting in PyTorch 2.9, the new torch.export-based ONNX exporter has become the default. Learn more about the new export logic: https://docs.pytorch.org/docs/stable/onnx_export.html. For exporting control flow: https://pytorch.org/tutorials/beginner/onnx/export_control_flow_model_to_onnx_tutorial.html
+  torch.onnx.export(model,(x,elo,elo),str(base)+'.onnx',opset_version=18,dynamo=False,
+Error in cpuinfo: failed to parse processor information from /proc/cpuinfo
+onnxruntime warning: cpuinfo_initialize failed. May cause CPU EP performance degradation due to undetected CPU features.
+Error in cpuinfo: failed to parse processor information from /proc/cpuinfo
+[0;93m2026-11-05 20:04:29.713609676 [W:onnxruntime:Default, cpuid_info.cc:116 LogEarlyWarning] Failed to initialize PyTorch cpuinfo library. May cause CPU EP performance degradation due to undetected CPU features.[m
+[0;93m2026-11-05 20:04:29.713644305 [W:onnxruntime:Default, cpuid_info.cc:116 LogEarlyWarning] Unknown CPU vendor. cpuinfo_vendor value: 0[m
+WARNING:root:Please consider to run pre-processing before quantization. Refer to example: https://github.com/microsoft/onnxruntime-inference-examples/blob/main/quantization/image_classification/cpu/ReadMe.md 
+{".onnx": {"bytes": 90121828, "ms_p50_p95": [57.37860350018309, 488.62121434992775], "initial_position_max_logit_error": 1.1444091796875e-05}, ".int8.onnx": {"bytes": 25209757, "ms_p50_p95": [29.945553000288783, 61.79123075032748], "initial_position_max_logit_error": 0.30324554443359375}}

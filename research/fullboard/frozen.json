@@ -1,0 +1,35 @@
+{
+  "frozen_at_utc": "2026-11-05T19:16:27.859024+00:00",
+  "primary_metric": "cross_entropy_nats_per_ambiguous_click",
+  "selected_prototype": "5m-int8",
+  "reference": "23m-int8",
+  "app_default_unchanged": true,
+  "choices": {
+    "baseline": {
+      "temperature": 1.0463584279870783,
+      "checkpoint_sha256": "592efffc0cef663b7b8041669fe4332322fb5e41b13990893f8d36046c256839",
+      "calibration_report_sha256": "5852bd760ca255d819842c94ac267397ace636416b055b0d4adeaebb0314b5f7"
+    },
+    "5m-int8": {
+      "temperature": 1.014909056819889,
+      "checkpoint_sha256": "4bf0ce94282808400682ad7ed2e205fccdc9d948b92c23a184fafdcc18f0ae37",
+      "calibration_report_sha256": "37ba89b2f735dc2a782411a33099efbcce50788ed4c195a5f1cf580e8cf16502"
+    },
+    "23m-int8": {
+      "temperature": 1.0254372463794823,
+      "checkpoint_sha256": "305309a2a88552926b4024a888447d943c5715514034269c3c3773e067941e9a",
+      "calibration_report_sha256": "ced90418bcf667cf1585fd927b8d2a5333dad273eabcf2bd7fbad2a5d4213ca3"
+    }
+  },
+  "runtime_threads": 1,
+  "latency_assessment": "5M host forward p95 20.1ms; initial 16.7ms frame aim NOT met. 2/4 threads do not materially improve p95. Optional precompute cache is supported. Android/device and UI latency unmeasured.",
+  "code_sha256": {
+    "src/tinychess/fullboard.py": "cf459214cd7ac15d09c638b544d227690ee5ea7e944fbbd6d399b1548c2c8bf9",
+    "src/tinychess/fullboard_benchmark.py": "8d9d5c6067292e0685cc85e0dfc3a2a3967846912d24dae1c2ae72a8d768d93e",
+    "src/tinychess/fullboard_export.py": "7060b487fd6384ba1c9a9821f984ef363836ae223aac078fa1eb9c3134cfc0a7",
+    "src/tinychess/fullboard_fetch.py": "cd2511c053864a34eb310c8d70e0515e9a63ac9efc152a1a2bb8ae8b676eca1e",
+    "src/tinychess/fullboard_prepare.py": "12bd5cd81fd4ca27893478060fd665d2d0c0c2595aeb4f70a786fa7b71d07143",
+    "src/tinychess/fullboard_study.py": "b2ecaaa62d88ce93e6f1e90895d240ef60ac7034fb2a7cd1c30c53d21ac81164",
+    "src/tinychess/crossentropy.py": "a2a47c871f88c89d65becc572a8d2da18f7754c7fd70200fa64e713adc53e2f1"
+  }
+}

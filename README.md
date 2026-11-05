@@ -1,5 +1,9 @@
 # click-chess
 
+A [full-board cross-entropy study](research/fullboard/README.md) now measures log loss,
+finite-sample entropy diagnostics, and an optional position-aware Maia3 backend.
+Cross-entropy is the primary metric for new model selection.
+
 A [hand-written-weight comparison](research/manual-weights/README.md) is now available: zero training, tested against the deployed model on the same online and classical benchmarks.
 
 A CPU-trained neural network that predicts the intended **origin square**, given
@@ -20,9 +24,10 @@ are counted separately.
 
 The deployed network has **17,345 parameters**, a **16.8 KB gzipped binary**
 (**18.6 KB uncompressed**), and **0.31 ms p95** feature extraction + ranking in the
-warm Node benchmark with legal moves supplied. Its round-one test accuracy was
-**85.11%** on April 2023 online games and **82.98%** on Tata Steel 2025 classical
-games. Second-choice coverage was 98.77% and 98.53%.
+warm Node benchmark with legal moves supplied. Its independently recomputed
+cross-entropy is **0.3338 nats** on May 2023 online games and **0.3869 nats** on
+Prague/Cyprus 2025 classical games. These are ambiguous-origin decisions only.
+The full-board study reports newer held-out comparisons and confidence intervals.
 
 [Round two](research/round2/RESULTS.md) tested eight additional training runs and
 six weight averages. Its candidate improved fresh online accuracy but missed the
