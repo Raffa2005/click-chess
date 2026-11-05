@@ -1,8 +1,10 @@
 # click-chess
 
-A [full-board cross-entropy study](research/fullboard/README.md) now measures log loss,
-finite-sample entropy diagnostics, and an optional position-aware Maia3 backend.
-Cross-entropy is the primary metric for new model selection.
+The [full-board cross-entropy study](research/fullboard/RESULTS.md) adds an optional
+native Maia3 backend: **0.1855 nats online / 0.2114 classical**, compared with
+**0.3486 / 0.3795** for the calibrated old model on identical held-out cases.
+Cross-entropy is primary; the true entropy floor is unknown. The existing APK
+and default tiny model are unchanged; browser INT8 validation has not passed.
 
 A [hand-written-weight comparison](research/manual-weights/README.md) is now available: zero training, tested against the deployed model on the same online and classical benchmarks.
 

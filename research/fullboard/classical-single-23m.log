@@ -1,0 +1,10 @@
+Error in cpuinfo: failed to parse processor information from /proc/cpuinfo
+onnxruntime warning: cpuinfo_initialize failed. May cause CPU EP performance degradation due to undetected CPU features.
+Error in cpuinfo: failed to parse processor information from /proc/cpuinfo
+[0;93m2026-11-05 20:31:24.548139643 [W:onnxruntime:Default, cpuid_info.cc:116 LogEarlyWarning] Failed to initialize PyTorch cpuinfo library. May cause CPU EP performance degradation due to undetected CPU features.[m
+[0;93m2026-11-05 20:31:24.548272840 [W:onnxruntime:Default, cpuid_info.cc:116 LogEarlyWarning] Unknown CPU vendor. cpuinfo_vendor value: 0[m
+{"scored": 512, "total": 7605, "seconds": 7.3}
+{"scored": 2560, "total": 7605, "seconds": 59.8}
+{"scored": 4608, "total": 7605, "seconds": 81.3}
+{"scored": 6656, "total": 7605, "seconds": 110.8}
+{"size": "23m", "data": "research/fullboard/cache/classical-test.npz", "game_modulus": 1, "batch_size": 1, "independent_workers": 4, "checkpoint_sha256": "305309a2a88552926b4024a888447d943c5715514034269c3c3773e067941e9a", "temperature": 1.0254372463794823, "primary_metric": "cross_entropy_nats_per_ambiguous_click", "raw": {"mean": 0.1907238477799365, "ci95": [0.1762069422230862, 0.206355967285394], "decisions": 7605, "games": 168}, "calibrated": {"mean": 0.19043118207896081, "ci95": [0.17609738055753188, 0.2057925283397822], "decisions": 7605, "games": 168}, "uniform_ce_nats": 0.8343626694058922, "empirical_floor_fullboard_inputs": {"empirical_lookup_minimum_nats": 0.0015463245185264002, "decisions": 7605, "distinct_inputs": 7133, "singleton_decisions": 7002, "repeated_input_decisions": 603, "conflicting_label_decisions": 25, "interpretation": "In-sample memorization floor; NOT irreducible population loss."}, "seconds": 130.60766399299973, "selection": "Frozen weights/temperature; deployment-path verification only.", "cached_predictions": "research/fullboard/cache/classical-single-23m-logits.npz"}

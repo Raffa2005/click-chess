@@ -1,0 +1,27 @@
+Error in cpuinfo: failed to parse processor information from /proc/cpuinfo
+onnxruntime warning: cpuinfo_initialize failed. May cause CPU EP performance degradation due to undetected CPU features.
+Error in cpuinfo: failed to parse processor information from /proc/cpuinfo
+[0;93m2026-11-05 20:21:41.690347592 [W:onnxruntime:Default, cpuid_info.cc:116 LogEarlyWarning] Failed to initialize PyTorch cpuinfo library. May cause CPU EP performance degradation due to undetected CPU features.[m
+[0;93m2026-11-05 20:21:41.690382888 [W:onnxruntime:Default, cpuid_info.cc:116 LogEarlyWarning] Unknown CPU vendor. cpuinfo_vendor value: 0[m
+{"scored": 64, "total": 42896, "seconds": 0.6}
+{"scored": 2112, "total": 42896, "seconds": 24.1}
+{"scored": 4160, "total": 42896, "seconds": 38.0}
+{"scored": 6208, "total": 42896, "seconds": 104.7}
+{"scored": 8256, "total": 42896, "seconds": 119.9}
+{"scored": 10304, "total": 42896, "seconds": 134.2}
+{"scored": 12352, "total": 42896, "seconds": 162.9}
+{"scored": 14400, "total": 42896, "seconds": 200.8}
+{"scored": 16448, "total": 42896, "seconds": 221.6}
+{"scored": 18496, "total": 42896, "seconds": 240.9}
+{"scored": 20544, "total": 42896, "seconds": 256.2}
+{"scored": 22592, "total": 42896, "seconds": 275.6}
+{"scored": 24640, "total": 42896, "seconds": 342.3}
+{"scored": 26688, "total": 42896, "seconds": 359.1}
+{"scored": 28736, "total": 42896, "seconds": 392.0}
+{"scored": 30784, "total": 42896, "seconds": 406.4}
+{"scored": 32832, "total": 42896, "seconds": 432.7}
+{"scored": 34880, "total": 42896, "seconds": 455.0}
+{"scored": 36928, "total": 42896, "seconds": 556.2}
+{"scored": 38976, "total": 42896, "seconds": 574.5}
+{"scored": 41024, "total": 42896, "seconds": 651.6}
+{"size": "5m", "temperature": 1.014909056819889, "temperature_fit_on": "research/fullboard/development-5m-int8.json", "raw": {"mean": 0.18782541743981265, "ci95": [0.1817798677302276, 0.19421429935655826], "decisions": 42896, "games": 1081}, "calibrated": {"mean": 0.18780227900637828, "ci95": [0.18180546575511214, 0.1941911014015915], "decisions": 42896, "games": 1081}, "uniform_ce_nats": 0.8299476621469877}

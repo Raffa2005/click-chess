@@ -1,0 +1,12 @@
+Error in cpuinfo: failed to parse processor information from /proc/cpuinfo
+onnxruntime warning: cpuinfo_initialize failed. May cause CPU EP performance degradation due to undetected CPU features.
+Error in cpuinfo: failed to parse processor information from /proc/cpuinfo
+[0;93m2026-11-05 20:32:59.331731230 [W:onnxruntime:Default, cpuid_info.cc:116 LogEarlyWarning] Failed to initialize PyTorch cpuinfo library. May cause CPU EP performance degradation due to undetected CPU features.[m
+[0;93m2026-11-05 20:32:59.331756497 [W:onnxruntime:Default, cpuid_info.cc:116 LogEarlyWarning] Unknown CPU vendor. cpuinfo_vendor value: 0[m
+{"scored": 512, "total": 11027, "seconds": 2.6}
+{"scored": 2560, "total": 11027, "seconds": 19.3}
+{"scored": 4608, "total": 11027, "seconds": 34.8}
+{"scored": 6656, "total": 11027, "seconds": 47.4}
+{"scored": 8704, "total": 11027, "seconds": 58.4}
+{"scored": 10752, "total": 11027, "seconds": 70.6}
+{"size": "5m", "data": "research/fullboard/cache/online-test.npz", "game_modulus": 4, "batch_size": 1, "independent_workers": 4, "checkpoint_sha256": "4bf0ce94282808400682ad7ed2e205fccdc9d948b92c23a184fafdcc18f0ae37", "temperature": 1.014909056819889, "primary_metric": "cross_entropy_nats_per_ambiguous_click", "raw": {"mean": 0.1855492720569553, "ci95": [0.173467761747325, 0.198568202398767], "decisions": 11027, "games": 281}, "calibrated": {"mean": 0.1855361797303781, "ci95": [0.17351514643440766, 0.1984806071649725], "decisions": 11027, "games": 281}, "uniform_ce_nats": 0.8304916607743286, "empirical_floor_fullboard_inputs": {"empirical_lookup_minimum_nats": 0.0023402202313599885, "decisions": 11027, "distinct_inputs": 10574, "singleton_decisions": 10435, "repeated_input_decisions": 592, "conflicting_label_decisions": 46, "interpretation": "In-sample memorization floor; NOT irreducible population loss."}, "seconds": 72.99962271000004, "selection": "Frozen weights/temperature; deployment-path verification only.", "cached_predictions": "research/fullboard/cache/online-single-5m-logits.npz"}

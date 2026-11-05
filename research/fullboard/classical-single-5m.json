@@ -1,0 +1,41 @@
+{
+  "size": "5m",
+  "data": "research/fullboard/cache/classical-test.npz",
+  "game_modulus": 1,
+  "batch_size": 1,
+  "independent_workers": 4,
+  "checkpoint_sha256": "4bf0ce94282808400682ad7ed2e205fccdc9d948b92c23a184fafdcc18f0ae37",
+  "temperature": 1.014909056819889,
+  "primary_metric": "cross_entropy_nats_per_ambiguous_click",
+  "raw": {
+    "mean": 0.21158084204694333,
+    "ci95": [
+      0.19581109020963536,
+      0.22816771223992846
+    ],
+    "decisions": 7605,
+    "games": 168
+  },
+  "calibrated": {
+    "mean": 0.21138723275131827,
+    "ci95": [
+      0.1957575380614979,
+      0.22778043495841044
+    ],
+    "decisions": 7605,
+    "games": 168
+  },
+  "uniform_ce_nats": 0.8343626694058922,
+  "empirical_floor_fullboard_inputs": {
+    "empirical_lookup_minimum_nats": 0.0015463245185264002,
+    "decisions": 7605,
+    "distinct_inputs": 7133,
+    "singleton_decisions": 7002,
+    "repeated_input_decisions": 603,
+    "conflicting_label_decisions": 25,
+    "interpretation": "In-sample memorization floor; NOT irreducible population loss."
+  },
+  "seconds": 91.95235212800026,
+  "selection": "Frozen weights/temperature; deployment-path verification only.",
+  "cached_predictions": "research/fullboard/cache/classical-single-5m-logits.npz"
+}

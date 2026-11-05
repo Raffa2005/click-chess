@@ -1,5 +1,10 @@
 # Full-board, cross-entropy-first input prediction
 
+[Final single-position test results](RESULTS.md): 5M native INT8 reaches
+**0.1855 nats online / 0.2114 classical**, versus **0.3486 / 0.3795** for the
+calibrated old model on identical cases. The larger reference reaches
+**0.1681 / 0.1904**. The true entropy floor remains unknown.
+
 This study replaces the old model-selection accuracy gate with held-out
 cross-entropy, in **nats per ambiguous click**. Zero-loss unambiguous clicks and
 promotion-only choices are excluded. Candidate promotions are marginalized to
@@ -81,7 +86,8 @@ import chess
 from tinychess.fullboard import OnnxFullBoardRanker
 from tinychess.model import ClickSession
 
-model = OnnxFullBoardRanker('research/fullboard/checkpoints/maia3-5m.int8.onnx')
+model = OnnxFullBoardRanker('research/fullboard/checkpoints/maia3-5m.int8.onnx',
+                            temperature=1.014909056819889)
 board = chess.Board()
 model.prepare(board)  # optional: once when the position changes
 print(model.rank(board, 'f3'))
@@ -106,3 +112,24 @@ The scripts refuse to overwrite a completed score report or prepared dataset.
 Raw and calibrated losses, sample sizes, empirical repeat diagnostics, and
 cluster-bootstrap confidence intervals are saved as JSON. INT8 export errors are
 checked separately; quantization is not assumed lossless.
+
+
+## JavaScript experiment and deployment boundary
+
+`js/fullboard-ranker.mjs` accepts an injected ONNX Runtime Web instance, an array
+of historical FENs (oldest first, current position last), and legal moves supplied
+by the chess library. Its input encoding and probability marginalization match
+Python across 34 fixtures, including black orientation, castling and promotions.
+Cache/repeat-click tests are part of `npm test`.
+
+**The INT8 WASM backend did not pass native numerical parity.** It executed all
+eight integration fixtures but reached a 0.0355 absolute probability error and
+flipped two nearly tied promotion rankings. The complete result and timings are
+in `wasm-check.json`; `npm run test:fullboard-wasm` deliberately fails this
+validation. Do not infer browser or Android cross-entropy from native results.
+This adapter remains experimental, and the existing Android APK is unchanged.
+
+Final primary loss reports use `python -m tinychess.fullboard_single`, with one
+position per inference call. `python -m tinychess.fullboard_report` produces the
+paired test comparison. Earlier batch-size-32/64 runs are retained as diagnostics;
+dynamic activation quantization makes batch size a material implementation detail.

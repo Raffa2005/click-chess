@@ -1,0 +1,12 @@
+Error in cpuinfo: failed to parse processor information from /proc/cpuinfo
+onnxruntime warning: cpuinfo_initialize failed. May cause CPU EP performance degradation due to undetected CPU features.
+Error in cpuinfo: failed to parse processor information from /proc/cpuinfo
+[0;93m2026-11-05 20:33:37.054998529 [W:onnxruntime:Default, cpuid_info.cc:116 LogEarlyWarning] Failed to initialize PyTorch cpuinfo library. May cause CPU EP performance degradation due to undetected CPU features.[m
+[0;93m2026-11-05 20:33:37.055026251 [W:onnxruntime:Default, cpuid_info.cc:116 LogEarlyWarning] Unknown CPU vendor. cpuinfo_vendor value: 0[m
+{"scored": 512, "total": 11027, "seconds": 6.8}
+{"scored": 2560, "total": 11027, "seconds": 28.9}
+{"scored": 4608, "total": 11027, "seconds": 48.3}
+{"scored": 6656, "total": 11027, "seconds": 78.5}
+{"scored": 8704, "total": 11027, "seconds": 107.1}
+{"scored": 10752, "total": 11027, "seconds": 128.1}
+{"size": "23m", "data": "research/fullboard/cache/online-test.npz", "game_modulus": 4, "batch_size": 1, "independent_workers": 4, "checkpoint_sha256": "305309a2a88552926b4024a888447d943c5715514034269c3c3773e067941e9a", "temperature": 1.0254372463794823, "primary_metric": "cross_entropy_nats_per_ambiguous_click", "raw": {"mean": 0.16805954956283267, "ci95": [0.15632808041051172, 0.18044064193244924], "decisions": 11027, "games": 281}, "calibrated": {"mean": 0.1680598336771716, "ci95": [0.15648316263006012, 0.1802792683265887], "decisions": 11027, "games": 281}, "uniform_ce_nats": 0.8304916607743286, "empirical_floor_fullboard_inputs": {"empirical_lookup_minimum_nats": 0.0023402202313599885, "decisions": 11027, "distinct_inputs": 10574, "singleton_decisions": 10435, "repeated_input_decisions": 592, "conflicting_label_decisions": 46, "interpretation": "In-sample memorization floor; NOT irreducible population loss."}, "seconds": 131.33665536199987, "selection": "Frozen weights/temperature; deployment-path verification only.", "cached_predictions": "research/fullboard/cache/online-single-23m-logits.npz"}

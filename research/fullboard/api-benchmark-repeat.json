@@ -1,0 +1,52 @@
+{
+  "cases": 303,
+  "source": "tests/fixtures.json",
+  "history": "FEN-only fixtures; earliest board repeated as documented",
+  "threads": 1,
+  "warm_model": true,
+  "scope": "Python host CPU API, includes legal generation and history encoding; excludes UI, model load, physical Android device.",
+  "timings": {
+    "uncached_full_rank": {
+      "p50_ms": 16.351786,
+      "p95_ms": 40.23395389999998,
+      "max_ms": 548.026809
+    },
+    "cached_full_rank": {
+      "p50_ms": 0.233394,
+      "p95_ms": 1.9931157999999998,
+      "max_ms": 6.149232
+    },
+    "baseline_full_rank": {
+      "p50_ms": 1.159655,
+      "p95_ms": 5.2455348999999964,
+      "max_ms": 13.740705
+    },
+    "cached_repeat_click": {
+      "p50_ms": 0.00012249,
+      "p95_ms": 0.00018790699999999993,
+      "max_ms": 0.02703369
+    }
+  },
+  "thread_cpu_times": {
+    "uncached_full_rank": {
+      "p50_ms": 16.349431,
+      "p95_ms": 40.230017899999986,
+      "max_ms": 547.649271
+    },
+    "cached_full_rank": {
+      "p50_ms": 0.231413,
+      "p95_ms": 1.9859148999999998,
+      "max_ms": 6.144491
+    },
+    "baseline_full_rank": {
+      "p50_ms": 1.157124,
+      "p95_ms": 5.242728099999997,
+      "max_ms": 13.736827
+    },
+    "cached_repeat_click": {
+      "p50_ms": 0.00012275,
+      "p95_ms": 0.000200967,
+      "max_ms": 0.02706086
+    }
+  }
+}

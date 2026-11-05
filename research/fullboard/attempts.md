@@ -15,3 +15,12 @@
 - 23M is a larger, slower quality reference; 5M is the faster optional prototype.
 - All calibration and choices are frozen before fresh-test scoring. Existing
   Android/JavaScript deployment is retained; no app release is produced here.
+
+- ONNX Runtime Web 1.31.1 executes the graph, but eight synthetic/API fixtures
+  showed a maximum 0.0355 probability difference versus native INT8 and two
+  ranking flips on nearly tied promotion origins. Browser INT8 verification
+  failed. Its adapter is experimental; no APK/default-model change is made.
+- Because dynamic activation quantization also depends on batch composition,
+  final primary metrics are verified with one position per forward pass, using
+  unchanged frozen weights/temperatures. The online verification uses the same
+  predeclared modulus-4 game subset as the larger reference; classical is full.

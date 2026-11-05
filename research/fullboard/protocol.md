@@ -60,3 +60,22 @@ search. Record dependencies, source/checkpoint hashes, sampling manifests, and
 all attempted variants. Keep the existing app default until a deployable runtime
 passes its own tests. External Maia3 code is AGPL-3.0; keep it an optional external
 research dependency, do not mislabel it as this repository's MIT code.
+
+
+## Deployment-path verification amendment
+
+After the first test runs, runtime parity checks showed two execution concerns:
+dynamic INT8 quantization can depend on co-batched positions, and ONNX Runtime
+Web/WASM did not match native CPU probabilities within the predefined 0.005
+absolute tolerance (observed maximum 0.0355 on eight fixtures). These findings
+concern execution correctness, not choosing a model using test loss.
+
+The final primary report therefore reruns the **frozen** native weights and
+calibration temperatures with **batch size 1**. Four independent single-position
+requests may execute concurrently for throughput; each call sees only its own
+input. Serial-versus-concurrent outputs are checked. Online comparisons use the
+already declared game-hash-modulus-4 reference subset for all models; classical
+comparisons use all selected games. Earlier batched reports remain available as
+diagnostics, not the final deployment-path metric. No model or temperature is
+changed in response to these tests. The browser INT8 backend is experimental and
+is not promoted. Physical Android/WebView performance remains unmeasured.

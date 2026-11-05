@@ -1,0 +1,176 @@
+{
+  "online": {
+    "scope": "One position per forward pass, frozen native ONNX INT8 models and temperatures.",
+    "online_game_hash_modulus": 4,
+    "models": {
+      "old_model_calibrated": {
+        "mean": 0.3486122877903318,
+        "ci95": [
+          0.3327666301613535,
+          0.3651025284933178
+        ],
+        "decisions": 11027,
+        "games": 281
+      },
+      "5m": {
+        "mean": 0.1855361797303781,
+        "ci95": [
+          0.17351514643440766,
+          0.1984806071649725
+        ],
+        "decisions": 11027,
+        "games": 281
+      },
+      "23m": {
+        "mean": 0.1680598336771716,
+        "ci95": [
+          0.15648316263006012,
+          0.1802792683265887
+        ],
+        "decisions": 11027,
+        "games": 281
+      }
+    },
+    "paired_delta": {
+      "5m_minus_old": {
+        "mean": -0.16307610805995382,
+        "ci95": [
+          -0.17408098408941564,
+          -0.15169348473062053
+        ],
+        "decisions": 11027,
+        "games": 281
+      },
+      "23m_minus_5m": {
+        "mean": -0.017476346053206488,
+        "ci95": [
+          -0.021373085595462752,
+          -0.013482820240871841
+        ],
+        "decisions": 11027,
+        "games": 281
+      }
+    },
+    "absent_from_development": {
+      "note": "Only development-key exclusion; pretrained training-position overlap is unknown.",
+      "models": {
+        "old_model_calibrated": {
+          "mean": 0.36768215332285165,
+          "ci95": [
+            0.3510962838379528,
+            0.38493131629233357
+          ],
+          "decisions": 10032,
+          "games": 281
+        },
+        "5m": {
+          "mean": 0.1959141045832199,
+          "ci95": [
+            0.18323571658924737,
+            0.2101268078968306
+          ],
+          "decisions": 10032,
+          "games": 281
+        },
+        "23m": {
+          "mean": 0.17693627652962524,
+          "ci95": [
+            0.16482434853501315,
+            0.1900693261247607
+          ],
+          "decisions": 10032,
+          "games": 281
+        }
+      }
+    },
+    "human_entropy_floor": null,
+    "gap_to_human_entropy": null
+  },
+  "classical": {
+    "scope": "One position per forward pass, frozen native ONNX INT8 models and temperatures.",
+    "online_game_hash_modulus": 1,
+    "models": {
+      "old_model_calibrated": {
+        "mean": 0.379506173719115,
+        "ci95": [
+          0.3615899904514462,
+          0.3976475139191337
+        ],
+        "decisions": 7605,
+        "games": 168
+      },
+      "5m": {
+        "mean": 0.21138723275131827,
+        "ci95": [
+          0.1957575380614979,
+          0.22778043495841044
+        ],
+        "decisions": 7605,
+        "games": 168
+      },
+      "23m": {
+        "mean": 0.19043118207896081,
+        "ci95": [
+          0.17609738055753188,
+          0.2057925283397822
+        ],
+        "decisions": 7605,
+        "games": 168
+      }
+    },
+    "paired_delta": {
+      "5m_minus_old": {
+        "mean": -0.16811894096779667,
+        "ci95": [
+          -0.1814759255454169,
+          -0.15421572354739493
+        ],
+        "decisions": 7605,
+        "games": 168
+      },
+      "23m_minus_5m": {
+        "mean": -0.02095605067235748,
+        "ci95": [
+          -0.026364527763021256,
+          -0.015411791484710325
+        ],
+        "decisions": 7605,
+        "games": 168
+      }
+    },
+    "absent_from_development": {
+      "note": "Only development-key exclusion; pretrained training-position overlap is unknown.",
+      "models": {
+        "old_model_calibrated": {
+          "mean": 0.41392233236267106,
+          "ci95": [
+            0.3953665309743418,
+            0.4328961228664186
+          ],
+          "decisions": 6763,
+          "games": 168
+        },
+        "5m": {
+          "mean": 0.23190019844757045,
+          "ci95": [
+            0.2149506138046308,
+            0.24921159353269015
+          ],
+          "decisions": 6763,
+          "games": 168
+        },
+        "23m": {
+          "mean": 0.2082716692059025,
+          "ci95": [
+            0.19355491329488106,
+            0.22427388209336052
+          ],
+          "decisions": 6763,
+          "games": 168
+        }
+      }
+    },
+    "human_entropy_floor": null,
+    "gap_to_human_entropy": null
+  }
+}

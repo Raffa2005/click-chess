@@ -1,0 +1,92 @@
+{
+  "runtime": {
+    "common": "1.31.1",
+    "web": "1.31.1"
+  },
+  "host": "Node WASM; not an Android/WebView measurement",
+  "cases": 8,
+  "max_probability_error": 0.03549935270632065,
+  "rank_ms": [
+    318.3102779999999,
+    111.97261700000035,
+    80.08921900000041,
+    55.262289999999666,
+    46.053765999999996,
+    46.816554999999425,
+    54.77399199999945,
+    51.945104000000356
+  ],
+  "ranking_differences": [
+    {
+      "case": 5,
+      "actual": [
+        {
+          "from": "a7",
+          "probability": 0.5102869380985732,
+          "moves": [
+            "a7b8q",
+            "a7b8r",
+            "a7b8b",
+            "a7b8n"
+          ]
+        },
+        {
+          "from": "c7",
+          "probability": 0.4897130619014271,
+          "moves": [
+            "c7b8q",
+            "c7b8r",
+            "c7b8b",
+            "c7b8n"
+          ]
+        }
+      ],
+      "expected": [
+        {
+          "from": "c7",
+          "probability": 0.5084430402963467
+        },
+        {
+          "from": "a7",
+          "probability": 0.4915569597036538
+        }
+      ]
+    },
+    {
+      "case": 6,
+      "actual": [
+        {
+          "from": "a2",
+          "probability": 0.5102869380985732,
+          "moves": [
+            "a2b1q",
+            "a2b1r",
+            "a2b1b",
+            "a2b1n"
+          ]
+        },
+        {
+          "from": "c2",
+          "probability": 0.4897130619014271,
+          "moves": [
+            "c2b1q",
+            "c2b1r",
+            "c2b1b",
+            "c2b1n"
+          ]
+        }
+      ],
+      "expected": [
+        {
+          "from": "c2",
+          "probability": 0.5084430402963467
+        },
+        {
+          "from": "a2",
+          "probability": 0.4915569597036538
+        }
+      ]
+    }
+  ],
+  "passed": false
+}

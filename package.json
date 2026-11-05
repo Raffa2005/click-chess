@@ -4,9 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node js/test.mjs && node js/manual-test.mjs",
+    "test": "node js/test.mjs && node js/manual-test.mjs && node js/fullboard-test.mjs",
     "benchmark": "node js/benchmark.mjs",
-    "benchmark:manual": "node js/manual-benchmark.mjs"
+    "benchmark:manual": "node js/manual-benchmark.mjs",
+    "test:fullboard-wasm": "node js/fullboard-wasm-check.mjs"
   },
   "devDependencies": {
     "chess.js": "1.4.0"

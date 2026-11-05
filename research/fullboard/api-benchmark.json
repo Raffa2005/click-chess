@@ -1,0 +1,30 @@
+{
+  "cases": 303,
+  "source": "tests/fixtures.json",
+  "history": "FEN-only fixtures; earliest board repeated as documented",
+  "threads": 1,
+  "warm_model": true,
+  "scope": "Python host CPU API, includes legal generation and history encoding; excludes UI, model load, physical Android device.",
+  "timings": {
+    "uncached_full_rank": {
+      "p50_ms": 14.494726,
+      "p95_ms": 90.1178652999999,
+      "max_ms": 35033.645783
+    },
+    "cached_full_rank": {
+      "p50_ms": 0.241786,
+      "p95_ms": 1.9157347999999972,
+      "max_ms": 159.192755
+    },
+    "baseline_full_rank": {
+      "p50_ms": 1.150767,
+      "p95_ms": 6.542212299999988,
+      "max_ms": 214.74474
+    },
+    "cached_repeat_click": {
+      "p50_ms": 0.00010707,
+      "p95_ms": 0.00016996499999999995,
+      "max_ms": 0.00177058
+    }
+  }
+}
